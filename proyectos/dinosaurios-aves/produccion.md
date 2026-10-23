@@ -1,177 +1,184 @@
-# Producción: Los dinosaurios nunca se fueron
+# Producción: Los dinosaurios nunca se fueron (versión épica)
 
 - **Tema:** Dinosaurios. Enfoque: las aves son los dinosaurios que sobrevivieron.
-- **Duración objetivo:** 1 minuto · **Duración estimada del guion:** unas 135 palabras (≈ 55–60 s a 140–145 palabras por minuto, con pausas).
-- **Estilo visual:** realista (fotorrealista, documental de naturaleza).
-- **Idioma / voz:** español · voz artificial natural, tono documental, ritmo dinámico.
-- **Formato recomendado:** **vertical 9:16** (YouTube Shorts). Un minuto es el formato natural de un Short. Más abajo hay notas para una versión 16:9.
+- **Duración objetivo:** 1 minuto · **Duración estimada del guion:** unas 128 palabras (≈ 55–60 s a unas 130 palabras por minuto; la locución épica es más pausada).
+- **Estilo visual:** realista y épico: fotorrealista, cinematográfico, contrapicados, luz volumétrica, cámara lenta y gradación cálida/oscura.
+- **Idioma / voz:** español · voz artificial grave, solemne, tipo tráiler de cine, con pausas dramáticas.
+- **Formato recomendado:** **vertical 9:16** (YouTube Shorts). Al final hay notas para una versión 16:9.
 
-> **Por qué este enfoque:** "dinosaurios" es un tema muy amplio y en 60 s solo cabe una idea. La que mejor funciona es "los dinosaurios siguen entre nosotros: son las aves". Es sorprendente, es el consenso científico y tiene un cierre memorable (la paloma).
+> **Enfoque:** la idea científica no cambia (las aves son dinosaurios); lo que cambia es la forma de contarla, como un tráiler: auge, catástrofe, supervivencia y revelación.
 
 ---
 
 ## 1. Público objetivo y enfoque
 
-- **Público:** curiosos de la ciencia de 12 a 40 años, familias y aficionados a los dinosaurios que consumen vídeos cortos.
+- **Público:** curiosos de la ciencia de 12 a 40 años y aficionados a los dinosaurios y al cine épico que consumen vídeos cortos.
 - **Conocimiento previo:** básico. Saben que los dinosaurios se extinguieron, pero no que las aves son dinosaurios.
-- **Promesa del vídeo:** en un minuto entenderás por qué los dinosaurios no desaparecieron del todo.
-- **Ángulo diferenciador:** un giro final cotidiano (una paloma en la ventana) que invita a compartir el vídeo.
+- **Promesa del vídeo:** en un minuto, la historia de cómo los dinosaurios sobrevivieron al fin del mundo.
+- **Ángulo diferenciador:** narrado como un tráiler de cine, con un giro final que invita a compartir.
 
 ## 2. Títulos propuestos
 
-1. Los dinosaurios nunca se extinguieron (del todo)
-2. Hay un dinosaurio en tu ventana ahora mismo
-3. Por qué las aves son dinosaurios, en 1 minuto
-4. El secreto que sobrevivió al asteroide
-5. De T. rex a paloma: la historia en 60 segundos
+1. Los dinosaurios nunca se fueron
+2. Sobrevivieron al fin del mundo (y siguen aquí)
+3. El asteroide no acabó con todos los dinosaurios
+4. Los últimos dinosaurios están sobre tu cabeza
+5. Del fin del mundo a tu ventana: la historia de las aves
 
-**Recomendado: n.º 1.** Despierta curiosidad, es cierto (los dinosaurios no avianos sí se extinguieron, y el "del todo" lo matiza con honestidad) y contiene la palabra clave "dinosaurios".
+**Recomendado: n.º 1.** Es rotundo, encaja con el tono épico y coincide con la frase final del vídeo. Es honesto porque el vídeo explica que lo que se extinguió fueron los dinosaurios no avianos.
 
 ## 3. Guion por escenas
 
-### Escena 1: El gancho (00:00–00:06)
+### Escena 1: El reinado (00:00–00:07)
 
-- **Objetivo:** frenar el scroll.
-- **En pantalla:** primer plano macro, realista, del ojo de un dinosaurio terópodo que parpadea. Corte rápido al ojo de una paloma con el mismo encuadre.
+- **Objetivo:** frenar el scroll con grandeza.
+- **En pantalla:** contrapicado de un Tiranosaurio rex en un risco al amanecer, con niebla y polvo a contraluz; ruge a cámara lenta.
 - **Narración:**
-  > Los dinosaurios no se extinguieron del todo. Uno podría estar ahora mismo en tu ventana.
-- **Texto en pantalla:** «¿EXTINGUIDOS? 🤔»
+  > Gobernaron la Tierra durante más de ciento cincuenta millones de años. [pausa] Y nunca se rindieron.
+- **Texto en pantalla:** «150 MILLONES DE AÑOS» (aparece con el golpe de tambor)
 - **Prompt visual:**
-  `extreme macro close-up of a feathered theropod dinosaur eye blinking, reptilian golden iris, detailed scales and small feathers around the eye, natural morning light, photorealistic, nature documentary, shallow depth of field, 9:16 vertical — avoid: cartoon, text, logos, watermark`
-  Transición: `extreme macro close-up of a pigeon eye, orange iris, same framing and lighting, photorealistic, 9:16`
-- **Música / SFX:** golpe grave (*impact/boom*) en el corte del ojo; arranca la música de tensión.
+  `epic low-angle shot of a Tyrannosaurus rex standing on a rocky cliff at dawn, roaring, volumetric god rays through mist, dust particles backlit, cinematic, photorealistic, anamorphic lens, slow motion feel, dark warm color grade, 9:16 vertical — avoid: cartoon, text, logos, watermark`
+- **Música / SFX:** golpe grave de tambor (*trailer hit*) en el primer fotograma y rugido en «nunca se rindieron».
+- **⚠️ VERIFICAR:** la duración del dominio de los dinosaurios (desde su aparición en el Triásico, hace unos 230 millones de años, hasta hace unos 66 millones, es decir, más de 150 millones de años).
 
-### Escena 2: El asteroide (00:06–00:16)
+### Escena 2: El fin del mundo (00:07–00:18)
 
-- **Objetivo:** contexto rápido.
-- **En pantalla:** un asteroide entra en la atmósfera sobre un paisaje del Cretácico con una manada de dinosaurios que levanta la cabeza. Destello y onda de choque.
+- **Objetivo:** la catástrofe.
+- **En pantalla:** el cielo se vuelve naranja; un asteroide en llamas cruza sobre una manada que huye; impacto en el horizonte, onda de choque y muro de fuego. Plano final: silencio y ceniza cayendo.
 - **Narración:**
-  > Hace unos sesenta y seis millones de años, un asteroide cambió la Tierra para siempre. [pausa] La mayoría de los dinosaurios desapareció. Pero no todos.
-- **Texto en pantalla:** «Hace ~66 millones de años»
-- **Prompt visual:**
-  `a massive asteroid streaking through the sky over a Late Cretaceous landscape, herd of hadrosaurs looking up, fern plains and conifers, dramatic orange light, dust in the air, photorealistic, cinematic nature documentary, 9:16 vertical — avoid: text, logos, cartoon`
-- **Música / SFX:** whoosh del asteroide, retumbo de explosión lejana y la música baja en «Pero no todos».
+  > Hasta que, hace sesenta y seis millones de años, [pausa] el cielo se incendió. Los gigantes cayeron. [pausa larga] Pero no todos.
+- **Texto en pantalla:** «HACE 66 MILLONES DE AÑOS»
+- **Prompts visuales:**
+  `a burning asteroid tearing through a blood-orange sky above a herd of fleeing hadrosaurs, Late Cretaceous plains, fire trails, apocalyptic atmosphere, cinematic, photorealistic, 9:16 vertical — avoid: text, logos, cartoon`
+  `massive impact explosion on the horizon, shockwave and wall of fire racing across a prehistoric forest, then ash falling silently, cinematic, photorealistic, 9:16 vertical — avoid: text, cartoon`
+- **Música / SFX:** whoosh grave del asteroide, explosión con retumbo de subgrave y **silencio total** de 1 segundo antes de «Pero no todos».
 - **⚠️ VERIFICAR:** la fecha (unos 66 millones de años) y que el impacto se considera la causa principal de la extinción.
 
-### Escena 3: Los terópodos (00:16–00:28)
+### Escena 3: Los supervivientes (00:18–00:28)
 
 - **Objetivo:** presentar el grupo clave.
-- **En pantalla:** un pequeño terópodo emplumado camina entre helechos y sacude las plumas. Rótulo con el nombre del grupo.
+- **En pantalla:** entre la ceniza y las brasas, un pequeño terópodo emplumado sale de una madriguera, se sacude la ceniza y abre los brazos emplumados a contraluz.
 - **Narración:**
-  > Un grupo de dinosaurios carnívoros, los terópodos, el mismo al que pertenece el Tiranosaurio rex, escondía algo especial: [pausa] plumas.
-- **Texto en pantalla:** «TERÓPODOS» y, más pequeño, «el grupo del T. rex»
+  > Entre las cenizas sobrevivió una rama de cazadores: los terópodos, la estirpe del Tiranosaurio rex. [pausa] Su arma secreta: [pausa] plumas.
+- **Texto en pantalla:** «TERÓPODOS» y, en «plumas», un destello sobre las plumas
 - **Prompt visual:**
-  `small feathered theropod dinosaur walking through ferns in a Cretaceous forest, brown and grey downy feathers, realistic anatomy, morning mist, photorealistic, wildlife documentary camera, 9:16 vertical — avoid: cartoon, text, scaly-only skin`
-- **Música / SFX:** pasos sobre hojas y crujido de plumas; la música sube de nuevo.
+  `small feathered theropod dinosaur emerging from a burrow in a scorched landscape, shaking off ash, glowing embers floating, spreading feathered arms against a hazy sunset backlight, cinematic, photorealistic, 9:16 vertical — avoid: cartoon, text, scaly-only skin`
+- **Música / SFX:** la música vuelve con un pulso lento de cuerdas; crujido de plumas al sacudirse.
 
-### Escena 4: Las pruebas (00:28–00:42)
+### Escena 4: La prueba en la piedra (00:28–00:41)
 
-- **Objetivo:** dar credibilidad.
-- **En pantalla:** losa fósil con impresiones de plumas bajo luz lateral. Transición al fósil de *Archaeopteryx* y después a una recreación realista del animal en vida.
+- **Objetivo:** dar credibilidad sin perder tensión.
+- **En pantalla:** linterna que barre una losa fósil en la oscuridad y revela impresiones de plumas. Transición al fósil de *Archaeopteryx* y luego a una recreación en vida que despliega las alas a cámara lenta.
 - **Narración:**
-  > Desde los años noventa, fósiles hallados en China muestran dinosaurios cubiertos de plumas. [pausa] Y el Archaeopteryx, de hace unos ciento cincuenta millones de años, ya combinaba dientes, cola ósea y alas.
-- **Texto en pantalla:** «Fósiles con plumas (China, años 90)» y «Archaeopteryx · ~150 millones de años»
+  > La piedra guarda la prueba: en China aparecieron dinosaurios con plumas. [pausa] Y el Archaeopteryx, hace ciento cincuenta millones de años, ya desplegaba alas, con dientes y cola ósea.
+- **Texto en pantalla:** «FÓSILES CON PLUMAS · CHINA» y «ARCHAEOPTERYX · ~150 MILLONES DE AÑOS»
 - **Prompts visuales:**
-  `fossil slab of a small feathered dinosaur with clear feather impressions, museum lighting from the side, macro detail, photorealistic, 9:16 vertical — avoid: text, labels, logos`
-  `life reconstruction of Archaeopteryx perched on a branch, toothed beak, long bony feathered tail, clawed wings, Late Jurassic island vegetation, photorealistic, nature documentary, 9:16 vertical — avoid: cartoon, modern bird beak`
-- **Música / SFX:** «clic» sutil de diapositiva o de lupa en cada rótulo.
+  `flashlight beam sweeping across a fossil slab in darkness, revealing a small dinosaur skeleton with clear feather impressions, dramatic chiaroscuro, macro detail, photorealistic, 9:16 vertical — avoid: text, labels, logos`
+  `Archaeopteryx spreading its wings in slow motion on a branch, toothed beak, long bony feathered tail, clawed wings, Late Jurassic island at golden hour, cinematic, photorealistic, 9:16 vertical — avoid: cartoon, modern bird beak`
+- **Música / SFX:** *riser* (tensión ascendente) que crece durante toda la escena; aleteo potente al desplegar las alas.
 - **⚠️ VERIFICAR:** el primer hallazgo de dinosaurios emplumados en China (*Sinosauropteryx*, Liaoning, década de 1990), la datación de *Archaeopteryx* (unos 150 millones de años, Jurásico Superior) y sus rasgos (dientes, cola ósea, alas con garras).
 
-### Escena 5: La conclusión científica (00:42–00:52)
+### Escena 5: La revelación (00:41–00:50)
 
-- **Objetivo:** la revelación.
-- **En pantalla:** morphing o fundido encadenado de un terópodo emplumado a un ave moderna (un águila o un casuario) con el mismo encuadre.
+- **Objetivo:** el clímax.
+- **En pantalla:** fundido encadenado de un terópodo emplumado a un **águila** con el mismo encuadre; el águila abre las alas y despega a cámara lenta.
 - **Narración:**
-  > Hoy la ciencia lo tiene claro: [pausa] las aves son dinosaurios. Descendientes directos de aquellos supervivientes.
-- **Texto en pantalla:** «LAS AVES SON DINOSAURIOS» en grande
+  > Hoy la ciencia lo confirma: [pausa] las aves son dinosaurios. [pausa] Los supervivientes del fin del mundo.
+- **Texto en pantalla:** «LAS AVES SON DINOSAURIOS» en grande, con el golpe final de la música
 - **Prompt visual:**
-  `side profile of a feathered theropod dinosaur, then the same framing with a cassowary, matching pose and lighting for a crossfade, photorealistic, studio-like natural light, 9:16 vertical — avoid: text, cartoon`
-- **Música / SFX:** la música llega a su punto álgido y suena un graznido real de ave en el fundido.
+  `side profile of a feathered theropod dinosaur, then the same framing with a golden eagle spreading its wings and taking off in slow motion, matching pose and lighting for a crossfade, mountain cliff at sunrise, cinematic, photorealistic, 9:16 vertical — avoid: text, cartoon`
+- **Música / SFX:** clímax orquestal (*drop*) justo en «las aves son dinosaurios»; grito real de águila.
 - **⚠️ VERIFICAR:** citar una fuente divulgativa institucional (un museo de historia natural o una universidad) que respalde que las aves son dinosaurios terópodos.
 
-### Escena 6: Cierre y llamada a la acción (00:52–01:00)
+### Escena 6: Cierre (00:50–01:00)
 
 - **Objetivo:** cierre memorable y suscripción.
-- **En pantalla:** una paloma en el alféizar de una ventana urbana gira la cabeza hacia la cámara. Su sombra en la pared tiene silueta de terópodo.
+- **En pantalla:** el águila planea sobre una ciudad al atardecer; su sombra sobre los edificios tiene silueta de terópodo. Corte final a negro con el título.
 - **Narración:**
-  > Así que la próxima vez que veas una paloma, [pausa] recuerda: estás mirando a un dinosaurio. Suscríbete para más historias de la Tierra.
-- **Texto en pantalla:** «🦖 = 🐦» y luego «Suscríbete»
+  > Así que la próxima vez que un ave cruce el cielo, [pausa] recuerda: los dinosaurios nunca se fueron. [pausa] Suscríbete.
+- **Texto en pantalla:** «LOS DINOSAURIOS NUNCA SE FUERON» sobre negro y luego «Suscríbete»
 - **Prompt visual:**
-  `a pigeon on a city apartment window ledge turning its head to look at the camera, its shadow on the wall shaped like a theropod dinosaur silhouette, soft afternoon light, photorealistic, 9:16 vertical — avoid: text, logos, cartoon`
-- **Música / SFX:** arrullo de paloma real; la música se resuelve en un acorde final.
+  `golden eagle soaring over a modern city skyline at sunset, its shadow on the buildings shaped like a theropod dinosaur silhouette, epic wide shot, cinematic, photorealistic, 9:16 vertical — avoid: text, logos, cartoon`
+- **Música / SFX:** último golpe de tambor sobre el negro, grito de águila lejano y eco.
 
 ## 4. Narración completa (para la voz artificial)
 
 ```
-Los dinosaurios no se extinguieron del todo. Uno podría estar ahora mismo en tu ventana.
+Gobernaron la Tierra durante más de ciento cincuenta millones de años.
+Y nunca se rindieron.
 
-Hace unos sesenta y seis millones de años, un asteroide cambió la Tierra para siempre.
-La mayoría de los dinosaurios desapareció. Pero no todos.
+Hasta que, hace sesenta y seis millones de años,
+el cielo se incendió. Los gigantes cayeron.
 
-Un grupo de dinosaurios carnívoros, los terópodos, el mismo al que pertenece el Tiranosaurio rex, escondía algo especial:
+Pero no todos.
+
+Entre las cenizas sobrevivió una rama de cazadores: los terópodos, la estirpe del Tiranosaurio rex.
+Su arma secreta:
 plumas.
 
-Desde los años noventa, fósiles hallados en China muestran dinosaurios cubiertos de plumas.
-Y el Archaeopteryx, de hace unos ciento cincuenta millones de años, ya combinaba dientes, cola ósea y alas.
+La piedra guarda la prueba: en China aparecieron dinosaurios con plumas.
+Y el Archaeopteryx, hace ciento cincuenta millones de años, ya desplegaba alas, con dientes y cola ósea.
 
-Hoy la ciencia lo tiene claro:
-las aves son dinosaurios. Descendientes directos de aquellos supervivientes.
+Hoy la ciencia lo confirma:
+las aves son dinosaurios.
+Los supervivientes del fin del mundo.
 
-Así que la próxima vez que veas una paloma,
-recuerda: estás mirando a un dinosaurio. Suscríbete para más historias de la Tierra.
+Así que la próxima vez que un ave cruce el cielo,
+recuerda: los dinosaurios nunca se fueron.
+Suscríbete.
 ```
 
-**Consejos para la voz artificial:** elige una voz grave y cálida en español, a velocidad normal o +5 %. Si el motor de voz pronuncia mal «Archaeopteryx», escríbelo fonéticamente como «Arqueópterix». Los saltos de línea marcan las pausas.
+**Consejos para la voz artificial:** voz masculina o femenina grave, «narrador de tráiler», velocidad −5 % y algo de reverberación en CapCut. Si el motor de voz pronuncia mal «Archaeopteryx», escríbelo fonéticamente como «Arqueópterix». Los saltos de línea marcan las pausas; la línea aislada «Pero no todos.» debe ir precedida de un silencio claro.
 
 ## 5. Música y efectos de sonido
 
 | Escena | Música / SFX | Energía | Fuente con licencia sugerida | Nota de licencia |
 |---|---|---|---|---|
-| Todo el vídeo | Música cinematográfica o épica de tensión creciente, sin voz | Media → alta → resolución | Biblioteca de audio de YouTube (filtro «Cinematográfica» y «Dramática») | Usa pistas sin requisito de atribución o añade el crédito que indique la biblioteca |
-| 1 | Impacto grave (*boom*) | Alta | Efectos de sonido de la Biblioteca de audio de YouTube | Revisa la licencia de cada efecto |
-| 2 | Whoosh y explosión lejana | Alta | Biblioteca de audio de YouTube o Freesound con filtro CC0 | CC0: no requiere atribución. CC-BY: atribución obligatoria |
-| 3 | Pasos en hojas y crujido de plumas | Media | Freesound (CC0) | Igual que arriba |
-| 4 | Clic suave o *swoosh* de rótulo | Baja | Biblioteca de audio de YouTube | — |
-| 5–6 | Graznido de ave y arrullo de paloma | Media | Freesound (CC0) o grabación propia | Grabarlo tú mismo evita cualquier problema |
+| Todo el vídeo | Música orquestal de tráiler: tambores, cuerdas y coro sin letra, con estructura de subida → silencio → clímax | Alta → silencio → máxima | Biblioteca de audio de YouTube (filtros «Cinematográfica» y «Dramática») | Usa pistas sin requisito de atribución o añade el crédito que indique la biblioteca |
+| 1 | *Trailer hit* (tambor grave) y rugido | Alta | Efectos de sonido de la Biblioteca de audio de YouTube | Revisa la licencia de cada efecto |
+| 2 | Whoosh, explosión con subgrave y viento de ceniza | Máxima | Biblioteca de audio de YouTube o Freesound con filtro CC0 | CC0: no requiere atribución. CC-BY: atribución obligatoria |
+| 3 | Crujido de plumas y brasas | Baja → media | Freesound (CC0) | Igual que arriba |
+| 4 | *Riser* y aleteo | Creciente | Biblioteca de audio de YouTube o Freesound (CC0) | — |
+| 5–6 | Grito de águila y golpe final con eco | Máxima → cierre | Freesound (CC0) | Para el rugido del T. rex usa un efecto genérico con licencia, nunca el de una película |
 
-> No uses bandas sonoras de películas de dinosaurios ni canciones comerciales: provocan reclamaciones de Content ID.
+> No uses bandas sonoras de películas de dinosaurios ni música de tráileres comerciales: provocan reclamaciones de Content ID.
 
 ## 6. Subtítulos
 
-Archivo: `proyectos/dinosaurios-aves/subtitulos.srt`. Los tiempos son **estimados**: ajústalos al audio final o usa los subtítulos automáticos de CapCut y corrígelos con el texto de la narración.
+Archivo: `proyectos/dinosaurios-aves/subtitulos.srt`. Los tiempos son **estimados**: ajústalos al audio final o usa los subtítulos automáticos de CapCut y corrígelos con el texto de la narración. Para el tono épico, usa letra grande en mayúsculas, palabra a palabra o en frases cortas.
 
 ## 7. Textos en pantalla (resumen)
 
 | Tiempo | Texto |
 |---|---|
-| 00:00 | ¿EXTINGUIDOS? 🤔 |
-| 00:08 | Hace ~66 millones de años |
-| 00:20 | TERÓPODOS · el grupo del T. rex |
-| 00:29 | Fósiles con plumas (China, años 90) |
-| 00:35 | Archaeopteryx · ~150 millones de años |
-| 00:45 | LAS AVES SON DINOSAURIOS |
-| 00:54 | 🦖 = 🐦 |
+| 00:01 | 150 MILLONES DE AÑOS |
+| 00:08 | HACE 66 MILLONES DE AÑOS |
+| 00:20 | TERÓPODOS |
+| 00:30 | FÓSILES CON PLUMAS · CHINA |
+| 00:34 | ARCHAEOPTERYX · ~150 MILLONES DE AÑOS |
+| 00:44 | LAS AVES SON DINOSAURIOS |
+| 00:55 | LOS DINOSAURIOS NUNCA SE FUERON |
 | 00:58 | Suscríbete |
 
-Tipografía: sans serif gruesa (por ejemplo, Montserrat Black o la equivalente de CapCut), en blanco con sombra o contorno negro. Mantén los textos fuera del 20 % inferior y del lateral derecho, donde YouTube Shorts coloca sus botones.
+Tipografía: serif condensada y gruesa estilo cine (por ejemplo, Cinzel o Trajan, si están disponibles en CapCut) para los rótulos de época, y sans serif gruesa para los subtítulos. Usa blanco o dorado pálido con resplandor suave y animación de entrada lenta (fundido + escala). Mantén los textos fuera del 20 % inferior y del lateral derecho, donde YouTube Shorts coloca sus botones.
 
 ## 8. Miniatura
 
 En Shorts, la portada se elige a partir de un fotograma del vídeo. Pensada también para usarla en 16:9:
 
-- **Concepto:** mitad izquierda, la cabeza de un terópodo emplumado realista; mitad derecha, la cabeza de una paloma en la misma pose; entre ambas, un signo «=».
-- **Texto (4 palabras como máximo):** «ES UN DINOSAURIO»
-- **Colores / composición:** fondo oscuro con un degradado anaranjado (el cielo del asteroide) y el texto amarillo con contorno negro. El contraste de los ojos debe ser alto.
+- **Concepto:** un T. rex ruge en primer plano a la izquierda, con un asteroide en llamas al fondo; a la derecha, un águila con las alas abiertas en la misma pose amenazante.
+- **Texto (4 palabras como máximo):** «NUNCA SE FUERON»
+- **Colores / composición:** cielo rojo anaranjado con brasas, figuras a contraluz con borde de luz y texto dorado con contorno oscuro.
 - **Prompt de generación:**
-  `split composition: left a photorealistic feathered theropod dinosaur head in profile, right a pigeon head in the same profile pose, dark background with orange gradient glow, high contrast, dramatic rim light, photorealistic, 16:9 — avoid: text, logos, watermark` (el texto se añade después en CapCut)
+  `epic split composition: left a roaring Tyrannosaurus rex, right a golden eagle with spread wings in a mirrored aggressive pose, burning asteroid in a blood-orange sky behind them, embers, dramatic rim light, cinematic, photorealistic, 16:9 — avoid: text, logos, watermark` (el texto se añade después en CapCut)
 
 ## 9. Descripción para YouTube
 
 ```
-Los dinosaurios no se extinguieron del todo: las aves son dinosaurios. 🦖➡️🐦
-Descubre en 1 minuto cómo un grupo de terópodos con plumas sobrevivió al asteroide.
+Los dinosaurios nunca se fueron: las aves son dinosaurios que sobrevivieron al fin del mundo. 🦖🔥🦅
+La épica historia, en 1 minuto, de cómo un linaje de terópodos con plumas superó el impacto del asteroide.
 
-Hace unos 66 millones de años la mayoría de los dinosaurios desapareció, pero sus descendientes siguen volando a nuestro alrededor. Fósiles con plumas y el famoso Archaeopteryx cuentan la historia.
+Hace unos 66 millones de años, un asteroide acabó con la mayoría de los dinosaurios. Pero no con todos. Fósiles con plumas y el famoso Archaeopteryx revelan quiénes fueron los supervivientes.
 
 Música y efectos: [nombre de la pista y autor, según la licencia]
 Imágenes: generadas con IA a partir de reconstrucciones artísticas (no son fotografías reales).
@@ -180,43 +187,49 @@ Fuentes: [añadir las fuentes verificadas]
 #dinosaurios #ciencia #shorts
 ```
 
-- **Etiquetas:** dinosaurios, aves dinosaurios, terópodos, archaeopteryx, extinción dinosaurios, paleontología, ciencia en 1 minuto, curiosidades
+- **Etiquetas:** dinosaurios, aves dinosaurios, terópodos, archaeopteryx, extinción dinosaurios, asteroide, paleontología, historia épica, ciencia en 1 minuto
 - **Divulgación de IA:** al subir el vídeo, revisa si YouTube exige marcar el contenido como «alterado o sintético». Las recreaciones realistas generadas con IA pueden requerirlo.
 
 ## 10. Checklist de edición en CapCut (iPad)
 
 > Los nombres de los menús pueden variar según la versión de CapCut.
 
-- [ ] Genera o reúne las 8 imágenes o clips de los prompts y guárdalos en un álbum de Fotos o en Archivos.
-- [ ] Genera la locución (con una herramienta externa de texto a voz o con «Texto a voz» de CapCut) y escúchala completa.
-- [ ] **Nuevo proyecto** → importa todos los recursos por orden de escena.
-- [ ] Relación de aspecto **9:16** (botón de formato/proporción).
-- [ ] Coloca la locución y recorta cada plano para que encaje con su frase.
-- [ ] Si usas imágenes fijas, aplica un zoom lento (keyframes o efecto «Ken Burns» o «Zoom») para dar movimiento.
-- [ ] Cortes secos en las escenas 1 y 2; fundido encadenado en la 5 (dinosaurio → ave).
-- [ ] Añade la música de fondo y baja su volumen al 15–25 % bajo la voz (o usa el ajuste automático de volumen si tu versión lo tiene).
+- [ ] Genera o reúne las 9 imágenes o clips de los prompts y guárdalos en un álbum de Fotos o en Archivos. Si puedes, genera **clips** en lugar de imágenes fijas: el estilo épico necesita movimiento.
+- [ ] Genera la locución con voz grave (con una herramienta externa de texto a voz o con «Texto a voz» de CapCut) y escúchala completa.
+- [ ] **Nuevo proyecto** → relación de aspecto **9:16** → importa los recursos por orden de escena.
+- [ ] **Monta al ritmo de la música:** coloca primero la pista, marca los golpes de tambor (función de marcadores o «beats» si tu versión la tiene) y haz coincidir los cortes con ellos.
+- [ ] Coloca la locución y añade algo de reverberación o eco ligero (en «Efectos de voz» o en «Audio»).
+- [ ] **Silencio dramático:** en la escena 2, corta la música 1 segundo antes de «Pero no todos».
+- [ ] Imágenes fijas: zoom lento hacia dentro (keyframes). Clips: cámara lenta con «Velocidad» → curva (*speed ramp*) en el rugido, el impacto y el despegue del águila.
+- [ ] Efecto de **sacudida de cámara** (*shake*) en el impacto del asteroide y en el golpe del clímax.
+- [ ] Fundido encadenado en la escena 5 (terópodo → águila) y corte a negro al final.
+- [ ] Música al 20–30 % bajo la voz, subiéndola al 80–100 % en el silencio previo y en el clímax.
 - [ ] Coloca los efectos de sonido en sus marcas de tiempo.
-- [ ] Subtítulos: «Texto» → «Subtítulos automáticos» (español) y corrígelos con la narración, o importa el `.srt` si tu versión lo permite.
-- [ ] Añade los textos en pantalla de la sección 7, fuera de las zonas que tapan los botones de Shorts.
-- [ ] Unifica el color con un filtro cálido ligero para que todas las imágenes generadas parezcan del mismo «rodaje».
-- [ ] Revisa la duración total (60 s como máximo para dejar margen) y escucha el vídeo con auriculares.
-- [ ] **Exportar:** 1080p, 30 fps. Guarda en Fotos y comprueba el archivo antes de subirlo.
+- [ ] Subtítulos: «Texto» → «Subtítulos automáticos» (español) y corrígelos con la narración, o importa el `.srt` si tu versión lo permite. Aplica el estilo de mayúsculas grandes.
+- [ ] Añade los textos en pantalla de la sección 7 con entrada lenta.
+- [ ] **Color:** aplica a todos los clips el mismo filtro cinematográfico (contraste alto, negros profundos, tonos cálidos o dorados) para unificar las imágenes generadas. Añade una viñeta suave.
+- [ ] Revisa la duración total (60 s como máximo) y escucha el vídeo con auriculares para comprobar los graves.
+- [ ] **Exportar:** 1080p, 30 fps (o 60 fps si los clips lo tienen). Guarda en Fotos y comprueba el archivo antes de subirlo.
 
 ## 11. Revisión de calidad
 
-- **Coherencia:** una sola idea con estructura gancho → contexto → pruebas → revelación → cierre. Ninguna escena sobra.
-- **Ritmo:** cambio visual cada 5–7 s como máximo. La escena 4 (14 s) es la más larga, así que divídela en tres planos (fósil, fósil de *Archaeopteryx*, recreación).
-- **Duración:** unas 135 palabras ≈ 55–60 s. Si la voz va lenta, elimina «Descendientes directos de aquellos supervivientes».
+- **Coherencia:** la estructura de tráiler (auge → catástrofe → silencio → supervivencia → prueba → revelación → cierre) se mantiene en una sola idea. Ninguna escena sobra.
+- **Ritmo:** cambio visual cada 4–6 s. La escena 4 (13 s) tiene tres planos. Los dos silencios (antes de «Pero no todos» y antes de la revelación) son clave: no los rellenes.
+- **Duración:** unas 128 palabras a ritmo pausado ≈ 55–60 s. Si se pasa, elimina «Los supervivientes del fin del mundo».
 - **Datos a verificar:**
+  - El dominio de los dinosaurios durante más de 150 millones de años (desde hace unos 230 hasta hace unos 66 millones).
   - Unos 66 millones de años y el impacto del asteroide como causa principal de la extinción.
-  - Hallazgos de dinosaurios emplumados en China desde los años 90 (*Sinosauropteryx*, Liaoning).
+  - Hallazgos de dinosaurios emplumados en China (*Sinosauropteryx*, Liaoning, años 90).
   - *Archaeopteryx*: unos 150 millones de años; dientes, cola ósea y alas.
   - T. rex dentro de los terópodos.
   - Aves = dinosaurios terópodos (consenso científico).
   Fuentes recomendadas: webs de museos de historia natural, universidades o artículos revisados por pares. **No he consultado ni enlazado fuentes concretas**: añádelas tú tras comprobarlas.
-- **Precisión del lenguaje:** «no se extinguieron del todo» es correcto porque lo que se extinguió fueron los dinosaurios **no avianos**. No digas «el T. rex se convirtió en gallina»: las aves no descienden del T. rex, sino de otro linaje de terópodos.
+- **Precisión del lenguaje, sin sacrificar la épica:**
+  - «Sobrevivió **una rama** de los terópodos» es correcto. No digas que el T. rex sobrevivió ni que las aves descienden del T. rex: comparten el gran grupo, no el linaje directo.
+  - «Nunca se rindieron» y «arma secreta» son licencias narrativas, no afirmaciones científicas. Las plumas no tienen por qué ser la razón de la supervivencia, así que no digas que «gracias a las plumas sobrevivieron».
+  - En la escena 1, el T. rex vivió al final del Cretácico; es una imagen simbólica del «reinado», no del momento en que aparecieron los dinosaurios.
 - **Derechos de autor / políticas:**
-  - No imites el estilo ni la música de franquicias de cine.
+  - El estilo épico no debe copiar planos, música ni rugidos reconocibles de franquicias de cine.
   - Usa solo música y efectos con licencia y anota los créditos.
   - Indica en la descripción que las imágenes son recreaciones generadas con IA y revisa la divulgación de contenido sintético de YouTube.
 
@@ -224,5 +237,5 @@ Fuentes: [añadir las fuentes verificadas]
 
 Un minuto en 9:16 **ya es un Short**, así que este guion es la versión Short. Si además quieres una versión horizontal 16:9 para el canal principal:
 
-- Genera los prompts en `16:9` (cambia `9:16 vertical` por `16:9 widescreen`).
-- Amplía cada escena unos segundos con más planos (por ejemplo, ampliación a 2–3 minutos con escenas extra sobre los dinosaurios no avianos que sí se extinguieron, como el T. rex y el Triceratops, y sobre los rasgos compartidos con las aves: huesos huecos, espoleta, plumas). Se haría como un encargo nuevo.
+- Genera los prompts en `16:9` (cambia `9:16 vertical` por `16:9 widescreen`); en horizontal puedes añadir franjas negras de cine (*letterbox* 2.39:1) para reforzar la épica.
+- Amplía cada escena unos segundos con más planos (por ejemplo, ampliación a 2–3 minutos con escenas extra sobre el Triceratops y el T. rex en su último día, y sobre los rasgos compartidos con las aves: huesos huecos, espoleta, plumas). Se haría como un encargo nuevo.
