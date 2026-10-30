@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
+import { intEnv } from "@/lib/env";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { saveBusiness, signOut } from "./actions";
@@ -13,7 +14,7 @@ const STATUS_LABEL: Record<string, string> = {
   past_due: "Pago pendiente",
   canceled: "Suscripción cancelada",
   unpaid: "Pago pendiente",
-  none: "Plan gratis",
+  none: "Sin suscripción",
 };
 
 export default async function Panel({
@@ -103,7 +104,8 @@ export default async function Panel({
             ) : (
               <>
                 <p className="muted">
-                  Tienes {usage.limit} generaciones gratis para probar. Con la suscripción tienes hasta 100 al mes por 9,99 € (IVA incluido). Sin permanencia.
+                  {usage.limit > 0 ? `Tienes ${usage.limit} generaciones gratis para probar. ` : ""}
+                  Con la suscripción tienes hasta {intEnv("MONTHLY_GENERATIONS", 100)} generaciones al mes por 9,99 € (IVA incluido). Sin permanencia.
                 </p>
                 <form action="/api/pago" method="post">
                   <button className="btn btn-primary" type="submit">Suscribirme por 9,99 €/mes</button>

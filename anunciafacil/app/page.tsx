@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { intEnv } from "@/lib/env";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 
 export default function Home() {
+  const freeGenerations = intEnv("FREE_GENERATIONS", 0);
+  const monthly = intEnv("MONTHLY_GENERATIONS", 100);
   return (
     <main>
       <div className="wrap stack">
@@ -15,8 +18,10 @@ export default function Home() {
             Instagram, correos para tus clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles.
           </p>
           <div className="nav">
-            <Link className="btn btn-primary" href="/entrar">Probar gratis</Link>
-            <span className="muted small">3 generaciones gratis, sin tarjeta.</span>
+            <Link className="btn btn-primary" href="/entrar">Empezar</Link>
+            {freeGenerations > 0 && (
+              <span className="muted small">{freeGenerations} generaciones gratis para probar, sin tarjeta.</span>
+            )}
           </div>
         </section>
 
@@ -50,7 +55,7 @@ export default function Home() {
         <section className="panel" style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center" }}>
           <div>
             <h2>9,99 € al mes</h2>
-            <p className="muted">IVA incluido. Hasta 100 generaciones al mes. Sin permanencia: cancelas cuando quieras.</p>
+            <p className="muted">IVA incluido. Hasta {monthly} generaciones al mes. Sin permanencia: cancelas cuando quieras.</p>
           </div>
           <Link className="btn btn-primary" href="/entrar">Empezar</Link>
         </section>

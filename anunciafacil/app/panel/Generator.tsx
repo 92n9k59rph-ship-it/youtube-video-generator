@@ -91,7 +91,9 @@ export function Generator({ initialUsage, canGenerate }: { initialUsage: Usage; 
           </div>
           <p className="muted small">
             {usage.period === "gratis"
-              ? `Te quedan ${remaining} de ${usage.limit} generaciones gratis.`
+              ? usage.limit === 0
+                ? "Suscríbete para empezar a generar textos."
+                : `Te quedan ${remaining} de ${usage.limit} generaciones gratis.`
               : `Has usado ${usage.used} de ${usage.limit} generaciones este mes.`}{" "}
             Cada vez que pulsas «Generar» cuenta como una, sea cual sea la herramienta.
           </p>

@@ -34,7 +34,9 @@ export async function POST(req: Request) {
   if (usage.used >= usage.limit) {
     const error =
       usage.period === "gratis"
-        ? "Has usado tus generaciones gratis. Suscríbete para seguir usando AnunciaFácil."
+        ? usage.limit === 0
+          ? "Suscríbete para empezar a usar AnunciaFácil."
+          : "Has usado tus generaciones gratis. Suscríbete para seguir usando AnunciaFácil."
         : "Has llegado al límite de este mes. Se renueva el día 1.";
     return NextResponse.json({ error, usage }, { status: 402 });
   }

@@ -19,7 +19,7 @@ export default function Terminos() {
 
         <h2>Precio y pago</h2>
         <ul>
-          <li>Plan gratis: 3 generaciones para probar, sin tarjeta.</li>
+          <li>Para usar AnunciaFácil hace falta una suscripción activa, salvo las generaciones de prueba gratis que se indiquen en la web en cada momento.</li>
           <li>Suscripción: 9,99 € al mes, IVA incluido, con hasta 100 generaciones al mes. Se cobra por adelantado cada mes a través de Stripe.</li>
           <li>Podemos cambiar el precio avisándote con al menos 30 días de antelación.</li>
         </ul>

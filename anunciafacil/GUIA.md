@@ -82,7 +82,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `ANTHROPIC_API_KEY` y `CLAUDE_MODEL` (con el valor `claude-opus-5-5`)
    - `STRIPE_SECRET_KEY` y `STRIPE_PRICE_ID`
    - `STRIPE_WEBHOOK_SECRET`: de momento pon `pendiente`.
-   - `FREE_GENERATIONS` (con el valor `3`) y `MONTHLY_GENERATIONS` (con el valor `100`)
+   - `FREE_GENERATIONS` (con el valor `0`: hay que pagar para usarla; pon `3` si quieres dar una prueba gratis) y `MONTHLY_GENERATIONS` (con el valor `100`)
 5. Pulsa **Deploy** y espera 1–2 minutos.
 6. Copia la dirección que te da Vercel (por ejemplo `https://anunciafacil-xxxx.vercel.app`) y:
    - **En Vercel:** Settings → Environment Variables → cambia `NEXT_PUBLIC_SITE_URL` por esa dirección, sin barra al final.
@@ -101,14 +101,14 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 
 ## Paso 5. Probar todo (con dinero de mentira)
 
-1. Abre tu dirección de Vercel → **Probar gratis** → escribe tu correo → abre el enlace que te llega.
+1. Abre tu dirección de Vercel → **Empezar** → escribe tu correo → abre el enlace que te llega.
 2. Rellena **Tu negocio** y pulsa **Guardar**.
-3. Escribe qué quieres anunciar y pulsa **Generar**. En unos segundos deberían salir las publicaciones, el Reel y el calendario.
-4. Pulsa **Suscribirme** y paga con la tarjeta de prueba de Stripe:
+3. Pulsa **Suscribirme** y paga con la tarjeta de prueba de Stripe:
    - Número: `4242 4242 4242 4242`
    - Fecha: cualquiera futura
    - CVC: cualquiera
-5. Al volver al panel debe poner **Suscripción activa**. Si no, recarga a los pocos segundos.
+4. Al volver al panel debe poner **Suscripción activa**. Si no, recarga a los pocos segundos.
+5. Prueba las cinco herramientas: elige una, escribe qué necesitas y pulsa **Generar**. En unos segundos deberían salir los textos.
 6. Pulsa **Gestionar suscripción** y prueba a cancelar.
 
 Si algo falla, mándame una captura y lo arreglo.
