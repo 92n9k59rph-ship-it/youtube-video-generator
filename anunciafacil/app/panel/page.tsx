@@ -34,6 +34,7 @@ export default async function Panel({
   const { data: history } = await supabase
     .from("generations")
     .select("id, tool, request, created_at")
+    .eq("status", "done")
     .order("created_at", { ascending: false })
     .limit(10);
 
@@ -44,6 +45,7 @@ export default async function Panel({
       .from("generations")
       .select("tool, request, result, created_at")
       .eq("id", ver)
+      .eq("status", "done")
       .maybeSingle();
     if (data && isToolId(data.tool)) {
       previous = {

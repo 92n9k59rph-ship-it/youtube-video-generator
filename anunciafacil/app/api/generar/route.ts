@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { GenerationError, generateMarketing } from "@/lib/generator";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
 import { TOOLS, isToolId } from "@/lib/tools";
-import { getUsage } from "@/lib/usage";
+import { getUsage, reserveGeneration } from "@/lib/usage";
 
 export const maxDuration = 120;
 
@@ -30,8 +30,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Primero rellena los datos de tu negocio." }, { status: 400 });
   }
 
+  const reservationId = await reserveGeneration(profile, tool, request);
   const usage = await getUsage(profile);
-  if (usage.used >= usage.limit) {
+  if (!reservationId) {
     const error =
       usage.period === "gratis"
         ? usage.limit === 0
@@ -41,25 +42,28 @@ export async function POST(req: Request) {
     return NextResponse.json({ error, usage }, { status: 402 });
   }
 
+  const admin = supabaseAdmin();
   try {
     const generation = await generateMarketing(profile, tool, request);
 
-    const { error } = await supabaseAdmin().from("generations").insert({
-      user_id: user.id,
-      tool,
-      request,
-      result: generation.output.result,
-      model: generation.model,
-      input_tokens: generation.inputTokens,
-      output_tokens: generation.outputTokens,
-    });
+    const { error } = await admin
+      .from("generations")
+      .update({
+        result: generation.output.result,
+        model: generation.model,
+        input_tokens: generation.inputTokens,
+        output_tokens: generation.outputTokens,
+        status: "done",
+      })
+      .eq("id", reservationId);
     if (error) console.error("No se pudo guardar la generación", error);
 
-    return NextResponse.json({
-      output: generation.output,
-      usage: { ...usage, used: usage.used + 1 },
-    });
+    // La reserva ya cuenta en `usage.used`.
+    return NextResponse.json({ output: generation.output, usage });
   } catch (err) {
+    // Si la IA falla, se libera la reserva para que no cuente como uso.
+    await admin.from("generations").delete().eq("id", reservationId);
+
     if (err instanceof GenerationError) {
       return NextResponse.json({ error: err.message }, { status: 422 });
     }

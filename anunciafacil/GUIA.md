@@ -29,6 +29,14 @@ Orden recomendado: **Supabase → Anthropic → Stripe (modo prueba) → Vercel 
 
 El paso 4 tiene una parte más de Supabase, cuando ya sepas la dirección de la web.
 
+> **Si ya ejecutaste `schema.sql` antes del 30 de octubre**, ejecuta también `supabase/actualizacion-1.sql` de la misma forma (copiar, pegar y Run). Añade la protección que impide saltarse el límite de usos.
+
+> **Protección contra abusos (recomendado antes de abrir al público):** sirve para que nadie cree cientos de cuentas falsas y gaste tus generaciones gratis. Hazlo después del paso 4, cuando ya tengas la dirección de la app:
+> 1. Crea una cuenta gratis en **dash.cloudflare.com** → **Turnstile** → **Add widget**. Pon como dominio la dirección de Vercel (sin `https://`).
+> 2. Copia la **Site Key** y ponla en Vercel como `NEXT_PUBLIC_TURNSTILE_SITE_KEY`. Después haz **Redeploy**.
+> 3. Copia la **Secret Key** y pégala en Supabase → **Authentication → Attack Protection** → activa **Enable CAPTCHA protection** → proveedor **Turnstile**.
+> 4. Comprueba que en la página «Entrar» aparece la casilla de seguridad y que el enlace sigue llegando.
+
 > **Correos de acceso:** Supabase envía el enlace para entrar con su propio servidor de correo, que solo permite unos pocos correos por hora. Para probar sirve. Antes de tener muchos clientes, configura un servicio de correo propio en **Authentication → SMTP Settings** (por ejemplo Resend o Brevo, que tienen plan gratuito). Te ayudo cuando llegue el momento.
 
 ---
@@ -67,7 +75,8 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - Guarda y copia el **ID del precio** (empieza por `price_`) → irá en `STRIPE_PRICE_ID`.
 4. **Desarrolladores → Claves de API** → copia la **clave secreta** (empieza por `sk_test_`) → irá en `STRIPE_SECRET_KEY`.
 5. **Configuración → Facturación → Portal de clientes** → actívalo y permite que los clientes **cancelen** su suscripción y **actualicen la tarjeta**.
-6. El **webhook** (el aviso que Stripe manda cuando alguien paga) se crea en el paso 4, cuando ya tengas la dirección de la web.
+6. **Configuración → Correos electrónicos de clientes** → activa **«Pagos correctos»** y **«Facturas»**, para que cada cliente reciba su recibo por correo después de pagar.
+7. El **webhook** (el aviso que Stripe manda cuando alguien paga) se crea en el paso 4, cuando ya tengas la dirección de la web.
 
 ---
 
