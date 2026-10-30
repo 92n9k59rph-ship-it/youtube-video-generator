@@ -91,6 +91,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `ANTHROPIC_API_KEY` y `CLAUDE_MODEL` (con el valor `claude-opus-5-5`)
    - `STRIPE_SECRET_KEY` y `STRIPE_PRICE_ID`
    - `STRIPE_WEBHOOK_SECRET`: de momento pon `pendiente`.
+   - `ADMIN_EMAILS`: el correo con el que entrarás tú en la app (por ejemplo `anunciafacil.contacto@gmail.com`). Te da acceso a tu panel de administración en `/admin`.
    - `FREE_GENERATIONS` (con el valor `3`: generaciones de prueba gratis antes de pagar; `0` quita la prueba) y `MONTHLY_GENERATIONS` (con el valor `100`)
 5. Pulsa **Deploy** y espera 1–2 minutos.
 6. Copia la dirección que te da Vercel (por ejemplo `https://anunciafacil-xxxx.vercel.app`) y:

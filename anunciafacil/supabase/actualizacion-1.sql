@@ -26,6 +26,12 @@ begin
   -- Una reserva a la vez por cliente.
   perform pg_advisory_xact_lock(hashtext(p_user::text));
 
+  -- Libera reservas atascadas (por ejemplo, si el servidor se cayó mientras escribía la IA).
+  delete from public.generations
+  where user_id = p_user
+    and status = 'pending'
+    and created_at < now() - interval '10 minutes';
+
   select count(*) into used
   from public.generations
   where user_id = p_user
