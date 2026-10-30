@@ -82,7 +82,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `ANTHROPIC_API_KEY` y `CLAUDE_MODEL` (con el valor `claude-opus-5-5`)
    - `STRIPE_SECRET_KEY` y `STRIPE_PRICE_ID`
    - `STRIPE_WEBHOOK_SECRET`: de momento pon `pendiente`.
-   - `FREE_GENERATIONS` (con el valor `0`: hay que pagar para usarla; pon `3` si quieres dar una prueba gratis) y `MONTHLY_GENERATIONS` (con el valor `100`)
+   - `FREE_GENERATIONS` (con el valor `3`: generaciones de prueba gratis antes de pagar; `0` quita la prueba) y `MONTHLY_GENERATIONS` (con el valor `100`)
 5. Pulsa **Deploy** y espera 1–2 minutos.
 6. Copia la dirección que te da Vercel (por ejemplo `https://anunciafacil-xxxx.vercel.app`) y:
    - **En Vercel:** Settings → Environment Variables → cambia `NEXT_PUBLIC_SITE_URL` por esa dirección, sin barra al final.
