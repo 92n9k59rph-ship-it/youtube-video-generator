@@ -31,7 +31,7 @@ Orden recomendado: **Supabase → Anthropic → Vercel → probar → abrir grat
 
 El paso 4 tiene una parte más de Supabase, cuando ya sepas la dirección de la web.
 
-> **Si ya ejecutaste `schema.sql` antes del 30 de octubre**, ejecuta también `supabase/actualizacion-1.sql` de la misma forma (copiar, pegar y Run). Añade la protección que impide saltarse el límite de usos.
+> **Si ya ejecutaste `schema.sql` antes del 30 de octubre**, ejecuta también `supabase/actualizacion-1.sql` de la misma forma (copiar, pegar y Run). Añade la protección que impide saltarse el límite de usos y la tabla de opiniones de los clientes.
 
 > **Protección contra abusos (recomendado antes de abrir al público):** sirve para que nadie cree cientos de cuentas falsas y gaste tus generaciones gratis. Hazlo después del paso 4, cuando ya tengas la dirección de la app:
 > 1. Crea una cuenta gratis en **dash.cloudflare.com** → **Turnstile** → **Add widget**. Pon como dominio la dirección de Vercel (sin `https://`).

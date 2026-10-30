@@ -132,7 +132,13 @@ function SocialResult({ result }: { result: ResultOf<"social"> }) {
   return (
     <div className="stack">
       <section className="panel">
-        <h2>Publicaciones</h2>
+        <div className="card-head">
+          <h2>Publicaciones</h2>
+          <CopyButton
+            text={result.posts.map((post) => `${post.title}\n\n${post.caption}\n\n${post.hashtags.join(" ")}`).join("\n\n———\n\n")}
+            idle="Copiar todas"
+          />
+        </div>
         <div className="grid-3">
           {result.posts.map((post, i) => (
             <article className="card" key={i}>
@@ -303,8 +309,8 @@ function Tips({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function CopyButton({ text }: { text: string }) {
-  const [label, setLabel] = useState("Copiar");
+function CopyButton({ text, idle = "Copiar" }: { text: string; idle?: string }) {
+  const [label, setLabel] = useState(idle);
   async function copy() {
     try {
       await navigator.clipboard.writeText(text);
@@ -312,7 +318,7 @@ function CopyButton({ text }: { text: string }) {
     } catch {
       setLabel("Mantén pulsado el texto para copiarlo");
     }
-    setTimeout(() => setLabel("Copiar"), 2000);
+    setTimeout(() => setLabel(idle), 2000);
   }
   return (
     <button type="button" className="copy" onClick={copy}>

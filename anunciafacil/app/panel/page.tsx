@@ -1,9 +1,10 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
-import { freeLaunch, intEnv } from "@/lib/env";
+import { freeLaunch, intEnv, siteUrl } from "@/lib/env";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
-import { deleteAccount, saveBusiness, signOut } from "./actions";
+import { deleteAccount, saveBusiness, saveFeedback, signOut } from "./actions";
+import { ShareBox } from "./ShareBox";
 import { Generator, Results } from "./Generator";
 import type { ToolResult } from "@/lib/generator";
 
@@ -21,12 +22,12 @@ const STATUS_LABEL: Record<string, string> = {
 export default async function Panel({
   searchParams,
 }: {
-  searchParams: Promise<{ pago?: string; negocio?: string; ver?: string; borrar?: string }>;
+  searchParams: Promise<{ pago?: string; negocio?: string; ver?: string; borrar?: string; opinion?: string }>;
 }) {
   const { supabase, user, profile } = await currentUserAndProfile();
   if (!user || !profile) redirect("/entrar");
 
-  const { pago, negocio, ver, borrar } = await searchParams;
+  const { pago, negocio, ver, borrar, opinion } = await searchParams;
   const subscribed = isSubscribed(profile);
   const usage = await getUsage(profile);
   const hasBusiness = Boolean(profile.business_type);
@@ -189,6 +190,37 @@ export default async function Panel({
             </ul>
           </section>
         )}
+
+        <section className="grid-2">
+          <div className="panel">
+            <h2>Recomiéndalo a otro negocio</h2>
+            <p className="muted">¿Conoces a alguien con un bar, una tienda o una peluquería? Mándaselo, le vendrá bien.</p>
+            <ShareBox url={siteUrl()} />
+          </div>
+
+          <form action={saveFeedback} className="panel" id="opinion">
+            <h2>¿Qué te parece?</h2>
+            {opinion === "ok" && <p className="notice notice-ok">¡Gracias! Leemos todas las opiniones.</p>}
+            {opinion === "vacia" && <p className="notice notice-error">Elige una puntuación o escribe algo antes de enviar.</p>}
+            {opinion === "error" && <p className="notice notice-error">No se ha podido enviar. Inténtalo de nuevo.</p>}
+            <label htmlFor="rating">
+              Puntuación
+              <select id="rating" name="rating" defaultValue="">
+                <option value="">Elige…</option>
+                <option value="5">😍 Me encanta</option>
+                <option value="4">🙂 Me gusta</option>
+                <option value="3">😐 Normal</option>
+                <option value="2">🙁 No me convence</option>
+                <option value="1">😞 No me sirve</option>
+              </select>
+            </label>
+            <label htmlFor="message">
+              ¿Qué mejorarías o qué echas en falta?
+              <textarea id="message" name="message" maxLength={1000} placeholder="Me gustaría que también hiciera…" />
+            </label>
+            <button className="btn btn-ghost" type="submit" style={{ alignSelf: "flex-start" }}>Enviar opinión</button>
+          </form>
+        </section>
 
         <details className="panel" id="borrar" open={Boolean(borrar)}>
           <summary style={{ cursor: "pointer", fontWeight: 700 }}>Borrar mi cuenta</summary>

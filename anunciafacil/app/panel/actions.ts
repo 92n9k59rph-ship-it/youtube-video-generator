@@ -74,3 +74,20 @@ export async function deleteAccount(formData: FormData) {
   await supabase.auth.signOut();
   redirect("/?cuenta=borrada");
 }
+
+export async function saveFeedback(formData: FormData) {
+  const supabase = await supabaseForRequest();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/entrar");
+
+  const rating = Number.parseInt(String(formData.get("rating") ?? ""), 10);
+  const message = field(formData, "message", 1000);
+  if (!message && !(rating >= 1 && rating <= 5)) redirect("/panel?opinion=vacia#opinion");
+
+  const { error } = await supabaseAdmin()
+    .from("feedback")
+    .insert({ user_id: user.id, rating: rating >= 1 && rating <= 5 ? rating : null, message });
+  redirect(error ? "/panel?opinion=error#opinion" : "/panel?opinion=ok#opinion");
+}

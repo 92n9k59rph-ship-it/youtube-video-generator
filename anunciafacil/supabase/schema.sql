@@ -125,3 +125,14 @@ $$;
 -- Solo el servidor (clave de servicio) puede reservar usos.
 revoke execute on function public.reserve_generation(uuid, text, text, integer, timestamptz) from public, anon, authenticated;
 grant execute on function public.reserve_generation(uuid, text, text, integer, timestamptz) to service_role;
+
+-- Opiniones de los clientes (se leen en /admin). Solo el servidor las guarda.
+create table if not exists public.feedback (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references auth.users (id) on delete cascade,
+  rating integer check (rating between 1 and 5),
+  message text not null default '',
+  created_at timestamptz not null default now()
+);
+alter table public.feedback enable row level security;
+revoke all on public.feedback from anon, authenticated;

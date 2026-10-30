@@ -1,29 +1,14 @@
 import { notFound } from "next/navigation";
 import { freeLaunch, intEnv } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
+import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Administración · AnunciaFácil", robots: { index: false } };
 
-// Precios oficiales de la API de Claude en dólares por millón de tokens (entrada, salida).
-// Revisa platform.claude.com/docs si cambian. Los modelos de reserva (fallback) están por si la IA cambia de modelo.
-const PRICES: Array<[prefix: string, input: number, output: number]> = [
-  ["claude-opus-5-5", 4, 20],
-  ["claude-sonnet-5-5", 2, 10],
-  ["claude-haiku-5-5", 0.1, 0.5],
-  ["claude-opus-5", 5, 25],
-  ["claude-opus-4-8", 5, 25],
-  ["claude-sonnet-5", 2, 10],
-];
-
 const PRICE_EUR = 9.99;
 const VAT = 0.21;
-
-function costUsd(model: string, inputTokens: number, outputTokens: number) {
-  const price = PRICES.find(([prefix]) => model.startsWith(prefix)) ?? PRICES[0];
-  return (inputTokens * price[1] + outputTokens * price[2]) / 1_000_000;
-}
 
 function isAdmin(email: string | undefined) {
   const admins = (process.env.ADMIN_EMAILS ?? "")
@@ -46,7 +31,7 @@ export default async function Admin() {
   monthStart.setUTCDate(1);
   monthStart.setUTCHours(0, 0, 0, 0);
 
-  const [{ data: profiles }, { data: generations }] = await Promise.all([
+  const [{ data: profiles }, { data: generations }, { data: feedback }] = await Promise.all([
     admin
       .from("profiles")
       .select("email, business_name, business_type, subscription_status, created_at")
@@ -57,6 +42,7 @@ export default async function Admin() {
       .select("tool, model, input_tokens, output_tokens, status")
       .gte("created_at", monthStart.toISOString())
       .limit(20000),
+    admin.from("feedback").select("rating, message, created_at, user_id").order("created_at", { ascending: false }).limit(30),
   ]);
 
   const allProfiles = profiles ?? [];
@@ -162,6 +148,27 @@ export default async function Admin() {
                     <strong className="num">{count}</strong>
                   </li>
                 ))}
+            </ul>
+          )}
+        </section>
+
+        <section className="panel">
+          <h2>Opiniones de los clientes</h2>
+          {!feedback || feedback.length === 0 ? (
+            <p className="muted">Todavía no hay opiniones. Pide a tus clientes que usen «¿Qué te parece?» en su panel.</p>
+          ) : (
+            <ul className="history">
+              {feedback.map((f, i) => (
+                <li key={i}>
+                  <span>
+                    {f.rating ? `${"★".repeat(f.rating)}${"☆".repeat(5 - f.rating)} ` : ""}
+                    {f.message || <span className="muted">(sin comentario)</span>}
+                  </span>
+                  <span className="muted small num" style={{ whiteSpace: "nowrap" }}>
+                    {new Date(f.created_at).toLocaleDateString("es-ES")}
+                  </span>
+                </li>
+              ))}
             </ul>
           )}
         </section>
