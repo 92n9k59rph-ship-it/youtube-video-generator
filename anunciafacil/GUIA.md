@@ -1,6 +1,11 @@
 # Guía para poner en marcha AnunciaFácil
 
-Esta carpeta tiene la herramienta completa: registro de clientes, generador de textos con Claude, pago mensual con Stripe y panel de cada cliente. Para que funcione en internet hay que crear **4 cuentas** y copiar unas claves. Todo se puede hacer desde el iPad, en Safari.
+Esta carpeta tiene la herramienta completa: registro de clientes, pago mensual con Stripe, panel de cada cliente y cinco generadores de textos con Claude:
+- publicaciones para redes, con idea de Reel y calendario;
+- correos para clientes;
+- respuestas a reseñas de Google;
+- mensajes de WhatsApp;
+- textos para carteles y menús. Para que funcione en internet hay que crear **4 cuentas** y copiar unas claves. Todo se puede hacer desde el iPad, en Safari.
 
 > **Importante:** las claves son secretas. No las pegues en GitHub ni se las enseñes a nadie. Solo van en Vercel (paso 4).
 

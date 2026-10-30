@@ -18,6 +18,7 @@ create table if not exists public.profiles (
 create table if not exists public.generations (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references auth.users (id) on delete cascade,
+  tool text not null default 'social',
   request text not null,
   result jsonb not null,
   model text not null,
@@ -25,6 +26,9 @@ create table if not exists public.generations (
   output_tokens integer not null default 0,
   created_at timestamptz not null default now()
 );
+
+-- Por si ya ejecutaste una versión anterior de este archivo.
+alter table public.generations add column if not exists tool text not null default 'social';
 
 create index if not exists generations_user_created_idx
   on public.generations (user_id, created_at desc);

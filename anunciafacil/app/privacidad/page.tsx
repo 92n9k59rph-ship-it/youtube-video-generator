@@ -15,7 +15,7 @@ export default function Privacidad() {
         <ul>
           <li>Tu correo electrónico, para crear tu cuenta y enviarte el enlace de acceso.</li>
           <li>Los datos de tu negocio que escribas (nombre, tipo, ciudad y tono).</li>
-          <li>Lo que pidas a la herramienta y los textos que te genera, para mostrarte tu historial y controlar el límite de uso.</li>
+          <li>Lo que pidas a la herramienta y los textos que te genera, para mostrarte tu historial y controlar el límite de uso. Si pegas una reseña de un cliente, puede incluir su nombre: pega solo lo necesario.</li>
           <li>El estado de tu suscripción. Los datos de la tarjeta los gestiona Stripe; nosotros no los vemos ni los guardamos.</li>
         </ul>
 

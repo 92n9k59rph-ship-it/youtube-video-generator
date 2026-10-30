@@ -2,11 +2,10 @@ import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 import { GenerationError, generateMarketing } from "@/lib/generator";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
+import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 
 export const maxDuration = 120;
-
-const MAX_REQUEST_LENGTH = 600;
 
 export async function POST(req: Request) {
   const { user, profile } = await currentUserAndProfile();
@@ -14,14 +13,16 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Tienes que entrar en tu cuenta." }, { status: 401 });
   }
 
-  const body = (await req.json().catch(() => null)) as { request?: unknown } | null;
+  const body = (await req.json().catch(() => null)) as { request?: unknown; tool?: unknown } | null;
+  const tool = isToolId(body?.tool) ? body.tool : "social";
   const request = typeof body?.request === "string" ? body.request.trim() : "";
   if (request.length < 5) {
-    return NextResponse.json({ error: "Cuéntanos qué quieres anunciar (al menos unas palabras)." }, { status: 400 });
+    return NextResponse.json({ error: "Escribe un poco más para que podamos ayudarte (al menos unas palabras)." }, { status: 400 });
   }
-  if (request.length > MAX_REQUEST_LENGTH) {
+  const maxLength = TOOLS[tool].maxLength;
+  if (request.length > maxLength) {
     return NextResponse.json(
-      { error: `La petición es demasiado larga. Máximo ${MAX_REQUEST_LENGTH} caracteres.` },
+      { error: `El texto es demasiado largo. Máximo ${maxLength} caracteres.` },
       { status: 400 },
     );
   }
@@ -39,12 +40,13 @@ export async function POST(req: Request) {
   }
 
   try {
-    const generation = await generateMarketing(profile, request);
+    const generation = await generateMarketing(profile, tool, request);
 
     const { error } = await supabaseAdmin().from("generations").insert({
       user_id: user.id,
+      tool,
       request,
-      result: generation.result,
+      result: generation.output.result,
       model: generation.model,
       input_tokens: generation.inputTokens,
       output_tokens: generation.outputTokens,
@@ -52,7 +54,7 @@ export async function POST(req: Request) {
     if (error) console.error("No se pudo guardar la generación", error);
 
     return NextResponse.json({
-      result: generation.result,
+      output: generation.output,
       usage: { ...usage, used: usage.used + 1 },
     });
   } catch (err) {

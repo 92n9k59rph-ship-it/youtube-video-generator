@@ -9,10 +9,13 @@ export default function Terminos() {
         <p>Última actualización: [fecha]</p>
 
         <h2>El servicio</h2>
-        <p>AnunciaFácil genera, con inteligencia artificial, propuestas de textos para redes sociales, ideas de vídeos cortos y calendarios de publicación para negocios. Lo presta David Lázaro (anunciafacil.contacto@gmail.com · [NIF y dirección postal]).</p>
+        <p>AnunciaFácil genera, con inteligencia artificial, propuestas de textos para negocios: publicaciones para redes sociales, ideas de vídeos cortos, calendarios de publicación, correos para clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles y menús. Lo presta David Lázaro (anunciafacil.contacto@gmail.com · [NIF y dirección postal]).</p>
 
         <h2>Revisa siempre los textos</h2>
         <p>Los textos los genera una inteligencia artificial y pueden contener errores. Antes de publicarlos, revísalos y completa los datos marcados entre corchetes, como precios u horarios. Eres responsable de lo que publiques en tus redes.</p>
+
+        <h2>Correos y mensajes a tus clientes</h2>
+        <p>AnunciaFácil solo escribe los textos; no envía correos ni mensajes. Si los envías tú, hazlo solo a clientes que hayan aceptado recibirlos y dales una forma sencilla de darse de baja, como exige la ley.</p>
 
         <h2>Precio y pago</h2>
         <ul>

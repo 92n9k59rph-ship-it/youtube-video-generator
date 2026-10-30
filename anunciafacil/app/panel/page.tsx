@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
+import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { saveBusiness, signOut } from "./actions";
 import { Generator } from "./Generator";
@@ -30,7 +31,7 @@ export default async function Panel({
 
   const { data: history } = await supabase
     .from("generations")
-    .select("id, request, created_at")
+    .select("id, tool, request, created_at")
     .order("created_at", { ascending: false })
     .limit(10);
 
@@ -129,7 +130,10 @@ export default async function Panel({
             <ul className="history">
               {history.map((item) => (
                 <li key={item.id}>
-                  <span>{item.request}</span>
+                  <span>
+                    <span className="pill">{isToolId(item.tool) ? TOOLS[item.tool].label : item.tool}</span>{" "}
+                    {item.request.length > 120 ? `${item.request.slice(0, 117)}…` : item.request}
+                  </span>
                   <span className="muted small" style={{ whiteSpace: "nowrap" }}>
                     {new Date(item.created_at).toLocaleDateString("es-ES")}
                   </span>
