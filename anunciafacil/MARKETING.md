@@ -1,6 +1,6 @@
-# Plan para conseguir los primeros 250 negocios
+# Plan para conseguir los primeros clientes
 
-La meta: **250 negocios registrados**. Tu panel `/admin` te dice cuántos llevas y te avisa al llegar.
+La meta es la que pusiste en Vercel (`LAUNCH_GOAL`), que solo conoces tú. Tu panel `/admin` te dice cuántos llevas, cuántos faltan y te avisa al llegar. **En público di siempre «gratis por tiempo limitado», sin dar el número.**
 
 Lo que más funciona con negocios de barrio es **el trato en persona y la confianza**, no la publicidad. Por eso el plan empieza por ahí.
 
@@ -19,7 +19,7 @@ Lo que más funciona con negocios de barrio es **el trato en persona y la confia
 | **YouTube Shorts y Reels** | Vídeos cortos con el agente de vídeos de este repositorio | Medio |
 | **Recomendaciones** | Pedir a cada cliente contento que se lo diga a otro negocio | Bajo |
 
-**Si haces 5 visitas al día y se registran 1 o 2**, en 2–3 meses de visitas tendrías buena parte de los 250. El resto llega por conocidos, asociaciones y redes.
+**Si haces 5 visitas al día y se registran 1 o 2**, en 2–3 meses de visitas tendrías buena parte de tu meta. El resto llega por conocidos, asociaciones y redes.
 
 ---
 
@@ -64,7 +64,7 @@ Escribir a una asociación (es decir, a una organización y a su dirección de c
 
 Crea la cuenta **@anunciafacil** (o la que esté libre) con el Gmail del negocio. Publica 2 o 3 veces por semana. Las imágenes pueden ser capturas de la app o diseños sencillos en Canva.
 
-1. **Presentación:** «¿Tienes un negocio y nunca sabes qué publicar? AnunciaFácil te lo escribe en un minuto. Gratis para los primeros 250 negocios. Enlace en la bio.»
+1. **Presentación:** «¿Tienes un negocio y nunca sabes qué publicar? AnunciaFácil te lo escribe en un minuto. Gratis por tiempo limitado. Enlace en la bio.»
 2. **Antes y después:** una reseña negativa real (sin el nombre del cliente) frente a la respuesta que propone la app.
 3. **Ejemplo para bares:** las 3 publicaciones que genera para «tapa del día».
 4. **Ejemplo para peluquerías:** la idea de Reel de un «antes y después».
@@ -72,7 +72,7 @@ Crea la cuenta **@anunciafacil** (o la que esté libre) con el Gmail del negocio
 6. **Ejemplo de cartel:** el texto de un cartel de rebajas.
 7. **Pregunta:** «¿Qué te cuesta más: publicar en Instagram o contestar reseñas?»
 8. **Cliente real** (con su permiso): «Así usa AnunciaFácil la peluquería [nombre]».
-9. **Contador:** «¡Ya somos [X] negocios! Quedan [250 − X] plazas gratis.»
+9. **Celebración:** «¡Ya somos [X] negocios usando AnunciaFácil! Gracias 🙌 Sigue siendo gratis durante el lanzamiento.» Pon solo el número real de tu `/admin`.
 10. **Tutorial:** cómo se usa en 3 pasos, con capturas.
 
 **Truco:** usa la propia app para escribir las publicaciones de AnunciaFácil. Elige la herramienta «Redes sociales» y pide, por ejemplo, «Publicaciones para presentar AnunciaFácil a dueños de bares».
@@ -98,7 +98,7 @@ Pídeselas al **agente de vídeos** de este repositorio, escribiendo por ejemplo
 | 3 | Más visitas, 2 publicaciones y 1 Short | 70 |
 | 4 | Pedir a los primeros clientes que lo recomienden, más visitas en otra zona | 100 |
 | 5–6 | Repetir lo que más haya funcionado y hacer una demostración en una asociación si aceptan | 170 |
-| 7–8 | Publicación del contador de «plazas que quedan», visitas y recomendaciones | 250 |
+| 7–8 | Publicación de celebración, visitas y recomendaciones | Tu meta |
 
 **Cada semana, mira tu panel `/admin`:**
 - ¿Cuántos se han registrado?
@@ -115,4 +115,5 @@ Y **habla con tus clientes:** pregúntales qué les gusta y qué echan en falta.
 - ❌ **Comprar listas de correos o de teléfonos.**
 - ❌ **Prometer resultados**, como «tendrás el doble de clientes». Di lo que hace la app, sin exagerar.
 - ❌ **Usar nombres, fotos o reseñas de clientes sin su permiso.**
-- ❌ **Crear cuentas falsas** para inflar el contador.
+- ❌ **Crear cuentas falsas** para inflar el número de negocios.
+- ❌ **Inventar urgencia** («¡solo quedan 3 plazas!») si no es verdad.

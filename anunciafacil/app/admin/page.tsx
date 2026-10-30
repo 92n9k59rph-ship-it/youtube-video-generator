@@ -74,8 +74,9 @@ export default async function Admin() {
   for (const g of monthGenerations) byTool.set(g.tool, (byTool.get(g.tool) ?? 0) + 1);
 
   const freeLimit = intEnv("FREE_GENERATIONS", 3);
-  const launchGoal = intEnv("LAUNCH_GOAL", 250);
-  const goalReached = allProfiles.length >= launchGoal;
+  // Meta secreta del lanzamiento: solo está en Vercel (LAUNCH_GOAL), nunca en el código público.
+  const launchGoal = intEnv("LAUNCH_GOAL", 0);
+  const goalReached = launchGoal > 0 && allProfiles.length >= launchGoal;
   const monthlyLimit = intEnv("MONTHLY_GENERATIONS", 100);
 
   return (
@@ -94,10 +95,14 @@ export default async function Admin() {
                 <strong>🎉 ¡Has llegado a {launchGoal} negocios!</strong> Es el momento de empezar a cobrar: envía el correo de aviso de
                 LANZAMIENTO.md y, 30 días después, sigue el paso 7 de la GUIA.md.
               </>
-            ) : (
+            ) : launchGoal > 0 ? (
               <>
                 <strong>Meta del lanzamiento: {allProfiles.length} de {launchGoal} negocios.</strong> Faltan {launchGoal - allProfiles.length}.
-                Ideas para conseguirlos en anunciafacil/MARKETING.md.
+                Ideas para conseguirlos en anunciafacil/MARKETING.md. (Esta meta solo la ves tú.)
+              </>
+            ) : (
+              <>
+                <strong>{allProfiles.length} negocios registrados.</strong> Pon tu meta secreta en Vercel (LAUNCH_GOAL) y aquí verás cuántos faltan.
               </>
             )}
           </section>
