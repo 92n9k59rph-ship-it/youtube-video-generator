@@ -2,9 +2,20 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import "./globals.css";
 
+const description =
+  "Publicaciones para Instagram, correos, respuestas a reseñas, mensajes de WhatsApp y carteles para tu negocio, escritos en un minuto.";
+
 export const metadata: Metadata = {
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
   title: "AnunciaFácil",
-  description: "Las publicaciones de tu negocio, escritas en un minuto.",
+  description,
+  openGraph: {
+    title: "AnunciaFácil · El marketing de tu negocio, en un minuto",
+    description,
+    locale: "es_ES",
+    type: "website",
+    siteName: "AnunciaFácil",
+  },
 };
 
 export const viewport: Viewport = {

@@ -2,12 +2,14 @@ import Link from "next/link";
 import { intEnv } from "@/lib/env";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 
-export default function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
+  const { cuenta } = await searchParams;
   const freeGenerations = intEnv("FREE_GENERATIONS", 3);
   const monthly = intEnv("MONTHLY_GENERATIONS", 100);
   return (
     <main>
       <div className="wrap stack">
+        {cuenta === "borrada" && <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado AnunciaFácil!</p>}
         <section className="stack" style={{ maxWidth: 720, paddingBlock: 24 }}>
           <span className="pill">Para bares, peluquerías, tiendas y gimnasios</span>
           <h1 style={{ fontSize: "clamp(2.4rem, 6vw, 4rem)", letterSpacing: "-.03em" }}>

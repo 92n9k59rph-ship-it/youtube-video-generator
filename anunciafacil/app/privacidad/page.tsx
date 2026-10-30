@@ -34,7 +34,7 @@ export default function Privacidad() {
         <p>No vendemos tus datos ni los usamos para publicidad.</p>
 
         <h2>Cuánto tiempo los guardamos</h2>
-        <p>Mientras tengas la cuenta. Si la borras, eliminamos tus datos salvo los que debamos conservar por ley (por ejemplo, facturas).</p>
+        <p>Mientras tengas la cuenta. Puedes borrarla tú mismo en cualquier momento desde tu panel («Borrar mi cuenta»): eliminamos tus datos salvo los que debamos conservar por ley (por ejemplo, facturas).</p>
 
         <h2>Tus derechos</h2>
         <p>Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad de tus datos escribiendo a anunciafacil.contacto@gmail.com. Si no estás conforme con la respuesta, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>

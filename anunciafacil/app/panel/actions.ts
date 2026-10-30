@@ -2,7 +2,8 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { supabaseForRequest } from "@/lib/supabase";
+import { getStripe } from "@/lib/stripe";
+import { supabaseAdmin, supabaseForRequest } from "@/lib/supabase";
 
 const TONES = ["cercano", "divertido", "elegante", "serio"];
 
@@ -36,4 +37,40 @@ export async function signOut() {
   const supabase = await supabaseForRequest();
   await supabase.auth.signOut();
   redirect("/");
+}
+
+// Borra la cuenta del cliente: cancela su suscripción en Stripe y elimina sus datos.
+// Las facturas se quedan en Stripe, porque la ley obliga a conservarlas.
+export async function deleteAccount(formData: FormData) {
+  if (formData.get("confirmar") !== "si") redirect("/panel?borrar=confirmar#borrar");
+
+  const supabase = await supabaseForRequest();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) redirect("/entrar");
+
+  const admin = supabaseAdmin();
+  const { data: profile } = await admin
+    .from("profiles")
+    .select("stripe_customer_id")
+    .eq("id", user.id)
+    .maybeSingle<{ stripe_customer_id: string | null }>();
+
+  if (profile?.stripe_customer_id) {
+    const stripe = getStripe();
+    const subscriptions = await stripe.subscriptions.list({ customer: profile.stripe_customer_id, status: "all" });
+    for (const subscription of subscriptions.data) {
+      if (subscription.status !== "canceled" && subscription.status !== "incomplete_expired") {
+        await stripe.subscriptions.cancel(subscription.id);
+      }
+    }
+  }
+
+  // Al borrar el usuario se borran también su perfil y sus generaciones (on delete cascade).
+  const { error } = await admin.auth.admin.deleteUser(user.id);
+  if (error) redirect("/panel?borrar=error#borrar");
+
+  await supabase.auth.signOut();
+  redirect("/?cuenta=borrada");
 }
