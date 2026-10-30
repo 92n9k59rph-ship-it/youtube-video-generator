@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { requireEnv, siteUrl } from "@/lib/env";
+import { freeLaunch, requireEnv, siteUrl } from "@/lib/env";
 import { getStripe } from "@/lib/stripe";
 import { currentUserAndProfile, isSubscribed, supabaseAdmin } from "@/lib/supabase";
 
@@ -9,7 +9,7 @@ export async function POST() {
   if (!user || !profile) {
     return NextResponse.redirect(`${siteUrl()}/entrar`, 303);
   }
-  if (isSubscribed(profile)) {
+  if (isSubscribed(profile) || freeLaunch()) {
     return NextResponse.redirect(`${siteUrl()}/panel`, 303);
   }
 

@@ -21,7 +21,7 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 > - mensajes de WhatsApp;
 > - textos para carteles y menús.
 >
-> Tienes 3 usos gratis para probarlo, sin tarjeta. Después, 9,99 € al mes, sin permanencia.
+> Durante el lanzamiento es **gratis**: hasta 20 usos al mes, sin tarjeta. Más adelante costará 9,99 € al mes; te avisaremos antes y solo pagarás si decides suscribirte.
 >
 > 👉 [DIRECCIÓN DE LA APP]
 >
@@ -34,9 +34,29 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 
 ## Mensaje corto para WhatsApp (contactos que conoces)
 
-> ¡Hola! 👋 Ya está lista **AnunciaFácil**, la app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas, mensajes para clientes y carteles de tu negocio. Puedes probarla gratis 3 veces: [DIRECCIÓN DE LA APP]. ¿Me dices qué te parece?
+> ¡Hola! 👋 Ya está lista **AnunciaFácil**, la app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas, mensajes para clientes y carteles de tu negocio. Ahora es gratis durante el lanzamiento: [DIRECCIÓN DE LA APP]. ¿Me dices qué te parece?
 
 ## Después del lanzamiento
 
 - Cuando alguien te pida la baja, bórralo de la lista de Google Forms (pestaña «Respuestas» → hoja de cálculo).
 - Cambia el botón de la web de la lista de espera para que lleve a la app en lugar del formulario. Pídemelo y lo hago.
+
+## Correo para avisar de que AnunciaFácil pasa a ser de pago
+
+Envíalo **al menos 30 días antes** de poner `FREE_LAUNCH=false`, a todos los clientes registrados. Sus correos están en tu panel `/admin` o en Supabase → Authentication → Users. Ponlos en CCO.
+
+**Asunto:** Novedades en AnunciaFácil a partir del [FECHA]
+
+> ¡Hola!
+>
+> Gracias por usar AnunciaFácil durante el lanzamiento. Nos alegra mucho que nos ayudes con tu negocio.
+>
+> A partir del **[FECHA]**, AnunciaFácil pasará a costar **9,99 € al mes** (IVA incluido), con hasta 100 usos al mes y sin permanencia.
+>
+> - **No tienes que hacer nada si no quieres seguir:** no se te cobrará nada, porque nunca te pedimos la tarjeta.
+> - **Si quieres seguir,** a partir de esa fecha verás en tu panel el botón **Suscribirme**.
+>
+> Si tienes cualquier duda, contesta a este correo.
+>
+> Un saludo,
+> David · AnunciaFácil

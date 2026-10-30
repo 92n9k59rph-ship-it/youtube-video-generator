@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { intEnv } from "@/lib/env";
+import { freeLaunch, intEnv } from "@/lib/env";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
   const freeGenerations = intEnv("FREE_GENERATIONS", 3);
   const monthly = intEnv("MONTHLY_GENERATIONS", 100);
+  const launch = freeLaunch();
+  const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 20);
   return (
     <main>
       <div className="wrap stack">
@@ -20,8 +22,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             Instagram, correos para tus clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles.
           </p>
           <div className="nav">
-            <Link className="btn btn-primary" href="/entrar">Empezar</Link>
-            {freeGenerations > 0 && (
+            <Link className="btn btn-primary" href="/entrar">{launch ? "Empezar gratis" : "Empezar"}</Link>
+            {launch ? (
+              <span className="muted small">Gratis durante el lanzamiento, sin tarjeta.</span>
+            ) : freeGenerations > 0 && (
               <span className="muted small">{freeGenerations} generaciones gratis para probar, sin tarjeta.</span>
             )}
           </div>
@@ -71,14 +75,24 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </section>
 
         <section className="panel" style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center" }}>
-          <div>
-            <h2>9,99 € al mes</h2>
-            <p className="muted">
-              {freeGenerations > 0 && `Pruébalo gratis: ${freeGenerations} generaciones sin tarjeta. Después, `}
-              9,99 € al mes, IVA incluido, con hasta {monthly} generaciones al mes. Sin permanencia: cancelas cuando quieras.
-            </p>
-          </div>
-          <Link className="btn btn-primary" href="/entrar">Empezar</Link>
+          {launch ? (
+            <div>
+              <h2>Gratis durante el lanzamiento</h2>
+              <p className="muted">
+                Hasta {launchMonthly} generaciones al mes, sin tarjeta. Más adelante costará 9,99 € al mes (IVA incluido):
+                te avisaremos antes y solo pagarás si decides suscribirte.
+              </p>
+            </div>
+          ) : (
+            <div>
+              <h2>9,99 € al mes</h2>
+              <p className="muted">
+                {freeGenerations > 0 && `Pruébalo gratis: ${freeGenerations} generaciones sin tarjeta. Después, `}
+                9,99 € al mes, IVA incluido, con hasta {monthly} generaciones al mes. Sin permanencia: cancelas cuando quieras.
+              </p>
+            </div>
+          )}
+          <Link className="btn btn-primary" href="/entrar">{launch ? "Empezar gratis" : "Empezar"}</Link>
         </section>
       </div>
     </main>

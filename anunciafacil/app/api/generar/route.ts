@@ -38,7 +38,9 @@ export async function POST(req: Request) {
         ? usage.limit === 0
           ? "Suscríbete para empezar a usar AnunciaFácil."
           : "Has usado tus generaciones gratis. Suscríbete para seguir usando AnunciaFácil."
-        : "Has llegado al límite de este mes. Se renueva el día 1.";
+        : usage.period === "lanzamiento"
+          ? "Has usado todas las generaciones gratis de este mes. Se renuevan el día 1."
+          : "Has llegado al límite de este mes. Se renueva el día 1.";
     return NextResponse.json({ error, usage }, { status: 402 });
   }
 

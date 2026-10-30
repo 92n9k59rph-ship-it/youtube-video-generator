@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { intEnv } from "@/lib/env";
+import { freeLaunch, intEnv } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
 import { TOOLS, isToolId } from "@/lib/tools";
 
@@ -110,9 +110,18 @@ export default async function Admin() {
             <span className="muted small">{money(avgCostUsd, "USD")} de media por generación</span>
           </div>
           <div className="card">
-            <span className="card-label">Límites</span>
-            <span>{freeLimit} gratis · {monthlyLimit} al mes por suscriptor</span>
-            <span className="muted small">Se cambian en Vercel (FREE_GENERATIONS y MONTHLY_GENERATIONS)</span>
+            <span className="card-label">Modo</span>
+            {freeLaunch() ? (
+              <>
+                <span><strong>Lanzamiento gratis</strong> · {intEnv("LAUNCH_MONTHLY_GENERATIONS", 20)} al mes por cliente</span>
+                <span className="muted small">Para cobrar: FREE_LAUNCH=false en Vercel (avisa antes a tus clientes)</span>
+              </>
+            ) : (
+              <>
+                <span>{freeLimit} gratis · {monthlyLimit} al mes por suscriptor</span>
+                <span className="muted small">Se cambian en Vercel (FREE_GENERATIONS y MONTHLY_GENERATIONS)</span>
+              </>
+            )}
           </div>
         </section>
 

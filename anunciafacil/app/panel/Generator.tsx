@@ -90,7 +90,9 @@ export function Generator({ initialUsage, canGenerate }: { initialUsage: Usage; 
             <span style={{ width: `${Math.min(100, (usage.used / Math.max(1, usage.limit)) * 100)}%` }} />
           </div>
           <p className="muted small">
-            {usage.period === "gratis"
+            {usage.period === "lanzamiento"
+              ? `Gratis durante el lanzamiento: has usado ${usage.used} de ${usage.limit} generaciones este mes.`
+              : usage.period === "gratis"
               ? usage.limit === 0
                 ? "Suscríbete para empezar a generar textos."
                 : `Te quedan ${remaining} de ${usage.limit} generaciones gratis.`

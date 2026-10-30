@@ -9,7 +9,9 @@ Esta carpeta tiene la herramienta completa: registro de clientes, pago mensual c
 
 > **Importante:** las claves son secretas. No las pegues en GitHub ni se las enseñes a nadie. Solo van en Vercel (paso 4).
 
-Orden recomendado: **Supabase → Anthropic → Stripe (modo prueba) → Vercel → probar → activar pagos reales.**
+Orden recomendado: **Supabase → Anthropic → Vercel → probar → abrir gratis al público.** Stripe (los cobros) se deja para cuando haya muchos clientes.
+
+> **Lanzamiento gratis:** la app empieza en modo gratis (`FREE_LAUNCH=true`). Nadie paga y cada cliente tiene hasta 20 generaciones al mes. Así atraes clientes sin necesitar Stripe, cuenta bancaria ni alta para facturar. **Lo único que pagas tú es la IA** (paso 2). Con 100 clientes que usen todo su límite, serían unas 2.000 generaciones al mes; a unos pocos céntimos cada una, pueden ser **varias decenas de euros al mes**. Por eso es importante poner el **límite de gasto** en Anthropic. Mira el gasto real en tu panel `/admin`.
 
 ---
 
@@ -62,7 +64,9 @@ La mayoría de clientes no usa todo el límite.
 
 ---
 
-## Paso 3. Stripe (cobrar las cuotas) · empieza en MODO PRUEBA
+## Paso 3. Stripe (cobrar las cuotas) · **sáltatelo durante el lanzamiento gratis**
+
+Hazlo cuando vayas a empezar a cobrar (paso 7). Mientras `FREE_LAUNCH=true`, la app no lo necesita.
 
 La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta bancaria.
 
@@ -89,8 +93,8 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `NEXT_PUBLIC_SITE_URL`: de momento pon `https://anunciafacil.vercel.app`; la corregirás en el punto 6.
    - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` y `SUPABASE_SERVICE_ROLE_KEY`
    - `ANTHROPIC_API_KEY` y `CLAUDE_MODEL` (con el valor `claude-opus-5-5`)
-   - `STRIPE_SECRET_KEY` y `STRIPE_PRICE_ID`
-   - `STRIPE_WEBHOOK_SECRET`: de momento pon `pendiente`.
+   - `FREE_LAUNCH`: con el valor `true` (lanzamiento gratis). `LAUNCH_MONTHLY_GENERATIONS`: con el valor `20` (generaciones gratis al mes por cliente).
+   - `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` y `STRIPE_WEBHOOK_SECRET`: **no hacen falta durante el lanzamiento gratis**; se añaden en el paso 7.
    - `ADMIN_EMAILS`: el correo con el que entrarás tú en la app (por ejemplo `anunciafacil.contacto@gmail.com`). Te da acceso a tu panel de administración en `/admin`.
    - `FREE_GENERATIONS` (con el valor `3`: generaciones de prueba gratis antes de pagar; `0` quita la prueba) y `MONTHLY_GENERATIONS` (con el valor `100`)
 5. Pulsa **Deploy** y espera 1–2 minutos.
@@ -99,7 +103,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - **En Supabase:** Authentication → URL Configuration:
      - **Site URL:** tu dirección de Vercel.
      - **Redirect URLs:** añade `https://TU-DIRECCION/auth/callback`
-   - **En Stripe:** Desarrolladores → Webhooks → **Añadir destino / endpoint**:
+   - **En Stripe (solo cuando vayas a cobrar, paso 7):** Desarrolladores → Webhooks → **Añadir destino / endpoint**:
      - URL: `https://TU-DIRECCION/api/stripe/webhook`
      - Eventos: `checkout.session.completed`, `customer.subscription.created`, `customer.subscription.updated` y `customer.subscription.deleted`
      - Guarda y copia el **secreto de firma** (empieza por `whsec_`). Ponlo en Vercel como `STRIPE_WEBHOOK_SECRET`.
@@ -109,7 +113,11 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 
 ---
 
-## Paso 5. Probar todo (con dinero de mentira)
+## Paso 5. Probar todo
+
+**Durante el lanzamiento gratis:** entra con tu correo, rellena **Tu negocio**, prueba las cinco herramientas y comprueba que en «Tu plan» pone **Lanzamiento gratis**. También puedes abrir tu panel `/admin`.
+
+**Cuando actives los cobros (paso 7), prueba también el pago con dinero de mentira:**
 
 1. Abre tu dirección de Vercel → **Empezar** → escribe tu correo → abre el enlace que te llega.
 2. Rellena **Tu negocio** y pulsa **Guardar**.
@@ -125,7 +133,20 @@ Si algo falla, mándame una captura y lo arreglo.
 
 ---
 
-## Paso 6. Abrir al público (cobros reales)
+## Paso 6. Abrir gratis al público
+
+1. Activa el **CAPTCHA** (ver paso 1) para evitar cuentas falsas.
+2. Comprueba que tienes el **límite de gasto** puesto en Anthropic.
+3. Comparte la app: envía el correo de `LANZAMIENTO.md` a tu lista de espera y difúndela.
+
+## Paso 7. Empezar a cobrar (cuando haya muchos clientes)
+
+1. **Avisa a tus clientes por correo al menos 30 días antes**, como dicen los términos. Diles el precio y que solo pagarán si se suscriben.
+2. Haz el **paso 3 (Stripe)** y conecta el webhook del paso 4.
+3. En Vercel pon `FREE_LAUNCH` en `false`, añade las variables de Stripe y haz **Redeploy**. Desde ese momento, cada cliente tiene las generaciones de prueba (`FREE_GENERATIONS`) y después tiene que suscribirse.
+4. Prueba el pago con la tarjeta de prueba (paso 5) antes de pasar Stripe a modo real.
+
+### Pasar Stripe a modo real
 
 1. **Stripe:** desactiva el modo de prueba, completa la verificación de la cuenta y repite el paso 3 en modo real. Tendrás un nuevo `price_…`, un `sk_live_…` y un webhook nuevo con su `whsec_…`.
 2. **Vercel:** cambia `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` y `STRIPE_WEBHOOK_SECRET` por los valores reales y haz **Redeploy**.

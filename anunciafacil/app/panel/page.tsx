@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
-import { intEnv } from "@/lib/env";
+import { freeLaunch, intEnv } from "@/lib/env";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { deleteAccount, saveBusiness, signOut } from "./actions";
@@ -30,6 +30,7 @@ export default async function Panel({
   const subscribed = isSubscribed(profile);
   const usage = await getUsage(profile);
   const hasBusiness = Boolean(profile.business_type);
+  const launch = freeLaunch();
 
   const { data: history } = await supabase
     .from("generations")
@@ -108,7 +109,9 @@ export default async function Panel({
           <div className="panel">
             <div className="card-head">
               <h2>Tu plan</h2>
-              <span className={`pill ${subscribed ? "pill-ok" : ""}`}>{STATUS_LABEL[profile.subscription_status] ?? profile.subscription_status}</span>
+              <span className={`pill ${subscribed || launch ? "pill-ok" : ""}`}>
+                {launch && !subscribed ? "Lanzamiento gratis" : STATUS_LABEL[profile.subscription_status] ?? profile.subscription_status}
+              </span>
             </div>
             {subscribed ? (
               <>
@@ -121,6 +124,12 @@ export default async function Panel({
                   <button className="btn btn-ghost" type="submit">Gestionar suscripción y facturas</button>
                 </form>
               </>
+            ) : launch ? (
+              <p className="muted">
+                AnunciaFácil es <strong>gratis</strong> mientras estamos empezando: hasta {usage.limit} generaciones al mes.
+                Más adelante costará 9,99 € al mes. Te avisaremos por correo con antelación y no se te cobrará nada
+                salvo que tú decidas suscribirte.
+              </p>
             ) : (
               <>
                 <p className="muted">
