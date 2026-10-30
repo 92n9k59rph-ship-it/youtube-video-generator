@@ -13,7 +13,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       <div className="wrap stack">
         {cuenta === "borrada" && <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado AnunciaFácil!</p>}
         <section className="stack" style={{ maxWidth: 720, paddingBlock: 24 }}>
-          <span className="pill">Para bares, peluquerías, tiendas y gimnasios</span>
+          <span className="pill" style={{ alignSelf: "flex-start" }}>Para bares, peluquerías, tiendas y gimnasios</span>
           <h1 style={{ fontSize: "clamp(2.4rem, 6vw, 4rem)", letterSpacing: "-.03em" }}>
             Las publicaciones de tu negocio, <span style={{ color: "var(--tomato)" }}>escritas en un minuto.</span>
           </h1>
