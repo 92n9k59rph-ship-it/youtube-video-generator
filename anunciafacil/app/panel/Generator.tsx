@@ -109,7 +109,7 @@ export function Generator({ initialUsage, canGenerate }: { initialUsage: Usage; 
   );
 }
 
-function Results({ output }: { output: ToolResult }) {
+export function Results({ output }: { output: ToolResult }) {
   switch (output.tool) {
     case "social":
       return <SocialResult result={output.result} />;

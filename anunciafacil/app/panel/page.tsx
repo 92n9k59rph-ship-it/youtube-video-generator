@@ -4,7 +4,8 @@ import { intEnv } from "@/lib/env";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { saveBusiness, signOut } from "./actions";
-import { Generator } from "./Generator";
+import { Generator, Results } from "./Generator";
+import type { ToolResult } from "@/lib/generator";
 
 export const dynamic = "force-dynamic";
 
@@ -20,12 +21,12 @@ const STATUS_LABEL: Record<string, string> = {
 export default async function Panel({
   searchParams,
 }: {
-  searchParams: Promise<{ pago?: string; negocio?: string }>;
+  searchParams: Promise<{ pago?: string; negocio?: string; ver?: string }>;
 }) {
   const { supabase, user, profile } = await currentUserAndProfile();
   if (!user || !profile) redirect("/entrar");
 
-  const { pago, negocio } = await searchParams;
+  const { pago, negocio, ver } = await searchParams;
   const subscribed = isSubscribed(profile);
   const usage = await getUsage(profile);
   const hasBusiness = Boolean(profile.business_type);
@@ -35,6 +36,23 @@ export default async function Panel({
     .select("id, tool, request, created_at")
     .order("created_at", { ascending: false })
     .limit(10);
+
+  // Una generación antigua que el cliente quiere volver a ver (la seguridad de Supabase solo deja ver las suyas).
+  let previous: { output: ToolResult; request: string; created_at: string } | null = null;
+  if (ver && /^[0-9a-f-]{36}$/i.test(ver)) {
+    const { data } = await supabase
+      .from("generations")
+      .select("tool, request, result, created_at")
+      .eq("id", ver)
+      .maybeSingle();
+    if (data && isToolId(data.tool)) {
+      previous = {
+        output: { tool: data.tool, result: data.result } as ToolResult,
+        request: data.request,
+        created_at: data.created_at,
+      };
+    }
+  }
 
   return (
     <main>
@@ -120,6 +138,19 @@ export default async function Panel({
           </div>
         </div>
 
+        {previous && (
+          <section className="stack" id="anterior">
+            <div className="panel">
+              <div className="card-head" style={{ flexWrap: "wrap" }}>
+                <h2>{TOOLS[previous.output.tool].label} · {new Date(previous.created_at).toLocaleDateString("es-ES")}</h2>
+                <a className="btn btn-ghost small" href="/panel">Cerrar</a>
+              </div>
+              <p className="muted">{previous.request}</p>
+            </div>
+            <Results output={previous.output} />
+          </section>
+        )}
+
         {hasBusiness ? (
           <Generator initialUsage={usage} canGenerate={hasBusiness} />
         ) : (
@@ -129,13 +160,16 @@ export default async function Panel({
         {history && history.length > 0 && (
           <section className="panel">
             <h2>Últimas peticiones</h2>
+            <p className="muted small">Toca una para volver a ver sus textos.</p>
             <ul className="history">
               {history.map((item) => (
                 <li key={item.id}>
-                  <span>
+                  <a href={`/panel?ver=${item.id}#anterior`} style={{ textDecoration: "none" }}>
                     <span className="pill">{isToolId(item.tool) ? TOOLS[item.tool].label : item.tool}</span>{" "}
-                    {item.request.length > 120 ? `${item.request.slice(0, 117)}…` : item.request}
-                  </span>
+                    <span style={{ textDecoration: "underline" }}>
+                      {item.request.length > 120 ? `${item.request.slice(0, 117)}…` : item.request}
+                    </span>
+                  </a>
                   <span className="muted small" style={{ whiteSpace: "nowrap" }}>
                     {new Date(item.created_at).toLocaleDateString("es-ES")}
                   </span>
