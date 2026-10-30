@@ -74,6 +74,8 @@ export default async function Admin() {
   for (const g of monthGenerations) byTool.set(g.tool, (byTool.get(g.tool) ?? 0) + 1);
 
   const freeLimit = intEnv("FREE_GENERATIONS", 3);
+  const launchGoal = intEnv("LAUNCH_GOAL", 250);
+  const goalReached = allProfiles.length >= launchGoal;
   const monthlyLimit = intEnv("MONTHLY_GENERATIONS", 100);
 
   return (
@@ -84,6 +86,22 @@ export default async function Admin() {
           <h1 style={{ fontSize: "2.2rem", marginTop: 8 }}>Administración</h1>
           <p className="muted">Datos de este mes (desde el día 1). Las cifras de dinero son estimaciones: las reales están en Stripe y en la consola de Anthropic.</p>
         </div>
+
+        {freeLaunch() && (
+          <section className={`notice ${goalReached ? "notice-ok" : ""}`} style={goalReached ? undefined : { background: "var(--chip)" }}>
+            {goalReached ? (
+              <>
+                <strong>🎉 ¡Has llegado a {launchGoal} negocios!</strong> Es el momento de empezar a cobrar: envía el correo de aviso de
+                LANZAMIENTO.md y, 30 días después, sigue el paso 7 de la GUIA.md.
+              </>
+            ) : (
+              <>
+                <strong>Meta del lanzamiento: {allProfiles.length} de {launchGoal} negocios.</strong> Faltan {launchGoal - allProfiles.length}.
+                Ideas para conseguirlos en anunciafacil/MARKETING.md.
+              </>
+            )}
+          </section>
+        )}
 
         <section className="grid-3">
           <div className="card">

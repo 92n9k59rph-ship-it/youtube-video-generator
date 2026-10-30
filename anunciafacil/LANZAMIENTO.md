@@ -21,7 +21,7 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 > - mensajes de WhatsApp;
 > - textos para carteles y menús.
 >
-> Durante el lanzamiento es **gratis**: hasta 20 usos al mes, sin tarjeta. Más adelante costará 9,99 € al mes; te avisaremos antes y solo pagarás si decides suscribirte.
+> Es **gratis para los primeros 250 negocios**: hasta 20 usos al mes, sin tarjeta. Más adelante costará 9,99 € al mes; te avisaremos antes y solo pagarás si decides suscribirte.
 >
 > 👉 [DIRECCIÓN DE LA APP]
 >

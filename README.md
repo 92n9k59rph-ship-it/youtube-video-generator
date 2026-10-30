@@ -44,8 +44,9 @@ Aplicación web (Next.js + Supabase + Stripe + API de Claude) que escribe textos
 - mensajes de WhatsApp;
 - textos para carteles y menús.
 
-Incluye prueba gratis (3 generaciones), suscripción de 9,99 €/mes, panel del cliente con historial y borrado de cuenta.
+Empieza en **modo lanzamiento gratis** (20 generaciones al mes por negocio) hasta llegar a 250 negocios; después, suscripción de 9,99 €/mes con Stripe. Incluye panel del cliente con historial, borrado de cuenta y panel de administración (`/admin`).
 
 - **Ponerla en marcha:** `anunciafacil/GUIA.md`, paso a paso y desde el iPad.
 - **Textos para el lanzamiento:** `anunciafacil/LANZAMIENTO.md`
+- **Plan para conseguir los primeros 250 negocios:** `anunciafacil/MARKETING.md`
 - **Base de datos:** `anunciafacil/supabase/schema.sql`

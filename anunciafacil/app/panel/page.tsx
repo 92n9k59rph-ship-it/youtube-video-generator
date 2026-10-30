@@ -126,8 +126,8 @@ export default async function Panel({
               </>
             ) : launch ? (
               <p className="muted">
-                AnunciaFácil es <strong>gratis</strong> mientras estamos empezando: hasta {usage.limit} generaciones al mes.
-                Más adelante costará 9,99 € al mes. Te avisaremos por correo con antelación y no se te cobrará nada
+                AnunciaFácil es <strong>gratis</strong> hasta que lleguemos a {intEnv("LAUNCH_GOAL", 250)} negocios: hasta {usage.limit} generaciones al mes.
+                Después costará 9,99 € al mes. Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
                 salvo que tú decidas suscribirte.
               </p>
             ) : (

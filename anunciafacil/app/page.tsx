@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { freeLaunch, intEnv } from "@/lib/env";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
+import { launchProgress } from "@/lib/usage";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
@@ -8,6 +9,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const monthly = intEnv("MONTHLY_GENERATIONS", 100);
   const launch = freeLaunch();
   const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 20);
+  const progress = launch ? await launchProgress() : null;
+  const goal = progress?.goal ?? intEnv("LAUNCH_GOAL", 250);
   return (
     <main>
       <div className="wrap stack">
@@ -24,7 +27,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
           <div className="nav">
             <Link className="btn btn-primary" href="/entrar">{launch ? "Empezar gratis" : "Empezar"}</Link>
             {launch ? (
-              <span className="muted small">Gratis durante el lanzamiento, sin tarjeta.</span>
+              <span className="muted small">Gratis para los primeros {goal} negocios, sin tarjeta.</span>
             ) : freeGenerations > 0 && (
               <span className="muted small">{freeGenerations} generaciones gratis para probar, sin tarjeta.</span>
             )}
@@ -76,12 +79,22 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
 
         <section className="panel" style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center" }}>
           {launch ? (
-            <div>
-              <h2>Gratis durante el lanzamiento</h2>
+            <div className="stack" style={{ gap: 10, flex: "1 1 320px" }}>
+              <h2>Gratis hasta llegar a {goal} negocios</h2>
               <p className="muted">
-                Hasta {launchMonthly} generaciones al mes, sin tarjeta. Más adelante costará 9,99 € al mes (IVA incluido):
-                te avisaremos antes y solo pagarás si decides suscribirte.
+                Hasta {launchMonthly} generaciones al mes, sin tarjeta. Cuando lleguemos a {goal} negocios, AnunciaFácil pasará a
+                costar 9,99 € al mes (IVA incluido): te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.
               </p>
+              {progress && (
+                <div className="stack" style={{ gap: 6 }}>
+                  <div className="meter" aria-hidden="true">
+                    <span style={{ width: `${Math.min(100, (progress.count / Math.max(1, goal)) * 100)}%` }} />
+                  </div>
+                  <span className="small">
+                    <strong className="num">{progress.count}</strong> de {goal} negocios ya usan AnunciaFácil
+                  </span>
+                </div>
+              )}
             </div>
           ) : (
             <div>

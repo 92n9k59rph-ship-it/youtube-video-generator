@@ -19,7 +19,7 @@ export default function Terminos() {
 
         <h2>Precio y pago</h2>
         <ul>
-          <li>Durante el periodo de lanzamiento, AnunciaFácil es gratis con el límite de generaciones mensuales que se indique en la web. Avisaremos por correo al menos 30 días antes de que pase a ser de pago; nunca se cobra nada sin que te suscribas tú.</li>
+          <li>Durante el periodo de lanzamiento (hasta alcanzar el número de negocios registrados que se indica en la web), AnunciaFácil es gratis con el límite de generaciones mensuales que se indique. Avisaremos por correo al menos 30 días antes de que pase a ser de pago; nunca se cobra nada sin que te suscribas tú.</li>
           <li>Fuera del lanzamiento, para usar AnunciaFácil hace falta una suscripción activa, salvo las generaciones de prueba gratis que se indiquen en la web en cada momento.</li>
           <li>Suscripción: 9,99 € al mes, IVA incluido, con hasta 100 generaciones al mes. Se cobra por adelantado cada mes a través de Stripe.</li>
           <li>Podemos cambiar el precio avisándote con al menos 30 días de antelación.</li>
