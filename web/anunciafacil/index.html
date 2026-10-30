@@ -1,0 +1,446 @@
+<title>AnunciaFácil</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: escaparate de barrio. Cabecera tipo cartel de oferta, demo como "pegatinas" de publicaciones, una sola llamada a la acción repetida. */
+:root {
+  --paper: #f6f7fb;
+  --surface: #ffffff;
+  --ink: #1b2233;
+  --muted: #5a6275;
+  --line: #dfe2ec;
+  --tomato: #e4472b;
+  --tomato-ink: #ffffff;
+  --sun: #ffc53d;
+  --sun-ink: #1b2233;
+  --mint: #1f9d7a;
+  --chip: #eceef5;
+  --shadow: 0 1px 0 rgba(27, 34, 51, .06), 0 12px 28px -14px rgba(27, 34, 51, .28);
+  --display: "Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12151d; --surface: #1b1f2a; --ink: #eef0f6; --muted: #a3aabb; --line: #2c3242;
+    --tomato: #ff6a4d; --tomato-ink: #1a0d09; --sun: #ffcf5c; --sun-ink: #1b1608; --mint: #4cc9a3; --chip: #252a38;
+    --shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 14px 30px -16px rgba(0, 0, 0, .7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12151d; --surface: #1b1f2a; --ink: #eef0f6; --muted: #a3aabb; --line: #2c3242;
+  --tomato: #ff6a4d; --tomato-ink: #1a0d09; --sun: #ffcf5c; --sun-ink: #1b1608; --mint: #4cc9a3; --chip: #252a38;
+  --shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 14px 30px -16px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); line-height: 1.05; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+
+/* Barra superior */
+.top { padding-block: 18px; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.logo { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
+.logo-mark {
+  width: 34px; height: 34px; border-radius: 10px; background: var(--tomato); color: var(--tomato-ink);
+  display: grid; place-items: center; font-size: 1.1rem; transform: rotate(-6deg);
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font: 700 1rem/1 var(--body); text-decoration: none; cursor: pointer;
+  padding: 14px 22px; border-radius: 999px; border: 2px solid transparent;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-primary { background: var(--tomato); color: var(--tomato-ink); box-shadow: 0 6px 0 -1px color-mix(in srgb, var(--tomato) 55%, var(--ink)); }
+.btn-primary:hover { transform: translateY(-2px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn[aria-disabled="true"] { opacity: .65; cursor: not-allowed; transform: none; }
+
+/* Cabecera */
+.hero { padding-block: 36px 64px; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.tag {
+  align-self: flex-start; font: 600 .8rem/1 var(--body); text-transform: uppercase; letter-spacing: .08em;
+  background: var(--sun); color: var(--sun-ink); padding: 8px 12px; border-radius: 6px; transform: rotate(-1.5deg);
+}
+.hero h1 { font-size: clamp(2.6rem, 6.2vw, 4.6rem); font-weight: 800; letter-spacing: -.035em; }
+.hero h1 em { font-style: normal; color: var(--tomato); }
+.lead { font-size: 1.2rem; color: var(--muted); max-width: 34ch; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.fine { font-size: .9rem; color: var(--muted); }
+
+/* Maqueta de publicación */
+.mock { position: relative; justify-self: center; width: min(100%, 380px); }
+.post {
+  background: var(--surface); border-radius: 22px; box-shadow: var(--shadow); overflow: hidden;
+  border: 1px solid var(--line); transform: rotate(2deg);
+}
+.post-head { display: flex; align-items: center; gap: 10px; padding: 14px 16px; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; color: var(--surface); font-weight: 700; }
+.post-name { font-weight: 700; font-size: .95rem; }
+.post-sub { font-size: .8rem; color: var(--muted); }
+.post-img {
+  aspect-ratio: 1 / 1; max-width: 100%;
+  background:
+    radial-gradient(circle at 30% 35%, color-mix(in srgb, var(--sun) 85%, transparent) 0 18%, transparent 19%),
+    radial-gradient(circle at 70% 65%, color-mix(in srgb, var(--tomato) 80%, transparent) 0 24%, transparent 25%),
+    linear-gradient(135deg, color-mix(in srgb, var(--mint) 35%, var(--surface)), color-mix(in srgb, var(--sun) 30%, var(--surface)));
+  display: grid; place-items: center;
+}
+.post-img span { font-family: var(--display); font-weight: 800; font-size: 2.3rem; color: var(--ink); background: var(--surface); padding: 8px 14px; border-radius: 12px; transform: rotate(-4deg); }
+.post-body { padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 8px; font-size: .95rem; }
+.hashtags { font-family: var(--mono); font-size: .78rem; color: var(--mint); word-break: break-word; }
+.sticker {
+  position: absolute; top: -18px; left: -14px; z-index: 2;
+  background: var(--sun); color: var(--sun-ink); font-family: var(--display); font-weight: 800;
+  padding: 10px 14px; border-radius: 12px; transform: rotate(-8deg); box-shadow: var(--shadow); font-size: 1rem;
+}
+
+/* Secciones */
+section { padding-block: 64px; }
+.section-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; max-width: 60ch; }
+.eyebrow { font: 600 .8rem/1 var(--body); text-transform: uppercase; letter-spacing: .1em; color: var(--tomato); }
+.section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -.025em; }
+.section-head p { color: var(--muted); }
+
+/* Pasos */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; padding: 0; margin: 0; counter-reset: step; }
+.steps li { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.steps li::before {
+  counter-increment: step; content: counter(step);
+  font-family: var(--display); font-weight: 800; font-size: 1.4rem;
+  width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--chip); color: var(--tomato);
+}
+.steps h3 { font-size: 1.3rem; }
+.steps p { color: var(--muted); font-size: 1rem; }
+
+/* Demo */
+.demo { background: var(--surface); border-block: 1px solid var(--line); }
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.chip {
+  font: 600 .95rem/1 var(--body); padding: 12px 16px; border-radius: 999px; cursor: pointer;
+  border: 2px solid var(--line); background: var(--paper); color: var(--ink);
+}
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.demo-note { font-size: .9rem; color: var(--muted); margin-bottom: 18px; }
+.results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 20px;
+  display: flex; flex-direction: column; gap: 10px; min-width: 0;
+}
+.card-label { font: 600 .75rem/1 var(--body); text-transform: uppercase; letter-spacing: .09em; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.card p { font-size: 1rem; }
+.copy { font: 600 .8rem/1 var(--body); background: none; border: 0; color: var(--tomato); cursor: pointer; padding: 0; text-transform: none; letter-spacing: 0; }
+
+/* Incluye */
+.features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; list-style: none; padding: 0; margin: 0; }
+.features li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding-block: 16px; border-bottom: 1px dashed var(--line); min-width: 0; }
+.features li::before { content: "✓"; font-weight: 800; color: var(--mint); font-size: 1.1rem; }
+.features strong { display: block; }
+.features span { color: var(--muted); font-size: .98rem; }
+
+/* Precio */
+.price-card {
+  background: var(--ink); color: var(--paper); border-radius: 26px; padding: 40px;
+  display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+}
+.price-card h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; }
+.price-card p { color: color-mix(in srgb, var(--paper) 75%, var(--ink)); margin-top: 10px; max-width: 46ch; }
+.price { font-family: var(--display); font-weight: 800; font-size: clamp(3rem, 8vw, 4.5rem); line-height: 1; color: var(--sun); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price small { font-size: 1.1rem; color: var(--paper); font-family: var(--body); font-weight: 600; }
+
+/* Lista de espera */
+.join { text-align: left; }
+.join-box {
+  border: 3px dashed var(--tomato); border-radius: 26px; padding: 40px;
+  display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; background: var(--surface);
+}
+.join-box h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; }
+.join-box p { color: var(--muted); margin-top: 10px; max-width: 52ch; }
+
+/* Preguntas */
+.faq { display: flex; flex-direction: column; gap: 10px; max-width: 760px; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+summary { font-weight: 700; cursor: pointer; }
+details p { color: var(--muted); margin-top: 10px; }
+
+footer { padding-block: 40px 56px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+footer .wrap { display: flex; flex-direction: column; gap: 10px; }
+footer h3 { font-family: var(--body); font-size: 1rem; color: var(--ink); }
+
+@media (max-width: 860px) {
+  .hero .wrap, .price-card, .join-box { grid-template-columns: 1fr; }
+  .steps, .results { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .mock { margin-top: 18px; }
+  .price-card, .join-box { padding: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="logo"><span class="logo-mark" aria-hidden="true">✦</span>AnunciaFácil</div>
+    <a class="btn btn-ghost js-join" href="#lista">Apuntarme</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="tag">Para bares, peluquerías, tiendas y gimnasios</span>
+        <h1 id="hero-title">Las publicaciones de tu negocio, <em>escritas en un minuto.</em></h1>
+        <p class="lead">Cuéntanos qué negocio tienes y qué quieres anunciar. AnunciaFácil te prepara los textos para Instagram, las ideas para Reels y el calendario del mes.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary js-join" href="#lista">Apúntate a la lista de espera</a>
+          <a class="btn btn-ghost" href="#demo">Ver ejemplos</a>
+        </div>
+        <p class="fine">Estamos preparando el lanzamiento. Apuntarse es gratis y sin compromiso.</p>
+      </div>
+
+      <div class="mock" aria-label="Ejemplo de publicación creada con AnunciaFácil">
+        <span class="sticker">Ejemplo</span>
+        <article class="post">
+          <div class="post-head">
+            <span class="avatar" aria-hidden="true">M</span>
+            <div>
+              <div class="post-name">Peluquería Marta</div>
+              <div class="post-sub">Publicación de ejemplo · negocio inventado</div>
+            </div>
+          </div>
+          <div class="post-img"><span>-20 % martes</span></div>
+          <div class="post-body">
+            <p><strong>¿Martes de bajón? Te lo arreglamos.</strong> Todos los martes, 20 % de descuento en corte y peinado. Reserva por WhatsApp y ven a desconectar un rato. 💇‍♀️</p>
+            <p class="hashtags">#peluqueria #martesdedescuento #cortedepelo #tubarrio</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="como-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funcionará</span>
+        <h2 id="como-title">Tres pasos y listo para publicar</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <h3>Describe tu negocio</h3>
+          <p>Tipo de negocio, ciudad y cómo os gusta hablar: cercano, divertido o más serio. Solo una vez.</p>
+        </li>
+        <li>
+          <h3>Di qué quieres anunciar</h3>
+          <p>Una oferta, un producto nuevo, un horario especial o simplemente «ideas para esta semana».</p>
+        </li>
+        <li>
+          <h3>Copia y publica</h3>
+          <p>Recibes los textos con hashtags, una idea de Reel y el día recomendado. Los cambias a tu gusto y los publicas.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="demo" id="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Ejemplos</span>
+        <h2 id="demo-title">Así quedaría para tu negocio</h2>
+        <p>Elige un tipo de negocio para ver el tipo de resultado que tendrás.</p>
+      </div>
+      <div class="chips" role="group" aria-label="Tipo de negocio">
+        <button class="chip" type="button" id="chip-bar" data-k="bar" aria-pressed="true">Bar</button>
+        <button class="chip" type="button" id="chip-pelu" data-k="pelu" aria-pressed="false">Peluquería</button>
+        <button class="chip" type="button" id="chip-tienda" data-k="tienda" aria-pressed="false">Tienda de ropa</button>
+        <button class="chip" type="button" id="chip-gym" data-k="gym" aria-pressed="false">Gimnasio</button>
+      </div>
+      <p class="demo-note">Textos de ejemplo escritos a mano para mostrar la idea. La herramienta real los creará para tu negocio.</p>
+      <div class="results" id="results" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="incluye-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Qué incluirá</span>
+        <h2 id="incluye-title">Todo lo que necesitas para anunciarte cada semana</h2>
+      </div>
+      <ul class="features">
+        <li><div><strong>Publicaciones para Instagram y Facebook</strong><span>Con emojis y hashtags pensados para tu zona.</span></div></li>
+        <li><div><strong>Ideas para Reels y TikTok</strong><span>Qué grabar, cuánto debe durar y qué texto poner encima.</span></div></li>
+        <li><div><strong>Calendario del mes</strong><span>Qué publicar cada día, incluidas fechas especiales.</span></div></li>
+        <li><div><strong>Textos para anuncios y carteles</strong><span>Ofertas, promociones y avisos para el escaparate.</span></div></li>
+        <li><div><strong>Tu forma de hablar</strong><span>Recuerda cómo es tu negocio para no repetir lo mismo.</span></div></li>
+        <li><div><strong>En español y sin complicaciones</strong><span>Pensado para quien no tiene tiempo ni conocimientos de marketing.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="precio-title">
+    <div class="wrap">
+      <div class="price-card">
+        <div>
+          <h2 id="precio-title">Precio previsto</h2>
+          <p>Una cuota al mes, sin permanencia: te das de baja cuando quieras. El precio final se confirmará en el lanzamiento, y quien esté en la lista de espera tendrá una oferta especial.</p>
+        </div>
+        <div class="price">9,99 €<small> /mes</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="join" id="lista" aria-labelledby="lista-title">
+    <div class="wrap">
+      <div class="join-box">
+        <div>
+          <h2 id="lista-title">Apúntate a la lista de espera</h2>
+          <p>Te avisaremos por correo cuando AnunciaFácil esté listo y tendrás un precio especial de lanzamiento. Solo usaremos tu correo para esto y puedes pedir que lo borremos cuando quieras.</p>
+        </div>
+        <a class="btn btn-primary js-join" id="join-main" href="#lista" target="_blank" rel="noopener">Quiero apuntarme</a>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Preguntas</span>
+        <h2 id="faq-title">Preguntas frecuentes</h2>
+      </div>
+      <div class="faq">
+        <details><summary>¿Cuándo estará disponible?</summary><p>Estamos construyéndolo ahora. Quien esté en la lista de espera será el primero en probarlo.</p></details>
+        <details><summary>¿Necesito saber de marketing?</summary><p>No. Solo tienes que contar qué negocio tienes y qué quieres anunciar.</p></details>
+        <details><summary>¿Publica por mí en Instagram?</summary><p>No. Te da los textos y las ideas listos para copiar. Tú decides qué publicar y cuándo.</p></details>
+        <details><summary>¿Apuntarme a la lista tiene algún coste?</summary><p>No. Es gratis y no te compromete a nada.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h3>Privacidad</h3>
+    <p>Si te apuntas a la lista de espera, guardaremos tu correo solo para avisarte del lanzamiento. No lo compartiremos ni lo venderemos. Puedes pedir que lo borremos en cualquier momento.</p>
+    <p>Responsable: [Nombre del titular] · Contacto: [correo de contacto]</p>
+    <p>© AnunciaFácil</p>
+  </div>
+</footer>
+
+<script>
+// Enlace del formulario de la lista de espera (Google Forms, Tally…). Vacío = aún no está listo.
+const FORM_URL = "";
+
+const EXAMPLES = {
+  bar: [
+    ["Publicación", "¡Llega el viernes y llega la tapa del día! 🍢 Esta semana: croquetas caseras de jamón con tu caña. Te esperamos desde las 19:00.", "#tapas #viernes #barderbarrio #croquetas"],
+    ["Idea de Reel", "Plano cenital de las croquetas saliendo de la freidora, a cámara lenta. Texto encima: «Así empieza tu viernes». 10 segundos con música alegre.", ""],
+    ["Calendario", "Lunes: foto del equipo · Miércoles: encuesta «¿caña o vermut?» · Viernes: tapa del día · Domingo: partido en la tele.", ""]
+  ],
+  pelu: [
+    ["Publicación", "¿Martes de bajón? Te lo arreglamos. 💇‍♀️ Todos los martes, 20 % de descuento en corte y peinado. Reserva por WhatsApp.", "#peluqueria #martesdedescuento #cortedepelo"],
+    ["Idea de Reel", "Antes y después de un peinado en 3 cortes rápidos. Texto: «45 minutos después…». Pide permiso al cliente antes de grabar.", ""],
+    ["Calendario", "Martes: oferta · Jueves: consejo para cuidar el pelo en casa · Sábado: antes y después de la semana.", ""]
+  ],
+  tienda: [
+    ["Publicación", "Nueva colección de otoño ya en tienda 🍂 Jerséis de punto en 6 colores. Ven a probártelos este fin de semana.", "#modaotoño #tiendadebarrio #jerseis #comerciolocal"],
+    ["Idea de Reel", "Un mismo jersey combinado de 3 formas distintas, con cambio rápido en cada golpe de música. 15 segundos.", ""],
+    ["Calendario", "Lunes: novedad de la semana · Miércoles: cómo combinarlo · Sábado: «look del día» de un cliente (con su permiso).", ""]
+  ],
+  gym: [
+    ["Publicación", "Empieza el lunes sin excusas 💪 Primera clase de prueba gratis en cualquier actividad. Apúntate en recepción.", "#gimnasio #entrenamiento #clasedeprueba #vidasana"],
+    ["Idea de Reel", "Un monitor enseña un ejercicio para hacer en casa en 3 pasos. Texto: «Hoy no hay excusa». 20 segundos.", ""],
+    ["Calendario", "Lunes: clase de prueba · Miércoles: ejercicio en casa · Viernes: horario del fin de semana.", ""]
+  ]
+};
+
+const results = document.getElementById("results");
+
+function render(k) {
+  results.replaceChildren();
+  for (const [label, text, tags] of EXAMPLES[k]) {
+    const card = document.createElement("article");
+    card.className = "card";
+    const head = document.createElement("div");
+    head.className = "card-label";
+    const l = document.createElement("span");
+    l.textContent = label;
+    const btn = document.createElement("button");
+    btn.className = "copy";
+    btn.type = "button";
+    btn.textContent = "Copiar";
+    btn.addEventListener("click", () => copy(btn, tags ? text + "\n\n" + tags : text));
+    head.append(l, btn);
+    const p = document.createElement("p");
+    p.textContent = text;
+    card.append(head, p);
+    if (tags) {
+      const h = document.createElement("p");
+      h.className = "hashtags";
+      h.textContent = tags;
+      card.append(h);
+    }
+    results.append(card);
+  }
+}
+
+function copy(btn, text) {
+  const done = () => { btn.textContent = "Copiado"; setTimeout(() => { btn.textContent = "Copiar"; }, 1500); };
+  try {
+    navigator.clipboard.writeText(text).then(done, () => selectText(btn));
+  } catch (e) {
+    selectText(btn);
+  }
+}
+
+function selectText(btn) {
+  const p = btn.closest(".card").querySelector("p");
+  const range = document.createRange();
+  range.selectNodeContents(p);
+  const sel = getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  btn.textContent = "Selecciona y copia";
+}
+
+document.querySelectorAll(".chip").forEach((chip) => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll(".chip").forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+    render(chip.dataset.k);
+  });
+});
+render("bar");
+
+// Botones de la lista de espera
+const main = document.getElementById("join-main");
+if (FORM_URL) {
+  main.href = FORM_URL;
+} else {
+  main.removeAttribute("target");
+  main.setAttribute("aria-disabled", "true");
+  main.textContent = "Muy pronto";
+  main.addEventListener("click", (e) => e.preventDefault());
+}
+</script>
