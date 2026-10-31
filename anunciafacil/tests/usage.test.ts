@@ -49,13 +49,13 @@ describe("límites de uso", () => {
 
   it("los suscriptores tienen su límite mensual aunque haya lanzamiento", () => {
     process.env.FREE_LAUNCH = "true";
-    expect(usagePlan(profile("active")).limit).toBe(100);
+    expect(usagePlan(profile("active")).limit).toBe(50);
     expect(usagePlan(profile("active")).period).toBe("mes");
   });
 
-  it("el plan Pro tiene 500 al mes", () => {
-    expect(usagePlan(profile("active", "pro")).limit).toBe(500);
-    expect(usagePlan(profile("active", "otro")).limit).toBe(100);
+  it("el plan Pro tiene 200 al mes", () => {
+    expect(usagePlan(profile("active", "pro")).limit).toBe(200);
+    expect(usagePlan(profile("active", "otro")).limit).toBe(50);
   });
 
   it("una suscripción cancelada o impagada no da el límite de pago", () => {

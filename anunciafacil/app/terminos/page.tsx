@@ -21,7 +21,7 @@ export default function Terminos() {
         <ul>
           <li>Durante el periodo de lanzamiento, de duración limitada, Anuncio Fácil es gratis con el límite de generaciones mensuales que se indique en la web. Avisaremos por correo al menos 30 días antes de que pase a ser de pago; nunca se cobra nada sin que te suscribas tú.</li>
           <li>Fuera del lanzamiento, para usar Anuncio Fácil hace falta una suscripción activa, salvo las generaciones de prueba gratis que se indiquen en la web en cada momento.</li>
-          <li>Suscripción, IVA incluido: plan Básico, 9,99 € al mes con hasta 100 generaciones al mes (redes sociales, correos y carteles), o plan Pro, 30 € al mes con hasta 500 generaciones al mes y todas las herramientas, incluidas las respuestas a reseñas, los mensajes de WhatsApp y las respuestas a mensajes de clientes. Se cobra por adelantado cada mes a través de Stripe.</li>
+          <li>Suscripción, IVA incluido: plan Básico, 9,99 € al mes con hasta 50 generaciones al mes (redes sociales, correos y carteles), o plan Pro, 30 € al mes con hasta 200 generaciones al mes y todas las herramientas, incluidas las respuestas a reseñas, los mensajes de WhatsApp y las respuestas a mensajes de clientes. Se cobra por adelantado cada mes a través de Stripe.</li>
           <li>Podemos cambiar el precio avisándote con al menos 30 días de antelación.</li>
         </ul>
 

@@ -82,7 +82,7 @@ export function Generator({
 
         {lockedTools.includes(tool) && (
           <p className="notice notice-error">
-            «{info.label}» está incluida en el plan Pro (500 generaciones al mes). Puedes cambiar de plan desde «Gestionar suscripción».
+            «{info.label}» está incluida en el plan Pro (200 generaciones al mes). Puedes cambiar de plan desde «Gestionar suscripción».
           </p>
         )}
         <label htmlFor="request">

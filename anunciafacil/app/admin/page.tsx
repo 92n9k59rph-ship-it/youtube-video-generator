@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { freeLaunch, intEnv, isAdminEmail } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
-import { PLANS, isPlanId } from "@/lib/plans";
+import { PLANS, isPlanId, planLimit } from "@/lib/plans";
 import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
 
@@ -57,7 +57,6 @@ export default async function Admin() {
   // Meta secreta del lanzamiento: solo está en Vercel (LAUNCH_GOAL), nunca en el código público.
   const launchGoal = intEnv("LAUNCH_GOAL", 0);
   const goalReached = launchGoal > 0 && allProfiles.length >= launchGoal;
-  const monthlyLimit = intEnv("MONTHLY_GENERATIONS", 100);
 
   return (
     <main>
@@ -122,7 +121,7 @@ export default async function Admin() {
               </>
             ) : (
               <>
-                <span>{freeLimit} gratis · {monthlyLimit} al mes por suscriptor</span>
+                <span>{freeLimit} gratis · Básico {planLimit("basic")} al mes · Pro {planLimit("pro")} al mes</span>
                 <span className="muted small">Se cambian en Vercel (FREE_GENERATIONS y MONTHLY_GENERATIONS)</span>
               </>
             )}
