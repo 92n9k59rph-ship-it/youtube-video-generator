@@ -1,6 +1,6 @@
 # Textos para el lanzamiento
 
-Úsalos cuando la app esté funcionando con cobros reales (paso 6 de `GUIA.md`). La dirección de la app es `https://anuncio-facil.vercel.app` (o `app.anunciofacil.es` cuando conectes tu dominio).
+Úsalos cuando la app esté funcionando con cobros reales (paso 10 de `PASOS-FINALES.md`). La dirección de la app es `https://anuncio-facil.vercel.app` (o `app.anunciofacil.es` cuando conectes tu dominio).
 
 ## Correo para la lista de espera
 
@@ -19,9 +19,10 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 > - correos para tus clientes;
 > - respuestas a reseñas de Google;
 > - mensajes de WhatsApp;
-> - textos para carteles y menús.
+> - textos para carteles y menús;
+> - respuestas a los mensajes de tus clientes.
 >
-> Es **gratis por tiempo limitado**: hasta 10 usos al mes, sin tarjeta. Más adelante costará 9,99 € al mes; te avisaremos antes y solo pagarás si decides suscribirte.
+> Es **gratis por tiempo limitado**: hasta 10 usos al mes, sin tarjeta. Más adelante habrá dos planes, Básico (9,99 € al mes) y Pro (35 € al mes); te avisaremos antes y solo pagarás si decides suscribirte.
 >
 > 👉 https://anuncio-facil.vercel.app
 >
