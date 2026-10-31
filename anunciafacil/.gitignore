@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+.env*.local
+.env
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+
+# La plantilla de Python de la raíz ignora "lib/"; aquí sí la necesitamos.
+!lib/
