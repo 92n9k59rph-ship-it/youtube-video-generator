@@ -1,4 +1,4 @@
-# Guía para poner en marcha AnunciaFácil
+# Guía para poner en marcha Anuncio Fácil
 
 Esta carpeta tiene la herramienta completa: registro de clientes, pago mensual con Stripe, panel de cada cliente y cinco generadores de textos con Claude:
 - publicaciones para redes, con idea de Reel y calendario;
@@ -11,7 +11,7 @@ Esta carpeta tiene la herramienta completa: registro de clientes, pago mensual c
 
 Orden recomendado: **Supabase → Anthropic → Vercel → probar → abrir gratis al público.** Stripe (los cobros) se deja para cuando haya muchos clientes.
 
-> **Lanzamiento gratis:** la app empieza en modo gratis (`FREE_LAUNCH=true`). Nadie paga y cada cliente tiene hasta 20 generaciones al mes. Así atraes clientes sin necesitar Stripe, cuenta bancaria ni alta para facturar. **Lo único que pagas tú es la IA** (paso 2). Con 100 clientes que usen todo su límite, serían unas 2.000 generaciones al mes; a unos pocos céntimos cada una, pueden ser **varias decenas de euros al mes**. Por eso es importante poner el **límite de gasto** en Anthropic. Mira el gasto real en tu panel `/admin`.
+> **Lanzamiento gratis:** la app empieza en modo gratis (`FREE_LAUNCH=true`). Nadie paga y cada cliente tiene hasta 10 generaciones al mes. Así atraes clientes sin necesitar Stripe, cuenta bancaria ni alta para facturar. **Lo único que pagas tú es la IA** (paso 2). Con 100 clientes que usen todo su límite, serían unas 1.000 generaciones al mes; a unos pocos céntimos cada una, pueden ser **unas decenas de euros al mes**. Por eso es importante poner el **límite de gasto** en Anthropic. Mira el gasto real en tu panel `/admin`.
 
 ---
 
@@ -73,7 +73,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 1. Entra en **stripe.com** → crea una cuenta.
 2. Arriba, activa **«Modo de prueba» / «Test mode»**. Así nadie paga dinero real mientras pruebas.
 3. **Catálogo de productos → Añadir producto**:
-   - Nombre: `AnunciaFácil`
+   - Nombre: `Anuncio Fácil`
    - Precio: **9,99 EUR**, **Recurrente**, **Mensual**
    - En «Incluye impuestos», elige **Sí (impuestos incluidos)**.
    - Guarda y copia el **ID del precio** (empieza por `price_`) → irá en `STRIPE_PRICE_ID`.
@@ -93,7 +93,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `NEXT_PUBLIC_SITE_URL`: de momento pon `https://anunciafacil.vercel.app`; la corregirás en el punto 6.
    - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` y `SUPABASE_SERVICE_ROLE_KEY`
    - `ANTHROPIC_API_KEY` y `CLAUDE_MODEL` (con el valor `claude-opus-5-5`)
-   - `FREE_LAUNCH`: con el valor `true` (lanzamiento gratis). `LAUNCH_MONTHLY_GENERATIONS`: con el valor `20` (generaciones gratis al mes por cliente). `LAUNCH_GOAL`: tu **meta secreta** de negocios (el número que acordamos). Solo está en Vercel, no la escribas en GitHub; tu panel `/admin` te avisa al llegar.
+   - `FREE_LAUNCH`: con el valor `true` (lanzamiento gratis). `LAUNCH_MONTHLY_GENERATIONS`: con el valor `10` (generaciones gratis al mes por cliente). `LAUNCH_GOAL`: tu **meta secreta** de negocios (el número que acordamos). Solo está en Vercel, no la escribas en GitHub; tu panel `/admin` te avisa al llegar.
    - `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` y `STRIPE_WEBHOOK_SECRET`: **no hacen falta durante el lanzamiento gratis**; se añaden en el paso 7.
    - `ADMIN_EMAILS`: el correo con el que entrarás tú en la app (por ejemplo `anunciafacil.contacto@gmail.com`). Te da acceso a tu panel de administración en `/admin`.
    - `FREE_GENERATIONS` (con el valor `3`: generaciones de prueba gratis antes de pagar; `0` quita la prueba) y `MONTHLY_GENERATIONS` (con el valor `100`)
@@ -112,6 +112,16 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 > **Sobre la rama:** el código está en la rama `claude/youtube-video-creator-agent-2lrw41`. Vercel publica por defecto la rama `main`. Si Vercel no encuentra la carpeta `anunciafacil`, pídeme que prepare una *pull request* para pasarla a `main`, o elige esa rama en Vercel → Settings → Git.
 
 ---
+
+### Conectar tu dominio `anunciofacil.es`
+
+Tu web de presentación ya está en `anunciofacil.es`. Lo más sencillo es poner la app en un **subdominio**: **`app.anunciofacil.es`**.
+1. En Vercel → tu proyecto → **Settings → Domains** → añade `app.anunciofacil.es`.
+2. Vercel te dirá que añadas un registro **CNAME**. Entra en la web donde compraste el dominio → **DNS** → añade ese registro tal cual. Puede tardar desde unos minutos hasta unas horas.
+3. Cuando Vercel lo marque como válido:
+   - Cambia `NEXT_PUBLIC_SITE_URL` a `https://app.anunciofacil.es` y haz **Redeploy**.
+   - En Supabase → Authentication → URL Configuration, cambia la **Site URL** y añade `https://app.anunciofacil.es/auth/callback` en **Redirect URLs**.
+4. En tu web `anunciofacil.es`, haz que los botones **«Iniciar sesión»** y **«Próximamente»** lleven a `https://app.anunciofacil.es/entrar`.
 
 ## Paso 5. Probar todo
 

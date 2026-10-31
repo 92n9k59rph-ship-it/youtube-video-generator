@@ -127,7 +127,7 @@ export default async function Panel({
               </>
             ) : launch ? (
               <p className="muted">
-                AnunciaFácil es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
+                Anuncio Fácil es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
                 Después costará 9,99 € al mes. Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
                 salvo que tú decidas suscribirte.
               </p>

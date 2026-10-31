@@ -7,14 +7,14 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
-  title: "AnunciaFácil",
+  title: "Anuncio Fácil",
   description,
   openGraph: {
-    title: "AnunciaFácil · El marketing de tu negocio, en un minuto",
+    title: "Anuncio Fácil · El marketing de tu negocio, en un minuto",
     description,
     locale: "es_ES",
     type: "website",
-    siteName: "AnunciaFácil",
+    siteName: "Anuncio Fácil",
   },
 };
 
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="top">
           <div className="wrap">
             <Link className="logo" href="/">
-              <span className="logo-mark" aria-hidden="true">✦</span>AnunciaFácil
+              <span className="logo-mark" aria-hidden="true">✦</span>Anuncio Fácil
             </Link>
             <nav className="nav">
               <Link className="btn btn-ghost" href="/panel">Mi panel</Link>
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer>
           <div className="wrap">
-            <span>© AnunciaFácil · Responsable: David Lázaro · anunciafacil.contacto@gmail.com</span>
+            <span>© Anuncio Fácil · Responsable: David Lázaro · anunciafacil.contacto@gmail.com</span>
             <span>
               <Link href="/privacidad">Privacidad</Link> · <Link href="/terminos">Términos</Link>
             </span>

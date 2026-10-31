@@ -6,8 +6,8 @@ Este repositorio tiene tres partes:
 | Carpeta | Qué es |
 |---|---|
 | `.claude/`, `plantillas/`, `proyectos/` | El **agente productor de vídeos para YouTube** y los vídeos ya preparados |
-| `anunciafacil/` | **AnunciaFácil**, la app de marketing para negocios (con suscripción) |
-| `docs/` y `web/anunciafacil/` | La **web de la lista de espera** de AnunciaFácil (publicada con GitHub Pages) |
+| `anunciafacil/` | **Anuncio Fácil**, la app de marketing para negocios (con suscripción) |
+| `docs/` y `web/anunciafacil/` | La **web de la lista de espera** de Anuncio Fácil (publicada con GitHub Pages) |
 
 ## Agente productor de vídeos (Claude Code)
 
@@ -35,7 +35,7 @@ Si falta el tema, la duración o el estilo visual, el agente te los preguntará 
 
 El agente entrega textos, guiones y prompts: **no genera ni exporta vídeo por sí mismo**. Los datos que no pueda verificar aparecen marcados con `⚠️ VERIFICAR:`.
 
-## AnunciaFácil
+## Anuncio Fácil
 
 Aplicación web (Next.js + Supabase + Stripe + API de Claude) que escribe textos de marketing para negocios pequeños:
 - publicaciones para redes con idea de Reel y calendario;
@@ -44,7 +44,7 @@ Aplicación web (Next.js + Supabase + Stripe + API de Claude) que escribe textos
 - mensajes de WhatsApp;
 - textos para carteles y menús.
 
-Empieza en **modo lanzamiento gratis por tiempo limitado** (20 generaciones al mes por negocio); después, suscripción de 9,99 €/mes con Stripe. Incluye panel del cliente con historial, borrado de cuenta y panel de administración (`/admin`).
+Empieza en **modo lanzamiento gratis por tiempo limitado** (10 generaciones al mes por negocio); después, suscripción de 9,99 €/mes con Stripe. Incluye panel del cliente con historial, borrado de cuenta y panel de administración (`/admin`).
 
 - **Ponerla en marcha:** `anunciafacil/GUIA.md`, paso a paso y desde el iPad.
 - **Textos para el lanzamiento:** `anunciafacil/LANZAMIENTO.md`

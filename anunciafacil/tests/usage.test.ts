@@ -38,10 +38,10 @@ describe("límites de uso", () => {
     expect(usagePlan(profile("none"))).toEqual({ limit: 3, period: "gratis", since: null });
   });
 
-  it("en el lanzamiento gratis: 20 al mes desde el día 1", () => {
+  it("en el lanzamiento gratis: 10 al mes desde el día 1", () => {
     process.env.FREE_LAUNCH = "true";
     const plan = usagePlan(profile("none"));
-    expect(plan.limit).toBe(20);
+    expect(plan.limit).toBe(10);
     expect(plan.period).toBe("lanzamiento");
     expect(new Date(plan.since!).getUTCDate()).toBe(1);
   });

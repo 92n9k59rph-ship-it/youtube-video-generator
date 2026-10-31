@@ -1,4 +1,4 @@
-export const metadata = { title: "Privacidad · AnunciaFácil" };
+export const metadata = { title: "Privacidad · Anuncio Fácil" };
 
 // BORRADOR: revisar con alguien que sepa de protección de datos antes de cobrar a clientes reales.
 export default function Privacidad() {

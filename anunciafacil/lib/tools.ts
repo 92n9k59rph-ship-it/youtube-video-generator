@@ -1,4 +1,4 @@
-// Herramientas que ofrece AnunciaFácil. Este archivo lo usan tanto el panel (navegador) como el servidor,
+// Herramientas que ofrece Anuncio Fácil. Este archivo lo usan tanto el panel (navegador) como el servidor,
 // así que no debe importar nada del SDK de Anthropic ni de Supabase.
 
 export const TOOL_IDS = ["social", "email", "review", "whatsapp", "poster"] as const;
