@@ -22,7 +22,27 @@ export function freeLaunch(): boolean {
   return process.env.FREE_LAUNCH === "true";
 }
 
-// Mostrar en público el precio y lo de «gratis». Mientras sea false, la web no habla de precios.
+// Mostrar en público el precio y lo de «gratis». Se ve por defecto; SHOW_PRICING=false lo oculta.
 export function showPricing(): boolean {
-  return process.env.SHOW_PRICING === "true";
+  return process.env.SHOW_PRICING !== "false";
+}
+
+// ¿Puede la gente registrarse y usar la app? Hasta que APP_OPEN=true, solo los administradores.
+export function appOpen(): boolean {
+  return process.env.APP_OPEN === "true";
+}
+
+const DEFAULT_WAITLIST_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScf0UmVpDGv5DPjTBJ-xVkWwYuwRCAgBFGuci-OX_OG9EuCxQ/viewform";
+
+export function waitlistUrl(): string {
+  return process.env.WAITLIST_URL || DEFAULT_WAITLIST_URL;
+}
+
+export function isAdminEmail(email: string | null | undefined): boolean {
+  const admins = (process.env.ADMIN_EMAILS ?? "")
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+  return Boolean(email && admins.includes(email.toLowerCase()));
 }
