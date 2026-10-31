@@ -1,6 +1,6 @@
 # Textos para el lanzamiento
 
-Úsalos cuando la app esté funcionando con cobros reales (paso 6 de `GUIA.md`). Cambia `[DIRECCIÓN DE LA APP]` por la dirección de Vercel.
+Úsalos cuando la app esté funcionando con cobros reales (paso 6 de `GUIA.md`). La dirección de la app es `https://anuncio-facil.vercel.app` (o `app.anunciofacil.es` cuando conectes tu dominio).
 
 ## Correo para la lista de espera
 
@@ -23,7 +23,7 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 >
 > Es **gratis por tiempo limitado**: hasta 10 usos al mes, sin tarjeta. Más adelante costará 9,99 € al mes; te avisaremos antes y solo pagarás si decides suscribirte.
 >
-> 👉 [DIRECCIÓN DE LA APP]
+> 👉 https://anuncio-facil.vercel.app
 >
 > Si tienes cualquier duda, contesta a este correo y te ayudamos.
 >
@@ -34,7 +34,7 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 
 ## Mensaje corto para WhatsApp (contactos que conoces)
 
-> ¡Hola! 👋 Ya está lista **Anuncio Fácil**, la app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas, mensajes para clientes y carteles de tu negocio. Ahora es gratis durante el lanzamiento: [DIRECCIÓN DE LA APP]. ¿Me dices qué te parece?
+> ¡Hola! 👋 Ya está lista **Anuncio Fácil**, la app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas, mensajes para clientes y carteles de tu negocio. Ahora es gratis durante el lanzamiento: https://anuncio-facil.vercel.app. ¿Me dices qué te parece?
 
 ## Después del lanzamiento
 

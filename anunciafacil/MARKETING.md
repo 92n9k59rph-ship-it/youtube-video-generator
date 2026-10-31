@@ -35,10 +35,10 @@ Luego, **en el iPad**, generas algo para su negocio delante de él (por ejemplo,
 **Si dice que no:** dale las gracias y déjale la dirección de la app apuntada en una tarjeta o un papel.
 
 ### WhatsApp a conocidos con negocio
-> ¡Hola [nombre]! 👋 Estoy lanzando **Anuncio Fácil**, una app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas de Google y mensajes para tus clientes. Ahora es gratis. ¿La pruebas y me dices qué te parece? Me ayudarías mucho 🙏 [DIRECCIÓN DE LA APP]
+> ¡Hola [nombre]! 👋 Estoy lanzando **Anuncio Fácil**, una app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas de Google y mensajes para tus clientes. Ahora es gratis. ¿La pruebas y me dices qué te parece? Me ayudarías mucho 🙏 https://anuncio-facil.vercel.app
 
 ### Mensaje directo de Instagram (uno a uno, personalizado)
-> ¡Hola! Me encanta [algo concreto de su perfil, por ejemplo «la foto de vuestra tarta de queso»]. He creado Anuncio Fácil, una herramienta gratis que escribe publicaciones y respuestas a reseñas para negocios como el vuestro. Si os apetece probarla: [DIRECCIÓN DE LA APP]. ¡Un saludo!
+> ¡Hola! Me encanta [algo concreto de su perfil, por ejemplo «la foto de vuestra tarta de queso»]. He creado Anuncio Fácil, una herramienta gratis que escribe publicaciones y respuestas a reseñas para negocios como el vuestro. Si os apetece probarla: https://anuncio-facil.vercel.app. ¡Un saludo!
 
 Escribe **a mano y a pocos negocios al día**, y cambia siempre la primera frase. Los mensajes masivos o automáticos se consideran spam e Instagram puede bloquear tu cuenta.
 
@@ -51,7 +51,7 @@ Escribe **a mano y a pocos negocios al día**, y cambia siempre la primera frase
 >
 > Durante el lanzamiento es gratuita. Me encantaría que la conocieran los comercios de la asociación: puedo hacer una demostración de 15 minutos, en persona u online, o enviaros un texto para vuestro boletín.
 >
-> [DIRECCIÓN DE LA APP]
+> https://anuncio-facil.vercel.app
 >
 > Muchas gracias,
 > David Lázaro · anunciafacil.contacto@gmail.com
