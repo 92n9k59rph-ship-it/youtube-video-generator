@@ -5,7 +5,15 @@ import type { ToolResult } from "@/lib/generator";
 import { TOOLS, TOOL_IDS, type ToolId } from "@/lib/tools";
 import type { Usage } from "@/lib/usage";
 
-export function Generator({ initialUsage, canGenerate }: { initialUsage: Usage; canGenerate: boolean }) {
+export function Generator({
+  initialUsage,
+  canGenerate,
+  showPricing,
+}: {
+  initialUsage: Usage;
+  canGenerate: boolean;
+  showPricing: boolean;
+}) {
   const [tool, setTool] = useState<ToolId>("social");
   const [request, setRequest] = useState("");
   const [output, setOutput] = useState<ToolResult | null>(null);
@@ -91,7 +99,9 @@ export function Generator({ initialUsage, canGenerate }: { initialUsage: Usage; 
           </div>
           <p className="muted small">
             {usage.period === "lanzamiento"
-              ? `Gratis durante el lanzamiento: has usado ${usage.used} de ${usage.limit} generaciones este mes.`
+              ? showPricing
+                ? `Gratis durante el lanzamiento: has usado ${usage.used} de ${usage.limit} generaciones este mes.`
+                : `Has usado ${usage.used} de ${usage.limit} generaciones este mes.`
               : usage.period === "gratis"
               ? usage.limit === 0
                 ? "Suscríbete para empezar a generar textos."

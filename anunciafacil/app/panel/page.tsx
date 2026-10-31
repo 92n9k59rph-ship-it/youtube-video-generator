@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
-import { freeLaunch, intEnv, siteUrl } from "@/lib/env";
+import { freeLaunch, intEnv, showPricing, siteUrl } from "@/lib/env";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { deleteAccount, saveBusiness, saveFeedback, signOut } from "./actions";
@@ -32,6 +32,7 @@ export default async function Panel({
   const usage = await getUsage(profile);
   const hasBusiness = Boolean(profile.business_type);
   const launch = freeLaunch();
+  const pricing = showPricing();
 
   const { data: history } = await supabase
     .from("generations")
@@ -107,6 +108,7 @@ export default async function Panel({
             <button className="btn btn-ghost" type="submit">Guardar</button>
           </form>
 
+          {(pricing || subscribed) && (
           <div className="panel">
             <div className="card-head">
               <h2>Tu plan</h2>
@@ -148,6 +150,7 @@ export default async function Panel({
               </>
             )}
           </div>
+          )}
         </div>
 
         {previous && (
@@ -164,7 +167,7 @@ export default async function Panel({
         )}
 
         {hasBusiness ? (
-          <Generator initialUsage={usage} canGenerate={hasBusiness} />
+          <Generator initialUsage={usage} canGenerate={hasBusiness} showPricing={pricing} />
         ) : (
           <p className="notice notice-error">Guarda primero los datos de tu negocio para empezar a generar.</p>
         )}

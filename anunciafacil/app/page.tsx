@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { freeLaunch, intEnv } from "@/lib/env";
+import { freeLaunch, intEnv, showPricing } from "@/lib/env";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 import { HomeExamples } from "./HomeExamples";
 
@@ -11,9 +11,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const monthly = intEnv("MONTHLY_GENERATIONS", 100);
   const launch = freeLaunch();
   const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 10);
-  const cta = launch ? "Empezar gratis" : "Empezar";
+  const pricing = showPricing();
+  const cta = pricing && launch ? "Empezar gratis" : "Empezar";
 
-  const faqs: Array<[string, string]> = [
+  const allFaqs: Array<[string, string]> = [
     [
       "¿Qué es Anuncio Fácil?",
       "Una herramienta que escribe por ti los textos para anunciar tu negocio: publicaciones para redes, correos para tus clientes, respuestas a reseñas de Google, mensajes de WhatsApp y textos para carteles o menús.",
@@ -45,6 +46,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       "Sí, cuando quieras, desde tu panel. Se borran tu cuenta, los datos de tu negocio y tu historial.",
     ],
   ];
+  const faqs = pricing ? allFaqs : allFaqs.filter(([q]) => q !== "¿Cuánto cuesta?");
 
   return (
     <main className="home">
@@ -70,13 +72,15 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               <Link className="btn btn-primary btn-big" href="/entrar">{cta}</Link>
               <a className="btn btn-ghost btn-big" href="#ejemplos">Ver ejemplos</a>
             </div>
-            <p className="muted small">
-              {launch
-                ? "Gratis por tiempo limitado, sin tarjeta."
-                : freeGenerations > 0
-                  ? `${freeGenerations} generaciones gratis para probar, sin tarjeta.`
-                  : "Sin permanencia: cancelas cuando quieras."}
-            </p>
+            {pricing && (
+              <p className="muted small">
+                {launch
+                  ? "Gratis por tiempo limitado, sin tarjeta."
+                  : freeGenerations > 0
+                    ? `${freeGenerations} generaciones gratis para probar, sin tarjeta.`
+                    : "Sin permanencia: cancelas cuando quieras."}
+              </p>
+            )}
           </div>
 
           <div className="mock" aria-label="Ejemplo de publicación creada con Anuncio Fácil">
@@ -193,6 +197,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       </section>
 
       {/* Precio */}
+      {pricing && (
       <section className="band">
         <div className="wrap">
           <div className="price-card">
@@ -212,6 +217,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
           </div>
         </div>
       </section>
+      )}
 
       {/* Preguntas */}
       <section className="band band-surface">

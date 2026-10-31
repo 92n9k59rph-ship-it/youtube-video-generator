@@ -21,3 +21,8 @@ export function siteUrl(): string {
 export function freeLaunch(): boolean {
   return process.env.FREE_LAUNCH === "true";
 }
+
+// Mostrar en público el precio y lo de «gratis». Mientras sea false, la web no habla de precios.
+export function showPricing(): boolean {
+  return process.env.SHOW_PRICING === "true";
+}
