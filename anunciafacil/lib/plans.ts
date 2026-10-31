@@ -28,8 +28,8 @@ export const PLANS: Record<PlanId, PlanInfo> = {
   },
   pro: {
     name: "Pro",
-    priceEur: 30,
-    priceLabel: "30 €",
+    priceEur: 35,
+    priceLabel: "35 €",
     limitEnv: "PRO_MONTHLY_GENERATIONS",
     defaultLimit: 200,
     stripePriceEnv: "STRIPE_PRICE_ID_PRO",

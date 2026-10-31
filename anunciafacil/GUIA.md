@@ -77,7 +77,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - Precio: **9,99 EUR**, **Recurrente**, **Mensual**
    - En «Incluye impuestos», elige **Sí (impuestos incluidos)**.
    - Guarda y copia el **ID del precio** (empieza por `price_`) → irá en `STRIPE_PRICE_ID`.
-   - Repite para el **plan Pro**: producto `Anuncio Fácil Pro`, **30 EUR**, recurrente, mensual, con impuestos incluidos. Su ID de precio irá en `STRIPE_PRICE_ID_PRO`.
+   - Repite para el **plan Pro**: producto `Anuncio Fácil Pro`, **35 EUR**, recurrente, mensual, con impuestos incluidos. Su ID de precio irá en `STRIPE_PRICE_ID_PRO`.
 4. **Desarrolladores → Claves de API** → copia la **clave secreta** (empieza por `sk_test_`) → irá en `STRIPE_SECRET_KEY`.
 5. **Configuración → Facturación → Portal de clientes** → actívalo y permite que los clientes **cancelen** su suscripción y **actualicen la tarjeta**.
 6. **Configuración → Correos electrónicos de clientes** → activa **«Pagos correctos»** y **«Facturas»**, para que cada cliente reciba su recibo por correo después de pagar.

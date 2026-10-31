@@ -1,6 +1,6 @@
 # Textos para el lanzamiento
 
-Úsalos cuando la app esté funcionando con cobros reales (paso 6 de `GUIA.md`). La dirección de la app es `https://anuncio-facil.vercel.app` (o `app.anunciofacil.es` cuando conectes tu dominio).
+Úsalos cuando la app esté funcionando con cobros reales (paso 10 de `PASOS-FINALES.md`). La dirección de la app es `https://anuncio-facil.vercel.app` (o `app.anunciofacil.es` cuando conectes tu dominio).
 
 ## Correo para la lista de espera
 
@@ -19,9 +19,10 @@ Solo puedes escribir a quienes se apuntaron, y solo para esto: avisarles del lan
 > - correos para tus clientes;
 > - respuestas a reseñas de Google;
 > - mensajes de WhatsApp;
-> - textos para carteles y menús.
+> - textos para carteles y menús;
+> - respuestas a los mensajes de tus clientes.
 >
-> Es **gratis por tiempo limitado**: hasta 10 usos al mes, sin tarjeta. Más adelante costará 9,99 € al mes; te avisaremos antes y solo pagarás si decides suscribirte.
+> Es **gratis por tiempo limitado**: hasta 10 usos al mes, sin tarjeta. Más adelante habrá dos planes, Básico (9,99 € al mes) y Pro (35 € al mes); te avisaremos antes y solo pagarás si decides suscribirte.
 >
 > 👉 https://anuncio-facil.vercel.app
 >
@@ -51,7 +52,7 @@ Envíalo **al menos 30 días antes** de poner `FREE_LAUNCH=false`, a todos los c
 >
 > Gracias por usar Anuncio Fácil durante el lanzamiento. Nos alegra mucho que nos ayudes con tu negocio.
 >
-> A partir del **[FECHA]**, Anuncio Fácil tendrá dos planes (IVA incluido y sin permanencia): **Básico, 9,99 € al mes** con hasta 50 usos, y **Pro, 30 € al mes** con hasta 200 usos.
+> A partir del **[FECHA]**, Anuncio Fácil tendrá dos planes (IVA incluido y sin permanencia): **Básico, 9,99 € al mes** con hasta 50 usos, y **Pro, 35 € al mes** con hasta 200 usos.
 >
 > - **No tienes que hacer nada si no quieres seguir:** no se te cobrará nada, porque nunca te pedimos la tarjeta.
 > - **Si quieres seguir,** a partir de esa fecha verás en tu panel el botón **Suscribirme**.

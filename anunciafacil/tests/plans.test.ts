@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { PLANS, PLAN_IDS, isPlanId, planLimit } from "@/lib/plans";
 
 describe("planes", () => {
-  it("hay un plan Básico de 9,99 € y un plan Pro de 30 €", () => {
+  it("hay un plan Básico de 9,99 € y un plan Pro de 35 €", () => {
     expect(PLAN_IDS).toEqual(["basic", "pro"]);
     expect(PLANS.basic.priceEur).toBe(9.99);
-    expect(PLANS.pro.priceEur).toBe(30);
+    expect(PLANS.pro.priceEur).toBe(35);
   });
 
   it("límites por defecto: 50 y 200 generaciones al mes", () => {
