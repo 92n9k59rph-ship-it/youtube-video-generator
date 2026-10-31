@@ -45,3 +45,11 @@ export function planLimit(plan: PlanId, env: Record<string, string | undefined> 
   const parsed = Number.parseInt(env[PLANS[plan].limitEnv] ?? "", 10);
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : PLANS[plan].defaultLimit;
 }
+
+// ¿Puede este cliente usar esta herramienta? Solo los suscriptores del plan Básico tienen herramientas bloqueadas:
+// durante el lanzamiento gratis y en la prueba gratis se puede probar todo, para que vean lo que ofrece el Pro.
+export function canUseTool(proOnly: boolean, opts: { subscribed: boolean; plan: string | null | undefined }): boolean {
+  if (!proOnly) return true;
+  if (!opts.subscribed) return true;
+  return opts.plan === "pro";
+}

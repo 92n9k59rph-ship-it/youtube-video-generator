@@ -4,7 +4,7 @@ import { PLANS, PLAN_IDS, planLimit } from "@/lib/plans";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 import { HomeExamples } from "./HomeExamples";
 
-const TOOL_ICONS: Record<string, string> = { social: "📱", email: "✉️", review: "⭐", whatsapp: "💬", poster: "🪧" };
+const TOOL_ICONS: Record<string, string> = { social: "📱", email: "✉️", review: "⭐", whatsapp: "💬", poster: "🪧", reply: "🗨️" };
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
@@ -26,7 +26,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const allFaqs: Array<[string, string]> = [
     [
       "¿Qué es Anuncio Fácil?",
-      "Una herramienta que escribe por ti los textos para anunciar tu negocio: publicaciones para redes, correos para tus clientes, respuestas a reseñas de Google, mensajes de WhatsApp y textos para carteles o menús.",
+      "Una herramienta que escribe por ti los textos de tu negocio: publicaciones para redes, correos para tus clientes, textos para carteles o menús y, en el plan Pro, respuestas a reseñas de Google, mensajes de WhatsApp y respuestas a los mensajes que te escriben tus clientes.",
     ],
     [
       "¿Necesito saber de marketing?",
@@ -74,8 +74,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               Las publicaciones de tu negocio, <span className="accent">escritas en un minuto.</span>
             </h1>
             <p className="lead">
-              Cuéntanos qué negocio tienes y qué quieres anunciar. Anuncio Fácil te prepara publicaciones para Instagram, correos
-              para tus clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles.
+              Cuéntanos qué negocio tienes y qué necesitas. Anuncio Fácil te prepara publicaciones para Instagram, correos para tus
+              clientes, carteles y, además, respuestas a reseñas y a los mensajes que te escriben tus clientes.
             </p>
             <div className="nav">
               <CtaLink className="btn btn-primary btn-big" />
@@ -158,14 +158,17 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         <div className="wrap stack">
           <div className="section-head">
             <span className="eyebrow">Qué incluye</span>
-            <h2>Cinco herramientas en una</h2>
+            <h2>Seis herramientas en una</h2>
             <p className="muted">Eliges la que necesitas, escribes con tus palabras y en unos segundos tienes los textos listos para copiar.</p>
           </div>
           <div className="grid-3">
             {TOOL_IDS.map((id) => (
               <div className="card" key={id}>
                 <span className="tool-icon" aria-hidden="true">{TOOL_ICONS[id]}</span>
-                <strong>{TOOLS[id].label}</strong>
+                <strong>
+                  {TOOLS[id].label}
+                  {TOOLS[id].proOnly && <span className="pro-badge">Pro</span>}
+                </strong>
                 <span className="muted small">{TOOLS[id].short}</span>
                 <ul className="small checks">
                   {TOOLS[id].includes.map((item) => (
@@ -232,7 +235,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                 <p className="muted small">Por tiempo limitado, sin tarjeta.</p>
                 <ul className="small checks">
                   <li>{launchMonthly} generaciones al mes</li>
-                  <li>Las 5 herramientas</li>
+                  <li>Pruébalo todo, también lo del plan Pro</li>
                   <li>Historial y botón de copiar</li>
                 </ul>
               </div>
@@ -248,7 +251,16 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                 <p className="muted small">{PLANS[id].forWho}</p>
                 <ul className="small checks">
                   <li>{planLimit(id)} generaciones al mes</li>
-                  <li>Las 5 herramientas</li>
+                  {id === "pro" ? (
+                    <>
+                      <li>Las 6 herramientas</li>
+                      <li><span><strong>Responder mensajes</strong> de tus clientes</span></li>
+                      <li>Respuestas a reseñas de Google</li>
+                      <li>Mensajes de WhatsApp</li>
+                    </>
+                  ) : (
+                    <li>Redes sociales, correos y carteles</li>
+                  )}
                   <li>Historial y botón de copiar</li>
                   <li>Sin permanencia</li>
                 </ul>

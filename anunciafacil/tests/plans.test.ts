@@ -24,3 +24,27 @@ describe("planes", () => {
     expect(isPlanId(null)).toBe(false);
   });
 });
+
+describe("herramientas por plan", () => {
+  it("el plan Básico no puede usar las herramientas Pro", async () => {
+    const { canUseTool } = await import("@/lib/plans");
+    expect(canUseTool(true, { subscribed: true, plan: "basic" })).toBe(false);
+    expect(canUseTool(false, { subscribed: true, plan: "basic" })).toBe(true);
+  });
+
+  it("el plan Pro puede usarlas todas", async () => {
+    const { canUseTool } = await import("@/lib/plans");
+    expect(canUseTool(true, { subscribed: true, plan: "pro" })).toBe(true);
+  });
+
+  it("en el lanzamiento gratis y en la prueba se puede probar todo", async () => {
+    const { canUseTool } = await import("@/lib/plans");
+    expect(canUseTool(true, { subscribed: false, plan: "basic" })).toBe(true);
+  });
+
+  it("responder mensajes, reseñas y WhatsApp son del plan Pro", async () => {
+    const { TOOLS } = await import("@/lib/tools");
+    expect(TOOLS.reply.proOnly && TOOLS.review.proOnly && TOOLS.whatsapp.proOnly).toBe(true);
+    expect(TOOLS.social.proOnly || TOOLS.email.proOnly || TOOLS.poster.proOnly).toBe(false);
+  });
+});
