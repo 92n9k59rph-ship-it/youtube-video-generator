@@ -122,7 +122,7 @@ export default async function Admin() {
             <span className="card-label">Modo</span>
             {freeLaunch() ? (
               <>
-                <span><strong>Lanzamiento gratis</strong> · {intEnv("LAUNCH_MONTHLY_GENERATIONS", 20)} al mes por cliente</span>
+                <span><strong>Lanzamiento gratis</strong> · {intEnv("LAUNCH_MONTHLY_GENERATIONS", 10)} al mes por cliente</span>
                 <span className="muted small">Para cobrar: FREE_LAUNCH=false en Vercel (avisa antes a tus clientes)</span>
               </>
             ) : (

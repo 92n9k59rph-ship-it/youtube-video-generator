@@ -7,7 +7,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const freeGenerations = intEnv("FREE_GENERATIONS", 3);
   const monthly = intEnv("MONTHLY_GENERATIONS", 100);
   const launch = freeLaunch();
-  const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 20);
+  const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 10);
   return (
     <main>
       <div className="wrap stack">

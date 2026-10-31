@@ -3,7 +3,7 @@
 ## 30 de octubre
 
 ### Para tus clientes
-- **Gratis por tiempo limitado:** hasta 20 generaciones al mes, sin tarjeta. La meta de negocios es secreta: solo está en Vercel (`LAUNCH_GOAL`) y en tu `/admin`.
+- **Gratis por tiempo limitado:** hasta 10 generaciones al mes, sin tarjeta. La meta de negocios es secreta: solo está en Vercel (`LAUNCH_GOAL`) y en tu `/admin`.
 - **Cinco herramientas:** redes sociales, correos, respuestas a reseñas, WhatsApp y carteles o menús.
 - **Historial:** se pueden volver a abrir los textos antiguos.
 - **«Copiar todas»** las publicaciones de golpe.

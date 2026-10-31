@@ -17,7 +17,7 @@ export function usagePlan(profile: Profile): { limit: number; period: Usage["per
     return { limit: intEnv("MONTHLY_GENERATIONS", 100), period: "mes", since: start.toISOString() };
   }
   if (freeLaunch()) {
-    return { limit: intEnv("LAUNCH_MONTHLY_GENERATIONS", 20), period: "lanzamiento", since: start.toISOString() };
+    return { limit: intEnv("LAUNCH_MONTHLY_GENERATIONS", 10), period: "lanzamiento", since: start.toISOString() };
   }
   return { limit: intEnv("FREE_GENERATIONS", 3), period: "gratis", since: null };
 }
