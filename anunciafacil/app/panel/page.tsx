@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
-import { freeLaunch, intEnv, showPricing, siteUrl } from "@/lib/env";
+import { freeLaunch, showPricing, siteUrl } from "@/lib/env";
+import { PLANS, PLAN_IDS, isPlanId, planLimit } from "@/lib/plans";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { deleteAccount, saveBusiness, saveFeedback, signOut } from "./actions";
@@ -119,7 +120,8 @@ export default async function Panel({
             {subscribed ? (
               <>
                 <p className="muted">
-                  9,99 € al mes · hasta {usage.limit} generaciones al mes.
+                  Plan {PLANS[isPlanId(profile.plan) ? profile.plan : "basic"].name} ·{" "}
+                  {PLANS[isPlanId(profile.plan) ? profile.plan : "basic"].priceLabel} al mes · hasta {usage.limit} generaciones al mes.
                   {profile.current_period_end &&
                     ` Próxima renovación: ${new Date(profile.current_period_end).toLocaleDateString("es-ES")}.`}
                 </p>
@@ -130,18 +132,26 @@ export default async function Panel({
             ) : launch ? (
               <p className="muted">
                 Anuncio Fácil es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
-                Después costará 9,99 € al mes. Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
+                Después habrá dos planes: Básico ({PLANS.basic.priceLabel}/mes) y Pro ({PLANS.pro.priceLabel}/mes). Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
                 salvo que tú decidas suscribirte.
               </p>
             ) : (
               <>
                 <p className="muted">
                   {usage.limit > 0 ? `Tienes ${usage.limit} generaciones gratis para probar. ` : ""}
-                  Con la suscripción tienes hasta {intEnv("MONTHLY_GENERATIONS", 100)} generaciones al mes por 9,99 € (IVA incluido). Sin permanencia.
+                  Elige tu plan. IVA incluido y sin permanencia.
                 </p>
-                <form action="/api/pago" method="post">
-                  <button className="btn btn-primary" type="submit">Suscribirme por 9,99 €/mes</button>
-                </form>
+                {PLAN_IDS.map((id) => (
+                  <form action="/api/pago" method="post" key={id} className="card card-row">
+                    <input type="hidden" name="plan" value={id} />
+                    <span>
+                      <strong>{PLANS[id].name}</strong> · {planLimit(id)} generaciones al mes
+                    </span>
+                    <button className={`btn ${id === "pro" ? "btn-primary" : "btn-ghost"}`} type="submit">
+                      {PLANS[id].priceLabel}/mes
+                    </button>
+                  </form>
+                ))}
                 {profile.stripe_customer_id && (
                   <form action="/api/portal" method="post">
                     <button className="btn btn-ghost" type="submit">Ver mis facturas</button>

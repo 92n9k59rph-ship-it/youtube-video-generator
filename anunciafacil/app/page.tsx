@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { appOpen, freeLaunch, intEnv, showPricing, waitlistUrl } from "@/lib/env";
+import { PLANS, PLAN_IDS, planLimit } from "@/lib/plans";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 import { HomeExamples } from "./HomeExamples";
 
@@ -8,7 +9,6 @@ const TOOL_ICONS: Record<string, string> = { social: "📱", email: "✉️", re
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
   const freeGenerations = intEnv("FREE_GENERATIONS", 3);
-  const monthly = intEnv("MONTHLY_GENERATIONS", 100);
   const launch = freeLaunch();
   const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 10);
   const pricing = showPricing();
@@ -43,8 +43,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
     [
       "¿Cuánto cuesta?",
       launch
-        ? `Ahora es gratis por tiempo limitado, con hasta ${launchMonthly} generaciones al mes y sin tarjeta. Más adelante costará 9,99 € al mes (IVA incluido): te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
-        : `9,99 € al mes (IVA incluido), con hasta ${monthly} generaciones al mes y sin permanencia.${freeGenerations > 0 ? ` Puedes probarlo gratis ${freeGenerations} veces sin tarjeta.` : ""}`,
+        ? `Ahora es gratis por tiempo limitado, con hasta ${launchMonthly} generaciones al mes y sin tarjeta. Más adelante habrá dos planes: Básico, ${PLANS.basic.priceLabel} al mes, y Pro, ${PLANS.pro.priceLabel} al mes (IVA incluido). Te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
+        : `Hay dos planes, IVA incluido y sin permanencia: Básico, ${PLANS.basic.priceLabel} al mes con ${planLimit("basic")} generaciones, y Pro, ${PLANS.pro.priceLabel} al mes con ${planLimit("pro")}.${freeGenerations > 0 ? ` Puedes probarlo gratis ${freeGenerations} veces sin tarjeta.` : ""}`,
     ],
     [
       "¿Qué es una «generación»?",
@@ -213,22 +213,49 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       {/* Precio */}
       {pricing && (
       <section className="band">
-        <div className="wrap">
-          <div className="price-card">
-            <div className="stack" style={{ gap: 10 }}>
-              <h2>{launch ? "Gratis por tiempo limitado" : "Un solo plan, sin sorpresas"}</h2>
-              <p>
-                {launch
-                  ? `Durante el lanzamiento, hasta ${launchMonthly} generaciones al mes, sin tarjeta. Más adelante costará 9,99 € al mes (IVA incluido): te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
-                  : `Hasta ${monthly} generaciones al mes, IVA incluido. Sin permanencia: cancelas cuando quieras desde tu panel.`}
-              </p>
-              <CtaLink className="btn btn-light btn-big" style={{ alignSelf: "flex-start" }} />
-            </div>
-            <div className="price">
-              {launch ? "0 €" : "9,99 €"}
-              <small>{launch ? " ahora" : " /mes"}</small>
-            </div>
+        <div className="wrap stack">
+          <div className="section-head">
+            <span className="eyebrow">Precios</span>
+            <h2>{launch ? "Gratis por tiempo limitado" : "Elige tu plan"}</h2>
+            <p className="muted">
+              {launch
+                ? `Durante el lanzamiento, hasta ${launchMonthly} generaciones al mes, sin tarjeta. Después podrás elegir uno de estos planes: te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
+                : "IVA incluido. Sin permanencia: cambias de plan o cancelas cuando quieras desde tu panel."}
+            </p>
           </div>
+          <div className="plans">
+            {launch && (
+              <div className="plan plan-free">
+                <span className="tag">Ahora</span>
+                <h3>Lanzamiento</h3>
+                <div className="plan-price">0 €</div>
+                <p className="muted small">Por tiempo limitado, sin tarjeta.</p>
+                <ul className="small checks">
+                  <li>{launchMonthly} generaciones al mes</li>
+                  <li>Las 5 herramientas</li>
+                  <li>Historial y botón de copiar</li>
+                </ul>
+              </div>
+            )}
+            {PLAN_IDS.map((id) => (
+              <div className={`plan ${id === "pro" ? "plan-featured" : ""}`} key={id}>
+                {id === "pro" && <span className="tag">Para quien publica mucho</span>}
+                <h3>{PLANS[id].name}</h3>
+                <div className="plan-price">
+                  {PLANS[id].priceLabel}
+                  <small> /mes</small>
+                </div>
+                <p className="muted small">{PLANS[id].forWho}</p>
+                <ul className="small checks">
+                  <li>{planLimit(id)} generaciones al mes</li>
+                  <li>Las 5 herramientas</li>
+                  <li>Historial y botón de copiar</li>
+                  <li>Sin permanencia</li>
+                </ul>
+              </div>
+            ))}
+          </div>
+          <CtaLink className="btn btn-primary btn-big" style={{ alignSelf: "center" }} />
         </div>
       </section>
       )}

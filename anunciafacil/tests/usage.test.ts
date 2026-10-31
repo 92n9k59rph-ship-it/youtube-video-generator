@@ -10,7 +10,7 @@ vi.mock("@/lib/supabase", () => ({
 
 const { usagePlan } = await import("@/lib/usage");
 
-function profile(status: string): Profile {
+function profile(status: string, plan = "basic"): Profile {
   return {
     id: "u1",
     email: "a@b.es",
@@ -20,11 +20,12 @@ function profile(status: string): Profile {
     tone: "cercano",
     stripe_customer_id: null,
     subscription_status: status,
+    plan,
     current_period_end: null,
   };
 }
 
-const ENV_KEYS = ["FREE_LAUNCH", "FREE_GENERATIONS", "MONTHLY_GENERATIONS", "LAUNCH_MONTHLY_GENERATIONS"];
+const ENV_KEYS = ["FREE_LAUNCH", "FREE_GENERATIONS", "MONTHLY_GENERATIONS", "PRO_MONTHLY_GENERATIONS", "LAUNCH_MONTHLY_GENERATIONS"];
 
 describe("límites de uso", () => {
   beforeEach(() => {
@@ -50,6 +51,11 @@ describe("límites de uso", () => {
     process.env.FREE_LAUNCH = "true";
     expect(usagePlan(profile("active")).limit).toBe(100);
     expect(usagePlan(profile("active")).period).toBe("mes");
+  });
+
+  it("el plan Pro tiene 500 al mes", () => {
+    expect(usagePlan(profile("active", "pro")).limit).toBe(500);
+    expect(usagePlan(profile("active", "otro")).limit).toBe(100);
   });
 
   it("una suscripción cancelada o impagada no da el límite de pago", () => {

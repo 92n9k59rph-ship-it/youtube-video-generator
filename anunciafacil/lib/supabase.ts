@@ -12,6 +12,7 @@ export type Profile = {
   tone: string;
   stripe_customer_id: string | null;
   subscription_status: string;
+  plan?: string | null;
   current_period_end: string | null;
 };
 

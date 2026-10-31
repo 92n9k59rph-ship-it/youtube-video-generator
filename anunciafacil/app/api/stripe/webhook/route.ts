@@ -40,12 +40,15 @@ export async function POST(req: Request) {
 async function syncSubscription(subscription: Stripe.Subscription) {
   const customerId =
     typeof subscription.customer === "string" ? subscription.customer : subscription.customer.id;
-  const periodEnd = subscription.items.data[0]?.current_period_end;
+  const item = subscription.items.data[0];
+  const periodEnd = item?.current_period_end;
+  const plan = item?.price.id && item.price.id === process.env.STRIPE_PRICE_ID_PRO ? "pro" : "basic";
 
   const { error } = await supabaseAdmin()
     .from("profiles")
     .update({
       subscription_status: subscription.status,
+      plan,
       current_period_end: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
     })
     .eq("stripe_customer_id", customerId);

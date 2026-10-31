@@ -51,7 +51,7 @@ Envíalo **al menos 30 días antes** de poner `FREE_LAUNCH=false`, a todos los c
 >
 > Gracias por usar Anuncio Fácil durante el lanzamiento. Nos alegra mucho que nos ayudes con tu negocio.
 >
-> A partir del **[FECHA]**, Anuncio Fácil pasará a costar **9,99 € al mes** (IVA incluido), con hasta 100 usos al mes y sin permanencia.
+> A partir del **[FECHA]**, Anuncio Fácil tendrá dos planes (IVA incluido y sin permanencia): **Básico, 9,99 € al mes** con hasta 100 usos, y **Pro, 30 € al mes** con hasta 500 usos.
 >
 > - **No tienes que hacer nada si no quieres seguir:** no se te cobrará nada, porque nunca te pedimos la tarjeta.
 > - **Si quieres seguir,** a partir de esa fecha verás en tu panel el botón **Suscribirme**.
