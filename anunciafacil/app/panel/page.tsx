@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
 import { freeLaunch, showPricing, siteUrl } from "@/lib/env";
-import { PLANS, PLAN_IDS, isPlanId, planLimit } from "@/lib/plans";
-import { TOOLS, isToolId } from "@/lib/tools";
+import { PLANS, PLAN_IDS, canUseTool, isPlanId, planLimit } from "@/lib/plans";
+import { TOOLS, TOOL_IDS, isToolId } from "@/lib/tools";
 import { getUsage } from "@/lib/usage";
 import { deleteAccount, saveBusiness, saveFeedback, signOut } from "./actions";
 import { ShareBox } from "./ShareBox";
@@ -177,7 +177,12 @@ export default async function Panel({
         )}
 
         {hasBusiness ? (
-          <Generator initialUsage={usage} canGenerate={hasBusiness} showPricing={pricing} />
+          <Generator
+            initialUsage={usage}
+            canGenerate={hasBusiness}
+            showPricing={pricing}
+            lockedTools={TOOL_IDS.filter((id) => !canUseTool(TOOLS[id].proOnly, { subscribed, plan: profile.plan }))}
+          />
         ) : (
           <p className="notice notice-error">Guarda primero los datos de tu negocio para empezar a generar.</p>
         )}

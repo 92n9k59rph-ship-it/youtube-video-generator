@@ -103,7 +103,7 @@ textarea { min-height: 110px; resize: vertical; }
 .card-row { flex-direction: row; justify-content: space-between; align-items: center; gap: 12px; }
 .poster-headline { font-size: 1.6rem; letter-spacing: -.02em; }
 
-.tools { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .tool {
   display: flex; flex-direction: column; gap: 4px; text-align: left; cursor: pointer;
   font: 400 .85rem/1.3 var(--body); color: var(--muted);
@@ -235,3 +235,8 @@ main.home { padding-block: 0; }
 .plan-price small { font-family: var(--body); font-size: 1rem; font-weight: 600; color: var(--muted); }
 .plan-featured { border: 2px solid var(--accent); box-shadow: var(--shadow); }
 .plan-free { background: var(--paper); }
+.pro-badge {
+  display: inline-block; margin-left: 6px; vertical-align: middle;
+  font: 700 .65rem/1 var(--body); text-transform: uppercase; letter-spacing: .06em;
+  padding: 4px 6px; border-radius: 6px; background: var(--accent); color: var(--accent-ink);
+}

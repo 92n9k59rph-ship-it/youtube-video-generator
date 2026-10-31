@@ -9,10 +9,13 @@ export function Generator({
   initialUsage,
   canGenerate,
   showPricing,
+  lockedTools = [],
 }: {
   initialUsage: Usage;
   canGenerate: boolean;
   showPricing: boolean;
+  // Herramientas del plan Pro que este cliente (plan Básico) no puede usar.
+  lockedTools?: ToolId[];
 }) {
   const [tool, setTool] = useState<ToolId>("social");
   const [request, setRequest] = useState("");
@@ -68,12 +71,20 @@ export function Generator({
               aria-pressed={tool === id}
               onClick={() => chooseTool(id)}
             >
-              <strong>{TOOLS[id].label}</strong>
+              <strong>
+                {TOOLS[id].label}
+                {TOOLS[id].proOnly && <span className="pro-badge">{lockedTools.includes(id) ? "🔒 Pro" : "Pro"}</span>}
+              </strong>
               <span>{TOOLS[id].short}</span>
             </button>
           ))}
         </div>
 
+        {lockedTools.includes(tool) && (
+          <p className="notice notice-error">
+            «{info.label}» está incluida en el plan Pro (500 generaciones al mes). Puedes cambiar de plan desde «Gestionar suscripción».
+          </p>
+        )}
         <label htmlFor="request">
           {info.inputLabel}
           <textarea
@@ -111,7 +122,7 @@ export function Generator({
           </p>
         </div>
         {error && <p className="notice notice-error">{error}</p>}
-        <button className="btn btn-primary" type="submit" disabled={loading || !canGenerate || remaining === 0}>
+        <button className="btn btn-primary" type="submit" disabled={loading || !canGenerate || remaining === 0 || lockedTools.includes(tool)}>
           {loading ? "Escribiendo… (unos segundos)" : "Generar"}
         </button>
       </form>
@@ -133,6 +144,8 @@ export function Results({ output }: { output: ToolResult }) {
       return <WhatsappResult result={output.result} />;
     case "poster":
       return <PosterResult result={output.result} />;
+    case "reply":
+      return <ReplyResult result={output.result} />;
   }
 }
 
@@ -247,6 +260,29 @@ function ReviewResult({ result }: { result: ResultOf<"review"> }) {
         </div>
         <p className="muted">💡 {result.advice}</p>
       </section>
+    </div>
+  );
+}
+
+function ReplyResult({ result }: { result: ResultOf<"reply"> }) {
+  return (
+    <div className="stack">
+      <section className="panel">
+        <h2>Respuestas para tu cliente</h2>
+        <p className="muted">🗨️ {result.summary}</p>
+        <div className="grid-3">
+          {result.replies.map((reply, i) => (
+            <article className="card" key={i}>
+              <div className="card-head">
+                <span className="card-label">{reply.style}</span>
+                <CopyButton text={reply.text} />
+              </div>
+              <p style={{ whiteSpace: "pre-wrap" }}>{reply.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <Tips title="Antes de enviarla" items={result.next_steps} />
     </div>
   );
 }

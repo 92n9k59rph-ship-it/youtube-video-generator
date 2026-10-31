@@ -71,12 +71,24 @@ export const PosterSchema = z.object({
   design_tips: z.array(z.string()),
 });
 
+export const ReplySchema = z.object({
+  summary: z.string().describe("Qué pide o pregunta el cliente, en una frase"),
+  replies: z.array(
+    z.object({
+      style: z.string().describe("Por ejemplo: breve, cálida o profesional"),
+      text: z.string(),
+    }),
+  ),
+  next_steps: z.array(z.string()).describe("Lo que el negocio tiene que comprobar o hacer antes de enviar"),
+});
+
 const SCHEMAS = {
   social: SocialSchema,
   email: EmailSchema,
   review: ReviewSchema,
   whatsapp: WhatsappSchema,
   poster: PosterSchema,
+  reply: ReplySchema,
 } as const;
 
 export type ToolResult =
@@ -84,7 +96,8 @@ export type ToolResult =
   | { tool: "email"; result: z.infer<typeof EmailSchema> }
   | { tool: "review"; result: z.infer<typeof ReviewSchema> }
   | { tool: "whatsapp"; result: z.infer<typeof WhatsappSchema> }
-  | { tool: "poster"; result: z.infer<typeof PosterSchema> };
+  | { tool: "poster"; result: z.infer<typeof PosterSchema> }
+  | { tool: "reply"; result: z.infer<typeof ReplySchema> };
 
 // Instrucciones fijas: no dependen del cliente ni de la herramienta, así se pueden cachear.
 const SYSTEM_PROMPT = `Eres el redactor de marketing de Anuncio Fácil, una herramienta para negocios pequeños de barrio (bares, peluquerías, tiendas, gimnasios, academias...).
@@ -118,6 +131,11 @@ whatsapp
 poster
 - options: 2 o 3 propuestas. El titular debe leerse desde lejos (máximo 6 palabras). En details pon las líneas de información o, si es una carta, una descripción corta y apetecible por cada plato o producto que te den.
 - design_tips: 2 o 3 consejos de diseño (tamaño de letra, colores, dónde colocarlo).
+
+reply
+- summary: en una frase, qué pide o pregunta el cliente.
+- replies: 3 respuestas (breve, cálida y profesional) listas para enviar por el mismo canal, de 1 a 5 frases. Contesta a lo que pregunta; si para responder hace falta un dato que no tienes (precio, disponibilidad, horario, política de cambios), deja un hueco entre corchetes en lugar de inventarlo. No prometas nada que el negocio no haya dicho.
+- next_steps: 1 a 3 cosas que el negocio debe comprobar o hacer antes de enviar (por ejemplo, mirar la agenda o confirmar alérgenos).
 
 Reglas para todas las herramientas:
 - No inventes datos del negocio que no te hayan dado (precios, horarios, direcciones, premios, opiniones de clientes, ingredientes). Si un texto los necesita, deja un hueco claro entre corchetes, por ejemplo [precio] o [horario].
