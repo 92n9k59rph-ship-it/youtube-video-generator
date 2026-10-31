@@ -8,9 +8,9 @@ describe("planes", () => {
     expect(PLANS.pro.priceEur).toBe(30);
   });
 
-  it("límites por defecto: 100 y 500 generaciones al mes", () => {
-    expect(planLimit("basic", {})).toBe(100);
-    expect(planLimit("pro", {})).toBe(500);
+  it("límites por defecto: 50 y 200 generaciones al mes", () => {
+    expect(planLimit("basic", {})).toBe(50);
+    expect(planLimit("pro", {})).toBe(200);
   });
 
   it("los límites se pueden cambiar desde Vercel", () => {
