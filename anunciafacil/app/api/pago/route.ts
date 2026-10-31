@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import { freeLaunch, requireEnv, siteUrl } from "@/lib/env";
+import { PLANS, isPlanId } from "@/lib/plans";
 import { getStripe } from "@/lib/stripe";
 import { currentUserAndProfile, isSubscribed, supabaseAdmin } from "@/lib/supabase";
 
-// Crea una página de pago de Stripe para la suscripción mensual.
-export async function POST() {
+// Crea una página de pago de Stripe para la suscripción mensual del plan elegido (básico o pro).
+export async function POST(req: Request) {
+  const form = await req.formData().catch(() => null);
+  const planField = form?.get("plan");
+  const plan = isPlanId(planField) ? planField : "basic";
+
   const { user, profile } = await currentUserAndProfile();
   if (!user || !profile) {
     return NextResponse.redirect(`${siteUrl()}/entrar`, 303);
@@ -29,7 +34,8 @@ export async function POST() {
     mode: "subscription",
     customer: customerId,
     client_reference_id: user.id,
-    line_items: [{ price: requireEnv("STRIPE_PRICE_ID"), quantity: 1 }],
+    line_items: [{ price: requireEnv(PLANS[plan].stripePriceEnv), quantity: 1 }],
+    subscription_data: { metadata: { plan } },
     allow_promotion_codes: true,
     locale: "es",
     success_url: `${siteUrl()}/panel?pago=ok`,

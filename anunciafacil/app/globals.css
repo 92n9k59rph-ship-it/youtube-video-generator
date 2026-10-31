@@ -222,3 +222,16 @@ main.home { padding-block: 0; }
   .mock { margin-top: 16px; }
   .price-card { padding: 28px; }
 }
+
+/* Planes */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; align-items: stretch; }
+.plan {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px;
+  display: flex; flex-direction: column; gap: 12px; min-width: 0;
+}
+.plan h3 { font-size: 1.4rem; }
+.plan .tag { transform: none; }
+.plan-price { font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.plan-price small { font-family: var(--body); font-size: 1rem; font-weight: 600; color: var(--muted); }
+.plan-featured { border: 2px solid var(--accent); box-shadow: var(--shadow); }
+.plan-free { background: var(--paper); }

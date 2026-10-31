@@ -1,4 +1,5 @@
 import { freeLaunch, intEnv } from "./env";
+import { isPlanId, planLimit } from "./plans";
 import { isSubscribed, supabaseAdmin, type Profile } from "./supabase";
 
 export type Usage = {
@@ -14,7 +15,8 @@ export function usagePlan(profile: Profile): { limit: number; period: Usage["per
   start.setUTCDate(1);
   start.setUTCHours(0, 0, 0, 0);
   if (isSubscribed(profile)) {
-    return { limit: intEnv("MONTHLY_GENERATIONS", 100), period: "mes", since: start.toISOString() };
+    const plan = isPlanId(profile.plan) ? profile.plan : "basic";
+    return { limit: planLimit(plan), period: "mes", since: start.toISOString() };
   }
   if (freeLaunch()) {
     return { limit: intEnv("LAUNCH_MONTHLY_GENERATIONS", 10), period: "lanzamiento", since: start.toISOString() };

@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
 import { freeLaunch, intEnv, isAdminEmail } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
+import { PLANS, isPlanId } from "@/lib/plans";
 import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Administración · Anuncio Fácil", robots: { index: false } };
 
-const PRICE_EUR = 9.99;
 const VAT = 0.21;
 
 const money = (n: number, currency: "EUR" | "USD") =>
@@ -26,7 +26,7 @@ export default async function Admin() {
   const [{ data: profiles }, { data: generations }, { data: feedback }] = await Promise.all([
     admin
       .from("profiles")
-      .select("email, business_name, business_type, subscription_status, created_at")
+      .select("email, business_name, business_type, subscription_status, plan, created_at")
       .order("created_at", { ascending: false })
       .limit(5000),
     admin
@@ -40,9 +40,11 @@ export default async function Admin() {
   const allProfiles = profiles ?? [];
   const monthGenerations = (generations ?? []).filter((g) => g.status === "done");
 
-  const subscribers = allProfiles.filter((p) => p.subscription_status === "active" || p.subscription_status === "trialing").length;
+  const activeProfiles = allProfiles.filter((p) => p.subscription_status === "active" || p.subscription_status === "trialing");
+  const subscribers = activeProfiles.length;
+  const proSubscribers = activeProfiles.filter((p) => p.plan === "pro").length;
   const pastDue = allProfiles.filter((p) => p.subscription_status === "past_due" || p.subscription_status === "unpaid").length;
-  const revenueGross = subscribers * PRICE_EUR;
+  const revenueGross = activeProfiles.reduce((sum, p) => sum + PLANS[isPlanId(p.plan) ? p.plan : "basic"].priceEur, 0);
   const revenueNet = revenueGross / (1 + VAT);
 
   const aiCostUsd = monthGenerations.reduce((sum, g) => sum + costUsd(g.model, g.input_tokens, g.output_tokens), 0);
@@ -94,6 +96,7 @@ export default async function Admin() {
           <div className="card">
             <span className="card-label">Suscriptores activos</span>
             <strong className="stat">{subscribers}</strong>
+            {subscribers > 0 && <span className="muted small">{subscribers - proSubscribers} Básico · {proSubscribers} Pro</span>}
             {pastDue > 0 && <span className="small" style={{ color: "var(--danger-ink)" }}>{pastDue} con el pago pendiente</span>}
           </div>
           <div className="card">
@@ -186,7 +189,7 @@ export default async function Admin() {
                       <td className="num">{new Date(p.created_at).toLocaleDateString("es-ES")}</td>
                       <td>{p.email}</td>
                       <td>{[p.business_name, p.business_type].filter(Boolean).join(" · ") || "—"}</td>
-                      <td>{p.subscription_status === "none" ? "Prueba gratis" : p.subscription_status}</td>
+                      <td>{p.subscription_status === "none" ? "Sin plan" : `${p.subscription_status}${p.plan === "pro" ? " · Pro" : " · Básico"}`}</td>
                     </tr>
                   ))}
                 </tbody>
