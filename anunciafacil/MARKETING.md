@@ -15,7 +15,7 @@ Lo que más funciona con negocios de barrio es **el trato en persona y la confia
 | **Visitas en persona** | Entras, enseñas la app en el iPad con su propio negocio y en 1 minuto tienen sus textos | Alto, pero es lo que más convence |
 | **Gente que conoces** | Familia, amigos y conocidos con negocio, por WhatsApp uno a uno | Bajo |
 | **Asociaciones de comerciantes** | La asociación de tu barrio o de tu ciudad, o el ayuntamiento (área de comercio) | Medio: un «sí» trae a muchos negocios |
-| **Instagram de AnunciaFácil** | Una cuenta propia que publique ejemplos hechos con la app | Constante |
+| **Instagram de Anuncio Fácil** | Una cuenta propia que publique ejemplos hechos con la app | Constante |
 | **YouTube Shorts y Reels** | Vídeos cortos con el agente de vídeos de este repositorio | Medio |
 | **Recomendaciones** | Pedir a cada cliente contento que se lo diga a otro negocio | Bajo |
 
@@ -35,10 +35,10 @@ Luego, **en el iPad**, generas algo para su negocio delante de él (por ejemplo,
 **Si dice que no:** dale las gracias y déjale la dirección de la app apuntada en una tarjeta o un papel.
 
 ### WhatsApp a conocidos con negocio
-> ¡Hola [nombre]! 👋 Estoy lanzando **AnunciaFácil**, una app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas de Google y mensajes para tus clientes. Ahora es gratis. ¿La pruebas y me dices qué te parece? Me ayudarías mucho 🙏 [DIRECCIÓN DE LA APP]
+> ¡Hola [nombre]! 👋 Estoy lanzando **Anuncio Fácil**, una app que te escribe en un minuto las publicaciones de Instagram, respuestas a reseñas de Google y mensajes para tus clientes. Ahora es gratis. ¿La pruebas y me dices qué te parece? Me ayudarías mucho 🙏 [DIRECCIÓN DE LA APP]
 
 ### Mensaje directo de Instagram (uno a uno, personalizado)
-> ¡Hola! Me encanta [algo concreto de su perfil, por ejemplo «la foto de vuestra tarta de queso»]. He creado AnunciaFácil, una herramienta gratis que escribe publicaciones y respuestas a reseñas para negocios como el vuestro. Si os apetece probarla: [DIRECCIÓN DE LA APP]. ¡Un saludo!
+> ¡Hola! Me encanta [algo concreto de su perfil, por ejemplo «la foto de vuestra tarta de queso»]. He creado Anuncio Fácil, una herramienta gratis que escribe publicaciones y respuestas a reseñas para negocios como el vuestro. Si os apetece probarla: [DIRECCIÓN DE LA APP]. ¡Un saludo!
 
 Escribe **a mano y a pocos negocios al día**, y cambia siempre la primera frase. Los mensajes masivos o automáticos se consideran spam e Instagram puede bloquear tu cuenta.
 
@@ -47,7 +47,7 @@ Escribe **a mano y a pocos negocios al día**, y cambia siempre la primera frase
 
 > Hola,
 >
-> Me llamo David y he creado AnunciaFácil, una herramienta en español que ayuda a los comercios pequeños con su marketing: escribe en un minuto publicaciones para redes sociales, respuestas a reseñas de Google, mensajes de WhatsApp y textos para carteles.
+> Me llamo David y he creado Anuncio Fácil, una herramienta en español que ayuda a los comercios pequeños con su marketing: escribe en un minuto publicaciones para redes sociales, respuestas a reseñas de Google, mensajes de WhatsApp y textos para carteles.
 >
 > Durante el lanzamiento es gratuita. Me encantaría que la conocieran los comercios de la asociación: puedo hacer una demostración de 15 minutos, en persona u online, o enviaros un texto para vuestro boletín.
 >
@@ -60,22 +60,22 @@ Escribir a una asociación (es decir, a una organización y a su dirección de c
 
 ---
 
-## 3. Instagram de AnunciaFácil: 10 publicaciones
+## 3. Instagram de Anuncio Fácil: 10 publicaciones
 
-Crea la cuenta **@anunciafacil** (o la que esté libre) con el Gmail del negocio. Publica 2 o 3 veces por semana. Las imágenes pueden ser capturas de la app o diseños sencillos en Canva.
+Crea la cuenta **@anunciofacil** (o la que esté libre) con el Gmail del negocio. Publica 2 o 3 veces por semana. Las imágenes pueden ser capturas de la app o diseños sencillos en Canva.
 
-1. **Presentación:** «¿Tienes un negocio y nunca sabes qué publicar? AnunciaFácil te lo escribe en un minuto. Gratis por tiempo limitado. Enlace en la bio.»
+1. **Presentación:** «¿Tienes un negocio y nunca sabes qué publicar? Anuncio Fácil te lo escribe en un minuto. Gratis por tiempo limitado. Enlace en la bio.»
 2. **Antes y después:** una reseña negativa real (sin el nombre del cliente) frente a la respuesta que propone la app.
 3. **Ejemplo para bares:** las 3 publicaciones que genera para «tapa del día».
 4. **Ejemplo para peluquerías:** la idea de Reel de un «antes y después».
 5. **Consejo:** «3 errores al responder reseñas de Google». Usa los consejos que da la propia app.
 6. **Ejemplo de cartel:** el texto de un cartel de rebajas.
 7. **Pregunta:** «¿Qué te cuesta más: publicar en Instagram o contestar reseñas?»
-8. **Cliente real** (con su permiso): «Así usa AnunciaFácil la peluquería [nombre]».
-9. **Celebración:** «¡Ya somos [X] negocios usando AnunciaFácil! Gracias 🙌 Sigue siendo gratis durante el lanzamiento.» Pon solo el número real de tu `/admin`.
+8. **Cliente real** (con su permiso): «Así usa Anuncio Fácil la peluquería [nombre]».
+9. **Celebración:** «¡Ya somos [X] negocios usando Anuncio Fácil! Gracias 🙌 Sigue siendo gratis durante el lanzamiento.» Pon solo el número real de tu `/admin`.
 10. **Tutorial:** cómo se usa en 3 pasos, con capturas.
 
-**Truco:** usa la propia app para escribir las publicaciones de AnunciaFácil. Elige la herramienta «Redes sociales» y pide, por ejemplo, «Publicaciones para presentar AnunciaFácil a dueños de bares».
+**Truco:** usa la propia app para escribir las publicaciones de Anuncio Fácil. Elige la herramienta «Redes sociales» y pide, por ejemplo, «Publicaciones para presentar Anuncio Fácil a dueños de bares».
 
 ---
 

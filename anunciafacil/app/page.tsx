@@ -11,14 +11,14 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   return (
     <main>
       <div className="wrap stack">
-        {cuenta === "borrada" && <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado AnunciaFácil!</p>}
+        {cuenta === "borrada" && <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado Anuncio Fácil!</p>}
         <section className="stack" style={{ maxWidth: 720, paddingBlock: 24 }}>
           <span className="pill" style={{ alignSelf: "flex-start" }}>Para bares, peluquerías, tiendas y gimnasios</span>
           <h1 style={{ fontSize: "clamp(2.4rem, 6vw, 4rem)", letterSpacing: "-.03em" }}>
-            Las publicaciones de tu negocio, <span style={{ color: "var(--tomato)" }}>escritas en un minuto.</span>
+            Las publicaciones de tu negocio, <span style={{ color: "var(--accent)" }}>escritas en un minuto.</span>
           </h1>
           <p className="muted" style={{ fontSize: "1.15rem" }}>
-            Cuéntanos qué negocio tienes y qué quieres anunciar. AnunciaFácil te prepara publicaciones para
+            Cuéntanos qué negocio tienes y qué quieres anunciar. Anuncio Fácil te prepara publicaciones para
             Instagram, correos para tus clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles.
           </p>
           <div className="nav">
@@ -47,7 +47,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         </section>
 
         <section className="panel">
-          <h2>Todo lo que hace AnunciaFácil</h2>
+          <h2>Todo lo que hace Anuncio Fácil</h2>
           <p className="muted">Cinco herramientas en una. Eliges la que necesitas, escribes con tus palabras y en unos segundos tienes los textos listos para copiar.</p>
           <div className="grid-3">
             {TOOL_IDS.map((id) => (
@@ -72,6 +72,22 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               </ul>
             </div>
           </div>
+        </section>
+
+        <section className="panel">
+          <span className="pill" style={{ alignSelf: "flex-start" }}>Próximamente</span>
+          <h2>Los contactos de tus anuncios, ordenados y a mano</h2>
+          <p className="muted">
+            Cuando alguien rellene el formulario de tu anuncio en Facebook o Instagram, Anuncio Fácil lo traerá, lo guardará y te
+            avisará. Tú solo tendrás que contestar.
+          </p>
+          <ul className="small">
+            <li>Contactos de todas tus campañas en un solo sitio, sin duplicados</li>
+            <li>Aviso por correo cuando lleguen contactos nuevos</li>
+            <li>Llama, escribe o abre WhatsApp desde la ficha del contacto</li>
+            <li>Seguimiento: nuevo, contactado, ganado o perdido, con notas</li>
+            <li>Descarga en CSV, para no perderlos</li>
+          </ul>
         </section>
 
         <section className="panel" style={{ flexDirection: "row", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center" }}>

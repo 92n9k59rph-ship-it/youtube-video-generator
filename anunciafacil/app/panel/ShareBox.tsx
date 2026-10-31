@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-// Botones para recomendar AnunciaFácil a otro negocio.
+// Botones para recomendar Anuncio Fácil a otro negocio.
 export function ShareBox({ url }: { url: string }) {
   const [copied, setCopied] = useState(false);
-  const message = `¡Hola! Uso AnunciaFácil para escribir las publicaciones de Instagram, respuestas a reseñas y mensajes de mi negocio en un minuto. Ahora es gratis por tiempo limitado, pruébalo: ${url}`;
+  const message = `¡Hola! Uso Anuncio Fácil para escribir las publicaciones de Instagram, respuestas a reseñas y mensajes de mi negocio en un minuto. Ahora es gratis por tiempo limitado, pruébalo: ${url}`;
 
   async function copy() {
     try {

@@ -5,7 +5,7 @@ import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Administración · AnunciaFácil", robots: { index: false } };
+export const metadata = { title: "Administración · Anuncio Fácil", robots: { index: false } };
 
 const PRICE_EUR = 9.99;
 const VAT = 0.21;

@@ -6,7 +6,7 @@
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>AnunciaFácil</title>
+<title>Anuncio Fácil</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,8 @@
   --ink: #1b2233;
   --muted: #5a6275;
   --line: #dfe2ec;
-  --tomato: #e4472b;
-  --tomato-ink: #ffffff;
+  --accent: #5b47f0;
+  --accent-ink: #ffffff;
   --sun: #ffc53d;
   --sun-ink: #1b2233;
   --mint: #1f9d7a;
@@ -33,14 +33,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #12151d; --surface: #1b1f2a; --ink: #eef0f6; --muted: #a3aabb; --line: #2c3242;
-    --tomato: #ff6a4d; --tomato-ink: #1a0d09; --sun: #ffcf5c; --sun-ink: #1b1608; --mint: #4cc9a3; --chip: #252a38;
+    --accent: #9d8cff; --accent-ink: #140f33; --sun: #ffcf5c; --sun-ink: #1b1608; --mint: #4cc9a3; --chip: #252a38;
     --shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 14px 30px -16px rgba(0, 0, 0, .7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #12151d; --surface: #1b1f2a; --ink: #eef0f6; --muted: #a3aabb; --line: #2c3242;
-  --tomato: #ff6a4d; --tomato-ink: #1a0d09; --sun: #ffcf5c; --sun-ink: #1b1608; --mint: #4cc9a3; --chip: #252a38;
+  --accent: #9d8cff; --accent-ink: #140f33; --sun: #ffcf5c; --sun-ink: #1b1608; --mint: #4cc9a3; --chip: #252a38;
   --shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 14px 30px -16px rgba(0, 0, 0, .7);
   color-scheme: dark;
 }
@@ -69,7 +69,7 @@ a { color: inherit; }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .logo { font-family: var(--display); font-weight: 800; font-size: 1.5rem; letter-spacing: -.02em; display: flex; align-items: center; gap: 10px; }
 .logo-mark {
-  width: 34px; height: 34px; border-radius: 10px; background: var(--tomato); color: var(--tomato-ink);
+  width: 34px; height: 34px; border-radius: 10px; background: var(--accent); color: var(--accent-ink);
   display: grid; place-items: center; font-size: 1.1rem; transform: rotate(-6deg);
 }
 .btn {
@@ -78,7 +78,7 @@ a { color: inherit; }
   padding: 14px 22px; border-radius: 999px; border: 2px solid transparent;
   transition: transform .15s ease, box-shadow .15s ease;
 }
-.btn-primary { background: var(--tomato); color: var(--tomato-ink); box-shadow: 0 6px 0 -1px color-mix(in srgb, var(--tomato) 55%, var(--ink)); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 6px 0 -1px color-mix(in srgb, var(--accent) 55%, var(--ink)); }
 .btn-primary:hover { transform: translateY(-2px); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn[aria-disabled="true"] { opacity: .65; cursor: not-allowed; transform: none; }
@@ -92,7 +92,7 @@ a { color: inherit; }
   background: var(--sun); color: var(--sun-ink); padding: 8px 12px; border-radius: 6px; transform: rotate(-1.5deg);
 }
 .hero h1 { font-size: clamp(2.6rem, 6.2vw, 4.6rem); font-weight: 800; letter-spacing: -.035em; }
-.hero h1 em { font-style: normal; color: var(--tomato); }
+.hero h1 em { font-style: normal; color: var(--accent); }
 .lead { font-size: 1.2rem; color: var(--muted); max-width: 34ch; }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
 .fine { font-size: .9rem; color: var(--muted); }
@@ -111,7 +111,7 @@ a { color: inherit; }
   aspect-ratio: 1 / 1; max-width: 100%;
   background:
     radial-gradient(circle at 30% 35%, color-mix(in srgb, var(--sun) 85%, transparent) 0 18%, transparent 19%),
-    radial-gradient(circle at 70% 65%, color-mix(in srgb, var(--tomato) 80%, transparent) 0 24%, transparent 25%),
+    radial-gradient(circle at 70% 65%, color-mix(in srgb, var(--accent) 80%, transparent) 0 24%, transparent 25%),
     linear-gradient(135deg, color-mix(in srgb, var(--mint) 35%, var(--surface)), color-mix(in srgb, var(--sun) 30%, var(--surface)));
   display: grid; place-items: center;
 }
@@ -127,7 +127,7 @@ a { color: inherit; }
 /* Secciones */
 section { padding-block: 64px; }
 .section-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; max-width: 60ch; }
-.eyebrow { font: 600 .8rem/1 var(--body); text-transform: uppercase; letter-spacing: .1em; color: var(--tomato); }
+.eyebrow { font: 600 .8rem/1 var(--body); text-transform: uppercase; letter-spacing: .1em; color: var(--accent); }
 .section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -.025em; }
 .section-head p { color: var(--muted); }
 
@@ -138,7 +138,7 @@ section { padding-block: 64px; }
   counter-increment: step; content: counter(step);
   font-family: var(--display); font-weight: 800; font-size: 1.4rem;
   width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
-  background: var(--chip); color: var(--tomato);
+  background: var(--chip); color: var(--accent);
 }
 .steps h3 { font-size: 1.3rem; }
 .steps p { color: var(--muted); font-size: 1rem; }
@@ -159,7 +159,7 @@ section { padding-block: 64px; }
 }
 .card-label { font: 600 .75rem/1 var(--body); text-transform: uppercase; letter-spacing: .09em; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
 .card p { font-size: 1rem; }
-.copy { font: 600 .8rem/1 var(--body); background: none; border: 0; color: var(--tomato); cursor: pointer; padding: 0; text-transform: none; letter-spacing: 0; }
+.copy { font: 600 .8rem/1 var(--body); background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; text-transform: none; letter-spacing: 0; }
 
 /* Incluye */
 .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; list-style: none; padding: 0; margin: 0; }
@@ -181,7 +181,7 @@ section { padding-block: 64px; }
 /* Lista de espera */
 .join { text-align: left; }
 .join-box {
-  border: 3px dashed var(--tomato); border-radius: 26px; padding: 40px;
+  border: 3px dashed var(--accent); border-radius: 26px; padding: 40px;
   display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; background: var(--surface);
 }
 .join-box h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.02em; }
@@ -211,7 +211,7 @@ footer h3 { font-family: var(--body); font-size: 1rem; color: var(--ink); }
 
 <header class="top">
   <div class="wrap">
-    <div class="logo"><span class="logo-mark" aria-hidden="true">✦</span>AnunciaFácil</div>
+    <div class="logo"><span class="logo-mark" aria-hidden="true">✦</span>Anuncio Fácil</div>
     <a class="btn btn-ghost js-join" href="#lista">Apuntarme</a>
   </div>
 </header>
@@ -222,7 +222,7 @@ footer h3 { font-family: var(--body); font-size: 1rem; color: var(--ink); }
       <div class="hero-copy">
         <span class="tag">Para bares, peluquerías, tiendas y gimnasios</span>
         <h1 id="hero-title">Las publicaciones de tu negocio, <em>escritas en un minuto.</em></h1>
-        <p class="lead">Cuéntanos qué negocio tienes y qué quieres anunciar. AnunciaFácil te prepara los textos para Instagram, las ideas para Reels y el calendario del mes.</p>
+        <p class="lead">Cuéntanos qué negocio tienes y qué quieres anunciar. Anuncio Fácil te prepara los textos para Instagram, las ideas para Reels y el calendario del mes.</p>
         <div class="hero-actions">
           <a class="btn btn-primary js-join" href="#lista">Apúntate a la lista de espera</a>
           <a class="btn btn-ghost" href="#demo">Ver ejemplos</a>
@@ -230,7 +230,7 @@ footer h3 { font-family: var(--body); font-size: 1rem; color: var(--ink); }
         <p class="fine">Estamos preparando el lanzamiento. Apuntarse es gratis y sin compromiso.</p>
       </div>
 
-      <div class="mock" aria-label="Ejemplo de publicación creada con AnunciaFácil">
+      <div class="mock" aria-label="Ejemplo de publicación creada con Anuncio Fácil">
         <span class="sticker">Ejemplo</span>
         <article class="post">
           <div class="post-head">
@@ -327,7 +327,7 @@ footer h3 { font-family: var(--body); font-size: 1rem; color: var(--ink); }
       <div class="join-box">
         <div>
           <h2 id="lista-title">Apúntate a la lista de espera</h2>
-          <p>Te avisaremos por correo cuando AnunciaFácil esté listo y tendrás un precio especial de lanzamiento. Solo usaremos tu correo para esto y puedes pedir que lo borremos cuando quieras.</p>
+          <p>Te avisaremos por correo cuando Anuncio Fácil esté listo y tendrás un precio especial de lanzamiento. Solo usaremos tu correo para esto y puedes pedir que lo borremos cuando quieras.</p>
         </div>
         <a class="btn btn-primary js-join" id="join-main" href="#lista" target="_blank" rel="noopener">Quiero apuntarme</a>
       </div>
@@ -355,7 +355,7 @@ footer h3 { font-family: var(--body); font-size: 1rem; color: var(--ink); }
     <h3>Privacidad</h3>
     <p>Si te apuntas a la lista de espera, guardaremos tu correo solo para avisarte del lanzamiento. No lo compartiremos ni lo venderemos. Puedes pedir que lo borremos en cualquier momento escribiendo a anunciafacil.contacto@gmail.com.</p>
     <p>Responsable: David Lázaro · Contacto: anunciafacil.contacto@gmail.com</p>
-    <p>© AnunciaFácil</p>
+    <p>© Anuncio Fácil</p>
   </div>
 </footer>
 

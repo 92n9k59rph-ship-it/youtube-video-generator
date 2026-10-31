@@ -1,4 +1,4 @@
-# Guía para poner en marcha AnunciaFácil
+# Guía para poner en marcha Anuncio Fácil
 
 Esta carpeta tiene la herramienta completa: registro de clientes, pago mensual con Stripe, panel de cada cliente y cinco generadores de textos con Claude:
 - publicaciones para redes, con idea de Reel y calendario;
@@ -73,7 +73,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 1. Entra en **stripe.com** → crea una cuenta.
 2. Arriba, activa **«Modo de prueba» / «Test mode»**. Así nadie paga dinero real mientras pruebas.
 3. **Catálogo de productos → Añadir producto**:
-   - Nombre: `AnunciaFácil`
+   - Nombre: `Anuncio Fácil`
    - Precio: **9,99 EUR**, **Recurrente**, **Mensual**
    - En «Incluye impuestos», elige **Sí (impuestos incluidos)**.
    - Guarda y copia el **ID del precio** (empieza por `price_`) → irá en `STRIPE_PRICE_ID`.
@@ -112,6 +112,16 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 > **Sobre la rama:** el código está en la rama `claude/youtube-video-creator-agent-2lrw41`. Vercel publica por defecto la rama `main`. Si Vercel no encuentra la carpeta `anunciafacil`, pídeme que prepare una *pull request* para pasarla a `main`, o elige esa rama en Vercel → Settings → Git.
 
 ---
+
+### Conectar tu dominio `anunciofacil.es`
+
+Tu web de presentación ya está en `anunciofacil.es`. Lo más sencillo es poner la app en un **subdominio**: **`app.anunciofacil.es`**.
+1. En Vercel → tu proyecto → **Settings → Domains** → añade `app.anunciofacil.es`.
+2. Vercel te dirá que añadas un registro **CNAME**. Entra en la web donde compraste el dominio → **DNS** → añade ese registro tal cual. Puede tardar desde unos minutos hasta unas horas.
+3. Cuando Vercel lo marque como válido:
+   - Cambia `NEXT_PUBLIC_SITE_URL` a `https://app.anunciofacil.es` y haz **Redeploy**.
+   - En Supabase → Authentication → URL Configuration, cambia la **Site URL** y añade `https://app.anunciofacil.es/auth/callback` en **Redirect URLs**.
+4. En tu web `anunciofacil.es`, haz que los botones **«Iniciar sesión»** y **«Próximamente»** lleven a `https://app.anunciofacil.es/entrar`.
 
 ## Paso 5. Probar todo
 
