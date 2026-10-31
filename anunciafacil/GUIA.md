@@ -93,7 +93,8 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `NEXT_PUBLIC_SITE_URL`: de momento pon `https://anunciafacil.vercel.app`; la corregirás en el punto 6.
    - `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` y `SUPABASE_SERVICE_ROLE_KEY`
    - `ANTHROPIC_API_KEY` y `CLAUDE_MODEL` (con el valor `claude-opus-5-5`)
-   - `SHOW_PRICING`: con el valor `false` mientras no quieras hablar de precios en la web (ni de «gratis» ni de cobrar). Ponlo en `true` cuando todo esté listo.
+   - `APP_OPEN`: no hace falta ponerlo mientras no quieras abrir. Sin él, la web enseña todo (precios y herramientas) pero **nadie puede registrarse ni usarla**: los botones llevan a la lista de espera y solo entran los `ADMIN_EMAILS`. El día del lanzamiento, añade `APP_OPEN` con el valor `true` y haz **Redeploy**.
+   - `SHOW_PRICING`: opcional. Ponlo en `false` si alguna vez quieres ocultar los precios y lo de «gratis».
    - `FREE_LAUNCH`: con el valor `true` (lanzamiento gratis). `LAUNCH_MONTHLY_GENERATIONS`: con el valor `10` (generaciones gratis al mes por cliente). `LAUNCH_GOAL`: tu **meta secreta** de negocios (el número que acordamos). Solo está en Vercel, no la escribas en GitHub; tu panel `/admin` te avisa al llegar.
    - `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` y `STRIPE_WEBHOOK_SECRET`: **no hacen falta durante el lanzamiento gratis**; se añaden en el paso 7.
    - `ADMIN_EMAILS`: el correo con el que entrarás tú en la app (por ejemplo `anunciafacil.contacto@gmail.com`). Te da acceso a tu panel de administración en `/admin`.

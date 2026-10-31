@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { freeLaunch, intEnv, showPricing } from "@/lib/env";
+import { appOpen, freeLaunch, intEnv, showPricing, waitlistUrl } from "@/lib/env";
 import { TOOLS, TOOL_IDS } from "@/lib/tools";
 import { HomeExamples } from "./HomeExamples";
 
@@ -12,7 +12,16 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   const launch = freeLaunch();
   const launchMonthly = intEnv("LAUNCH_MONTHLY_GENERATIONS", 10);
   const pricing = showPricing();
-  const cta = pricing && launch ? "Empezar gratis" : "Empezar";
+  const open = appOpen();
+  const cta = open ? (pricing && launch ? "Empezar gratis" : "Empezar") : "Próximamente · Apúntate";
+  // Mientras no esté abierta, los botones llevan a la lista de espera.
+  const ctaHref = open ? "/entrar" : waitlistUrl();
+  const CtaLink = ({ className, style }: { className: string; style?: React.CSSProperties }) =>
+    open ? (
+      <Link className={className} href={ctaHref} style={style}>{cta}</Link>
+    ) : (
+      <a className={className} href={ctaHref} target="_blank" rel="noopener noreferrer" style={style}>{cta}</a>
+    );
 
   const allFaqs: Array<[string, string]> = [
     [
@@ -69,9 +78,14 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               para tus clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles.
             </p>
             <div className="nav">
-              <Link className="btn btn-primary btn-big" href="/entrar">{cta}</Link>
+              <CtaLink className="btn btn-primary btn-big" />
               <a className="btn btn-ghost btn-big" href="#ejemplos">Ver ejemplos</a>
             </div>
+            {!open && (
+              <p className="notice" style={{ background: "var(--chip)" }}>
+                <strong>Muy pronto.</strong> Estamos ultimando Anuncio Fácil. Apúntate a la lista de espera y te avisamos el día que abra.
+              </p>
+            )}
             {pricing && (
               <p className="muted small">
                 {launch
@@ -208,7 +222,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                   ? `Durante el lanzamiento, hasta ${launchMonthly} generaciones al mes, sin tarjeta. Más adelante costará 9,99 € al mes (IVA incluido): te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
                   : `Hasta ${monthly} generaciones al mes, IVA incluido. Sin permanencia: cancelas cuando quieras desde tu panel.`}
               </p>
-              <Link className="btn btn-light btn-big" href="/entrar" style={{ alignSelf: "flex-start" }}>{cta}</Link>
+              <CtaLink className="btn btn-light btn-big" style={{ alignSelf: "flex-start" }} />
             </div>
             <div className="price">
               {launch ? "0 €" : "9,99 €"}
@@ -240,9 +254,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       {/* Cierre */}
       <section className="band">
         <div className="wrap final">
-          <h2>¿Empezamos con tu negocio?</h2>
-          <p className="muted">Crear la cuenta tarda un minuto y no hace falta contraseña.</p>
-          <Link className="btn btn-primary btn-big" href="/entrar">{cta}</Link>
+          <h2>{open ? "¿Empezamos con tu negocio?" : "¿Quieres ser de los primeros?"}</h2>
+          <p className="muted">
+            {open
+              ? "Crear la cuenta tarda un minuto y no hace falta contraseña."
+              : "Apúntate a la lista de espera y te avisamos por correo en cuanto abramos."}
+          </p>
+          <CtaLink className="btn btn-primary btn-big" />
         </div>
       </section>
     </main>

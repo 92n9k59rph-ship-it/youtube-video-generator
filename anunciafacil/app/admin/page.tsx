@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { freeLaunch, intEnv } from "@/lib/env";
+import { freeLaunch, intEnv, isAdminEmail } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
 import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
@@ -10,21 +10,13 @@ export const metadata = { title: "Administración · Anuncio Fácil", robots: { 
 const PRICE_EUR = 9.99;
 const VAT = 0.21;
 
-function isAdmin(email: string | undefined) {
-  const admins = (process.env.ADMIN_EMAILS ?? "")
-    .split(",")
-    .map((e) => e.trim().toLowerCase())
-    .filter(Boolean);
-  return Boolean(email && admins.includes(email.toLowerCase()));
-}
-
 const money = (n: number, currency: "EUR" | "USD") =>
   n.toLocaleString("es-ES", { style: "currency", currency, minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 export default async function Admin() {
   const { user } = await currentUserAndProfile();
   // Para cualquiera que no sea administrador, esta página no existe.
-  if (!user || !isAdmin(user.email)) notFound();
+  if (!user || !isAdminEmail(user.email)) notFound();
 
   const admin = supabaseAdmin();
   const monthStart = new Date();

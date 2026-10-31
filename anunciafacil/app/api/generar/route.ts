@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 import { GenerationError, generateMarketing } from "@/lib/generator";
+import { appOpen, isAdminEmail } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage, reserveGeneration } from "@/lib/usage";
@@ -11,6 +12,9 @@ export async function POST(req: Request) {
   const { user, profile } = await currentUserAndProfile();
   if (!user || !profile) {
     return NextResponse.json({ error: "Tienes que entrar en tu cuenta." }, { status: 401 });
+  }
+  if (!appOpen() && !isAdminEmail(user.email)) {
+    return NextResponse.json({ error: "Anuncio Fácil todavía no está abierto. Te avisaremos por correo." }, { status: 403 });
   }
 
   const body = (await req.json().catch(() => null)) as { request?: unknown; tool?: unknown } | null;
