@@ -52,8 +52,15 @@ Sin esto, el botón «Generar» da error.
 ## 6. Correo propio para los enlaces de acceso (antes de tener muchos clientes)
 El correo que trae Supabase solo envía unos pocos mensajes por hora. Crea una cuenta gratis en **Resend** o **Brevo** y configúrala en Supabase, en **Authentication** → **SMTP Settings**. Te guío cuando llegues aquí.
 
-## 7. Textos legales
-Completa lo que está entre corchetes en `/privacidad` y `/terminos`: NIF, dirección y fecha. Pídeme que lo ponga. Conviene que lo revise alguien que sepa de temas legales.
+## 7. Textos legales (con un adulto, 5 minutos)
+Ya están en la app: **Aviso legal**, **Privacidad**, **Cookies** y **Términos**, enlazados abajo en todas las páginas. Solo faltan los datos del titular, que se ponen en Vercel (**Settings** → **Environment Variables**), sin tocar el código:
+- `LEGAL_OWNER_NAME`: nombre y apellidos del titular (el adulto responsable).
+- `LEGAL_NIF`: su NIF.
+- `LEGAL_ADDRESS`: dirección postal.
+- `LEGAL_UPDATED`: la fecha de hoy, por ejemplo `1 de noviembre de 2026`.
+- `LEGAL_SUPABASE_REGION`: la región de Supabase (en Supabase, **Settings** → **General**), por ejemplo `Unión Europea (Irlanda)`.
+
+Después, **Redeploy**. Conviene que una gestoría o un abogado lo revise antes de cobrar.
 
 ---
 

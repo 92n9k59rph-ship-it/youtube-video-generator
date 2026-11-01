@@ -17,6 +17,10 @@ export async function POST(req: Request) {
   if (isSubscribed(profile) || freeLaunch()) {
     return NextResponse.redirect(`${siteUrl()}/panel`, 303);
   }
+  // Consentimiento expreso para empezar ya (derecho de desistimiento, art. 108.3 LGDCU).
+  if (form?.get("inicio") !== "si") {
+    return NextResponse.redirect(`${siteUrl()}/panel?pago=inicio`, 303);
+  }
 
   const stripe = getStripe();
 
@@ -35,7 +39,7 @@ export async function POST(req: Request) {
     customer: customerId,
     client_reference_id: user.id,
     line_items: [{ price: requireEnv(PLANS[plan].stripePriceEnv), quantity: 1 }],
-    subscription_data: { metadata: { plan } },
+    subscription_data: { metadata: { plan, inicio_inmediato_aceptado: new Date().toISOString() } },
     allow_promotion_codes: true,
     locale: "es",
     success_url: `${siteUrl()}/panel?pago=ok`,
