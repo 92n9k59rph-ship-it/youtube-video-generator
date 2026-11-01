@@ -9,6 +9,8 @@
 Cuando esté todo al 100 %, en el paso 10 se pone `SITE_PUBLIC=true` (para que se vea) y `APP_OPEN=true` (para que se pueda usar). La web de la lista de espera también está oculta: la completa está guardada en `web/anunciafacil/index.html`.
 
 ## 📋 Lista rápida
+0. ⏳ **Base de datos (tú, 2 minutos):** ejecutar `supabase/actualizacion-3.sql` en Supabase (SQL Editor → Run). Es una sola línea:
+   `alter table public.profiles add column if not exists details text not null default '';`
 1. ⏳ **Correo del negocio:** crear el Gmail `pregonia.contacto` (con un adulto).
 2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
 3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
@@ -25,7 +27,7 @@ Cuando esté todo al 100 %, en el paso 10 se pone `SITE_PUBLIC=true` (para que s
 - La app, en internet: https://anuncio-facil.vercel.app (se ve entera, pero está cerrada).
 - Supabase: la base de datos (actualizada) y las direcciones de acceso.
 - Vercel: el proyecto `anuncio-facil` con sus ajustes.
-- Los planes: Básico, 15 € al mes con 60 generaciones; Pro, 40 € al mes con 200; Premium, 55 € al mes con 400 y todo incluido.
+- Los planes: Básico, 15 € al mes con 60 generaciones; Pro, 40 € al mes con 150; Premium, 55 € al mes con 350 y todo incluido.
 - 11 herramientas, buscador del historial y app para instalar en el móvil.
 - La web de la lista de espera, con el botón «Ver planes y precios».
 - Los textos legales: Aviso legal, Privacidad, Cookies y Términos.

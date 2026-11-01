@@ -52,7 +52,7 @@ Envíalo **al menos 30 días antes** de poner `FREE_LAUNCH=false`, a todos los c
 >
 > Gracias por usar Pregonia durante el lanzamiento. Nos alegra mucho que nos ayudes con tu negocio.
 >
-> A partir del **[FECHA]**, Pregonia tendrá tres planes (IVA incluido y sin permanencia): **Básico, 15 € al mes** con hasta 60 usos; **Pro, 40 € al mes** con hasta 200 usos y las herramientas para conseguir clientes; y **Premium, 55 € al mes** con hasta 400 usos y todo incluido.
+> A partir del **[FECHA]**, Pregonia tendrá tres planes (IVA incluido y sin permanencia): **Básico, 15 € al mes** con hasta 60 usos; **Pro, 40 € al mes** con hasta 150 usos y las herramientas para conseguir clientes; y **Premium, 55 € al mes** con hasta 350 usos y todo incluido.
 >
 > - **No tienes que hacer nada si no quieres seguir:** no se te cobrará nada, porque nunca te pedimos la tarjeta.
 > - **Si quieres seguir,** a partir de esa fecha verás en tu panel el botón **Suscribirme**.

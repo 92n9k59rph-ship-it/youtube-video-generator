@@ -45,7 +45,7 @@ Aplicación web (Next.js + Supabase + Stripe + API de Claude) que escribe textos
 - textos para carteles y menús;
 - respuestas a mensajes de clientes.
 
-Empieza en **modo lanzamiento gratis por tiempo limitado** (10 generaciones al mes por negocio). Después tendrá tres planes con Stripe: **Básico**, 15 €/mes con 60 generaciones; **Pro**, 40 €/mes con 200 generaciones y las herramientas para conseguir clientes (ficha de Google, reseñas, mensajes y WhatsApp); y **Premium**, 55 €/mes con 400 generaciones y todo incluido (campañas completas, guiones de vídeo, fidelización y descarga del historial). Se puede instalar en el móvil como una app. Mientras `APP_OPEN` no sea `true`, la web se ve entera pero solo el administrador puede usarla. Incluye panel del cliente con historial, borrado de cuenta y panel de administración (`/admin`).
+Empieza en **modo lanzamiento gratis por tiempo limitado** (10 generaciones al mes por negocio). Después tendrá tres planes con Stripe: **Básico**, 15 €/mes con 60 generaciones; **Pro**, 40 €/mes con 150 generaciones y las herramientas para conseguir clientes (ficha de Google, reseñas, mensajes y WhatsApp); y **Premium**, 55 €/mes con 350 generaciones y todo incluido (campañas completas, guiones de vídeo, fidelización y descarga del historial). Se puede instalar en el móvil como una app. Mientras `APP_OPEN` no sea `true`, la web se ve entera pero solo el administrador puede usarla. Incluye panel del cliente con historial, borrado de cuenta y panel de administración (`/admin`).
 
 - **Ponerla en marcha:** `anunciafacil/GUIA.md`, paso a paso y desde el iPad.
 - **Lo que falta para terminar:** `anunciafacil/PASOS-FINALES.md` (con detalle: `anunciafacil/GUIA-PASOS.md`)

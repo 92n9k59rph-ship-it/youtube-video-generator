@@ -60,9 +60,9 @@ describe("límites de uso", () => {
     expect(usagePlan(profile("active")).period).toBe("mes");
   });
 
-  it("Pro tiene 200 al mes y Premium 400", () => {
-    expect(usagePlan(profile("active", "pro")).limit).toBe(200);
-    expect(usagePlan(profile("active", "premium")).limit).toBe(400);
+  it("Pro tiene 150 al mes y Premium 350", () => {
+    expect(usagePlan(profile("active", "pro")).limit).toBe(150);
+    expect(usagePlan(profile("active", "premium")).limit).toBe(350);
     expect(usagePlan(profile("active", "otro")).limit).toBe(60);
   });
 

@@ -13,6 +13,8 @@ export type Profile = {
   stripe_customer_id: string | null;
   subscription_status: string;
   plan?: string | null;
+  // Horario, cómo reservar, especialidades... (necesita supabase/actualizacion-3.sql).
+  details?: string | null;
   current_period_end: string | null;
 };
 

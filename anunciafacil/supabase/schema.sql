@@ -139,3 +139,6 @@ revoke all on public.feedback from anon, authenticated;
 
 -- Plan contratado: basic, pro o premium. Lo actualiza el webhook de Stripe.
 alter table public.profiles add column if not exists plan text not null default 'basic';
+
+-- «Datos útiles» del negocio (horario, cómo reservar, especialidades...).
+alter table public.profiles add column if not exists details text not null default '';
