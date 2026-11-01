@@ -1,6 +1,6 @@
 import { LEGAL } from "@/lib/legal";
 
-export const metadata = { title: "Cookies · Pregonia" };
+export const metadata = { title: "Cookies · Tendalia" };
 
 // Si algún día se añade analítica o publicidad, hay que añadirla aquí y poner un banner que pida permiso antes.
 export default function Cookies() {
@@ -14,7 +14,7 @@ export default function Cookies() {
         <p>Son pequeños archivos que una web guarda en tu navegador para funcionar o para recordar información.</p>
 
         <h2>Cookies que usamos</h2>
-        <p>Pregonia solo usa cookies técnicas, necesarias para que el servicio funcione. No usamos cookies de análisis ni de publicidad.</p>
+        <p>Tendalia solo usa cookies técnicas, necesarias para que el servicio funcione. No usamos cookies de análisis ni de publicidad.</p>
         <ul>
           <li>
             <strong>Sesión (Supabase, propia):</strong> cookies que empiezan por «sb-» y mantienen tu sesión iniciada. Duran

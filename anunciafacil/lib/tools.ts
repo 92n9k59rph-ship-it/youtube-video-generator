@@ -1,4 +1,4 @@
-// Herramientas que ofrece Pregonia. Este archivo lo usan tanto el panel (navegador) como el servidor,
+// Herramientas que ofrece Tendalia. Este archivo lo usan tanto el panel (navegador) como el servidor,
 // así que no debe importar nada del SDK de Anthropic ni de Supabase.
 
 import type { PlanId } from "./plans";

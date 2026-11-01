@@ -678,7 +678,7 @@ function Tips({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-const DRAFT_PREFIX = "pregonia-borrador-";
+const DRAFT_PREFIX = "tendalia-borrador-";
 
 function readDraft(tool: ToolId): string {
   try {

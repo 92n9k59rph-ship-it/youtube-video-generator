@@ -1,4 +1,4 @@
-# Guía paso a paso: Pregonia 🚀
+# Guía paso a paso: Tendalia 🚀
 
 Esta guía explica con detalle el paso 4 de `PASOS-FINALES.md`, que **puedes hacer tú**. Los pasos con dinero o datos personales (3, 7, 8 y 9) se hacen **con un adulto**, y están al final.
 
@@ -15,7 +15,7 @@ Turnstile es un «no soy un robot» que casi nunca molesta. **La app ya lo trae 
 ### 4.1 Crear el widget
 1. Entra en **dash.cloudflare.com** y crea una cuenta gratis si no tienes. Vale cualquier correo tuyo.
 2. En el menú, abre **Turnstile** → **Add widget**.
-3. Nombre: `Pregonia`.
+3. Nombre: `Tendalia`.
 4. En **Hostnames** añade estos cuatro:
    - `anuncio-facil.vercel.app` ⚠️ (es donde está la app; **sin este, nadie podrá entrar**)
    - `localhost`

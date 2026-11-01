@@ -1,6 +1,6 @@
-# Pasos para terminar Pregonia
+# Pasos para terminar Tendalia
 
-> El nombre de la app ahora es **Pregonia** (antes «Anuncio Fácil», que ya usa otra web). El correo del negocio será `pregonia.contacto@gmail.com`: cuando lo creéis, cambiad en Vercel `ADMIN_EMAILS` a ese correo y haced **Redeploy**.
+> El nombre de la app ahora es **Tendalia**. «Anuncio Fácil» lo usa otra web, y «Pregonia» se parecía demasiado a «Pregona», una marca en tramitación de la clase 42 (software). El correo del negocio será `tendalia.contacto@gmail.com`: cuando lo creéis, cambiad en Vercel `ADMIN_EMAILS` y `NEXT_PUBLIC_CONTACT_EMAIL` a ese correo y haced **Redeploy**. Antes de registrar la marca, comprobad en consultas2.oepm.es («Contenga: tendal») que no hay nada parecido en las clases 9, 35 o 42.
 
 🔒 **La web está en privado.** Todo el mundo ve solo «Muy pronto». La web completa solo la ven:
 - los administradores, cuando entran con su correo (`ADMIN_EMAILS`);
@@ -11,11 +11,11 @@ Cuando esté todo al 100 %, en el paso 10 se pone `SITE_PUBLIC=true` (para que s
 ## 📋 Lista rápida
 0. ✅ **Base de datos (hecho):** ejecutar `supabase/actualizacion-3.sql` en Supabase (SQL Editor → Run). Es una sola línea:
    `alter table public.profiles add column if not exists details text not null default '';`
-1. ⏳ **Correo del negocio:** crear el Gmail `pregonia.contacto` (con un adulto).
+1. ⏳ **Correo del negocio:** crear el Gmail `tendalia.contacto` (con un adulto).
 2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
 3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
-4. ⏳ **Turnstile:** widget «Pregonia» creado ✅ → Site Key y `PREVIEW_CODE` en Vercel ✅ → falta la Secret Key en Supabase (Authentication → Attack Protection).
-5. ⏸️ **Dominio propio** (opcional, más adelante): comprar `pregonia.es` o el que esté libre.
+4. ⏳ **Turnstile:** widget «Tendalia» creado ✅ → Site Key y `PREVIEW_CODE` en Vercel ✅ → falta la Secret Key en Supabase (Authentication → Attack Protection).
+5. ⏸️ **Dominio propio** (opcional, más adelante): comprar `tendalia.es` o el que esté libre.
 6. ⏸️ **Correo propio para los enlaces** con Resend: necesita un dominio propio (paso 5). Mientras, vale el correo de Supabase.
 7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
 8. ⏳ **Stripe** (con el adulto): planes de 15 €, 40 € y 55 €, más las claves en Vercel.
@@ -38,9 +38,9 @@ Abajo tienes cada paso explicado.
 ---
 
 ## 0. Crear el Gmail del negocio (con un adulto, 5 minutos) ⚠️ PENDIENTE
-El correo `pregonia.contacto@gmail.com` **todavía no existe**: hay que crearlo. Lo usa la app para que entres como administrador, y además es el correo de contacto que se ve en la web.
+El correo `tendalia.contacto@gmail.com` **todavía no existe**: hay que crearlo. Lo usa la app para que entres como administrador, y además es el correo de contacto que se ve en la web.
 1. Lo más fácil es hacerlo en el móvil del adulto: en la app **Gmail**, toca la foto → **Añadir otra cuenta** → **Google** → **Crear cuenta** → **Para mi uso personal**.
-2. Nombre: `Pregonia` (sin apellidos, o pon `App`). Elige **Crear tu propia dirección de Gmail** y escribe `pregonia.contacto`.
+2. Nombre: `Tendalia` (sin apellidos, o pon `App`). Elige **Crear tu propia dirección de Gmail** y escribe `tendalia.contacto`.
 3. Si ese nombre no está libre o prefieres usar otro correo que ya tengas, cambia en Vercel `ADMIN_EMAILS` y `NEXT_PUBLIC_CONTACT_EMAIL` por ese correo y haz **Redeploy**.
 
 ## 1. Actualizar la base de datos ✅ Hecho
@@ -50,7 +50,7 @@ El correo `pregonia.contacto@gmail.com` **todavía no existe**: hay que crearlo.
 
 ## 2. Probar que entrar funciona (tú, 5 minutos)
 1. Abre la app y ve a **Entrar**, después a **«Acceso para el equipo»**.
-2. Escribe `pregonia.contacto@gmail.com`, acepta los términos y pulsa **Enviarme el enlace**.
+2. Escribe `tendalia.contacto@gmail.com`, acepta los términos y pulsa **Enviarme el enlace**.
 3. Abre el enlace que llega a ese Gmail (mira también en spam).
 4. Rellena **Tu negocio** y pulsa **Guardar**. Abre también tu panel `/admin`.
 
@@ -90,9 +90,9 @@ Después, **Redeploy**. Conviene que una gestoría o un abogado lo revise antes 
 ## 8. Cobros con Stripe (con un adulto: DNI y cuenta bancaria)
 1. Crea la cuenta en **stripe.com** y empieza en **modo prueba**.
 2. Crea tres productos, todos **recurrentes, mensuales y con impuestos incluidos**:
-   - **Pregonia Básico**, 15 EUR. Su ID de precio va en `STRIPE_PRICE_ID`.
-   - **Pregonia Pro**, 40 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PRO`.
-   - **Pregonia Premium**, 55 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PREMIUM`.
+   - **Tendalia Básico**, 15 EUR. Su ID de precio va en `STRIPE_PRICE_ID`.
+   - **Tendalia Pro**, 40 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PRO`.
+   - **Tendalia Premium**, 55 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PREMIUM`.
 3. En **Claves de API**, copia la clave secreta y ponla en `STRIPE_SECRET_KEY`.
 4. Crea el **webhook** apuntando a `https://anuncio-facil.vercel.app/api/stripe/webhook`, con los eventos `checkout.session.completed` y `customer.subscription.*`. Su clave va en `STRIPE_WEBHOOK_SECRET`.
 5. Activa el **portal de clientes** (que puedan cancelar y cambiar de plan) y los **recibos por correo**.

@@ -1,9 +1,9 @@
-# Novedades de Pregonia
+# Novedades de Tendalia
 
 ## 1 de noviembre
 
 ### Para tus clientes
-- **Nuevo nombre: Pregonia.** «Anuncio Fácil» ya lo usaba otra web.
+- **Nuevo nombre: Tendalia.** «Anuncio Fácil» ya lo usaba otra web, y «Pregonia» se parecía a una marca de software en tramitación.
 - **Tres planes:** Básico, 15 € al mes; Pro, 40 € al mes; y Premium, 55 € al mes, todo incluido.
 - **Cinco herramientas nuevas para conseguir clientes:**
   - **Perfil de redes** (Básico): biografía de Instagram y TikTok.

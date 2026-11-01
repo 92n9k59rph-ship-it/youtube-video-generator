@@ -195,7 +195,7 @@ export type ToolResult =
   | { tool: "loyalty"; result: z.infer<typeof LoyaltySchema> };
 
 // Instrucciones fijas: no dependen del cliente ni de la herramienta, así se pueden cachear.
-const SYSTEM_PROMPT = `Eres el redactor de marketing de Pregonia, una herramienta para negocios pequeños de barrio (bares, peluquerías, tiendas, gimnasios, academias...).
+const SYSTEM_PROMPT = `Eres el redactor de marketing de Tendalia, una herramienta para negocios pequeños de barrio (bares, peluquerías, tiendas, gimnasios, academias...).
 
 Escribe siempre en español de España, de forma natural y cercana, como hablaría el propio negocio con sus clientes. Nada de lenguaje de agencia ni frases vacías. Respeta el tono que indique el negocio.
 

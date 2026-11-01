@@ -8,9 +8,9 @@ const description =
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
-  title: "Pregonia · Textos que atraen clientes a tu negocio",
+  title: "Tendalia · Textos que atraen clientes a tu negocio",
   description,
-  applicationName: "Pregonia",
+  applicationName: "Tendalia",
   keywords: [
     "publicaciones para Instagram",
     "marketing para negocios",
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
     "marketing para peluquerías",
     "marketing para tiendas",
   ],
-  appleWebApp: { capable: true, title: "Pregonia", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "Tendalia", statusBarStyle: "default" },
   formatDetection: { telephone: false },
   openGraph: {
-    title: "Pregonia · El marketing de tu negocio, en un minuto",
+    title: "Tendalia · El marketing de tu negocio, en un minuto",
     description,
     locale: "es_ES",
     type: "website",
-    siteName: "Pregonia",
+    siteName: "Tendalia",
   },
 };
 
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="top">
           <div className="wrap">
             <Link className="logo" href="/">
-              <span className="logo-mark" aria-hidden="true">✦</span>Pregonia
+              <span className="logo-mark" aria-hidden="true">✦</span>Tendalia
             </Link>
             <nav className="nav">
               <Link className="btn btn-ghost" href="/panel">Mi panel</Link>
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer>
           <div className="wrap">
-            <span>© Pregonia · Responsable: {LEGAL.owner} · {LEGAL.email}</span>
+            <span>© Tendalia · Responsable: {LEGAL.owner} · {LEGAL.email}</span>
             <span>
               <Link href="/aviso-legal">Aviso legal</Link> · <Link href="/privacidad">Privacidad</Link> ·{" "}
               <Link href="/cookies">Cookies</Link> · <Link href="/terminos">Términos</Link>

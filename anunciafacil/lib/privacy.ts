@@ -14,6 +14,7 @@ const ALWAYS_OPEN = [
   "/apple-icon",
 ];
 
+// Nombre interno de la cookie de vista previa (no se cambia para no cerrar las vistas previas ya abiertas).
 export const PREVIEW_COOKIE = "pregonia_vista";
 
 export function isAlwaysOpen(path: string): boolean {
