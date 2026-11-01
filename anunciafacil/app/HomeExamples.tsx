@@ -16,6 +16,10 @@ const BUSINESSES = {
         "Hola, Laura. Gracias por contárnoslo y perdona la espera: el sábado tuvimos más gente de la prevista. Nos gustaría compensarte con un buen rato la próxima vez. Si quieres, escríbenos a [correo] y lo hablamos.",
     },
     whatsapp: "¡Hola! 👋 Este viernes hay partido en la tele y tapa de regalo con cada consumición. ¿Te guardamos sitio? 🍻",
+    google: {
+      description: "Bar de tapas de barrio con terraza. Tapa casera con cada consumición, menú del día entre semana y partidos en la tele. Un sitio de toda la vida para quedar con los amigos.",
+      keywords: "bar de tapas en [barrio] · menú del día cerca · bar con terraza",
+    },
   },
   pelu: {
     label: "Peluquería",
@@ -29,6 +33,10 @@ const BUSINESSES = {
         "¡Muchas gracias, Marta! Nos alegra un montón que te encantara el corte. Aquí te esperamos para el próximo. 💜",
     },
     whatsapp: "¡Hola! Se acercan las fiestas y las citas vuelan 🎄 ¿Te reservamos hueco? Contesta a este mensaje y te damos opciones.",
+    google: {
+      description: "Peluquería en [barrio] especializada en color y mechas, con cortes de mujer y de hombre. Ambiente tranquilo y cita fácil por WhatsApp.",
+      keywords: "peluquería en [barrio] · mechas · corte de pelo cerca de mí",
+    },
   },
   tienda: {
     label: "Tienda de ropa",
@@ -42,6 +50,10 @@ const BUSINESSES = {
         "Hola, Javier. Gracias por tu opinión. Trabajamos con tejidos de calidad para que las prendas duren, y cada mes tenemos ofertas para clientes habituales. ¡Esperamos verte pronto!",
     },
     whatsapp: "¡Hola! 👋 Ya ha llegado la mercancía nueva. Si quieres, te guardamos tu talla hasta el sábado. ¡Pásate!",
+    google: {
+      description: "Tienda de ropa con prendas de calidad para el día a día. Colecciones nuevas cada temporada y asesoramiento cercano para encontrar tu talla y tu estilo.",
+      keywords: "tienda de ropa en [ciudad] · ropa de mujer · moda de comercio local",
+    },
   },
   gym: {
     label: "Gimnasio",
@@ -55,6 +67,10 @@ const BUSINESSES = {
         "Hola, Pedro. Sentimos mucho que no pudieras contactar con nosotros: no es lo que queremos. Escríbenos a [correo] o al [teléfono] y te atendemos hoy mismo.",
     },
     whatsapp: "¡Hola! Recordatorio: mañana a las [hora] tienes tu clase de [actividad]. Si no puedes venir, avísanos para liberar la plaza 🙏",
+    google: {
+      description: "Gimnasio cercano con sala de musculación y clases dirigidas. Entrenadores que te acompañan desde el primer día, para cualquier nivel.",
+      keywords: "gimnasio en [barrio] · clases de pilates · entrenador personal",
+    },
   },
 } as const;
 
@@ -84,7 +100,7 @@ export function HomeExamples() {
         Textos de ejemplo escritos a mano para que veas el estilo. La herramienta los escribe para tu negocio, y deja entre corchetes
         los datos que solo tú sabes, como precios u horarios.
       </p>
-      <div className="grid-3" aria-live="polite">
+      <div className="grid-2" aria-live="polite">
         <article className="card">
           <span className="card-label">📱 Publicación de Instagram</span>
           <p>{example.post.text}</p>
@@ -98,6 +114,11 @@ export function HomeExamples() {
         <article className="card">
           <span className="card-label">💬 Mensaje de WhatsApp</span>
           <p>{example.whatsapp}</p>
+        </article>
+        <article className="card">
+          <span className="card-label">📍 Ficha de Google</span>
+          <p>{example.google.description}</p>
+          <p className="muted small">🔎 Así te buscan: {example.google.keywords}</p>
         </article>
       </div>
     </div>
