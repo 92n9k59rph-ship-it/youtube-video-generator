@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import "./globals.css";
@@ -49,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer>
           <div className="wrap">
-            <span>© Anuncio Fácil · Responsable: David Lázaro · anunciafacil.contacto@gmail.com</span>
+            <span>© Anuncio Fácil · Responsable: David Lázaro · {CONTACT_EMAIL}</span>
             <span>
               <Link href="/privacidad">Privacidad</Link> · <Link href="/terminos">Términos</Link>
             </span>

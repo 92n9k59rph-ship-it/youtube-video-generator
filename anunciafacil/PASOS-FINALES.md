@@ -10,7 +10,13 @@ Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gr
 
 ---
 
-## 1. Actualizar la base de datos (tú, 2 minutos)
+## 0. Crear el Gmail del negocio (con un adulto, 5 minutos) ⚠️ PENDIENTE
+El correo `anunciafacil.contacto@gmail.com` **todavía no existe**: hay que crearlo. Lo usa la app para que entres como administrador, y además es el correo de contacto que se ve en la web.
+1. Lo más fácil es hacerlo en el móvil del adulto: en la app **Gmail**, toca la foto → **Añadir otra cuenta** → **Google** → **Crear cuenta** → **Para mi uso personal**.
+2. Nombre: `Anuncio`. Apellidos: `Fácil`. Elige **Crear tu propia dirección de Gmail** y escribe `anunciafacil.contacto`.
+3. Si ese nombre no está libre o prefieres usar otro correo que ya tengas, cambia en Vercel `ADMIN_EMAILS` y `NEXT_PUBLIC_CONTACT_EMAIL` por ese correo y haz **Redeploy**.
+
+## 1. Actualizar la base de datos ✅ Hecho
 1. Abre https://raw.githubusercontent.com/92n9k59rph-ship-it/youtube-video-generator/main/anunciafacil/supabase/actualizacion-2.sql
 2. Mantén pulsado, elige **Seleccionar todo** y **Copiar**.
 3. En Supabase, entra en **SQL Editor**, pulsa **«+»**, pega y pulsa **Run**. Tiene que salir **«Success»**.
