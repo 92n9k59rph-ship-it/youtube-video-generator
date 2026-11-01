@@ -2,7 +2,11 @@
 
 > El nombre de la app ahora es **Pregonia** (antes «Anuncio Fácil», que ya usa otra web). El correo del negocio será `pregonia.contacto@gmail.com`: cuando lo creéis, cambiad en Vercel `ADMIN_EMAILS` a ese correo y haced **Redeploy**.
 
-Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gratis) pero **nadie puede usarla**: los botones llevan a la lista de espera y solo entra el correo de administrador.
+🔒 **La web está en privado.** Todo el mundo ve solo «Muy pronto». La web completa solo la ven:
+- los administradores, cuando entran con su correo (`ADMIN_EMAILS`);
+- quien abra el enlace secreto de vista previa: `https://anuncio-facil.vercel.app/?vista=TU-CÓDIGO`. El código lo eliges tú y lo pones en Vercel como `PREVIEW_CODE`. No se lo des a nadie.
+
+Cuando esté todo al 100 %, en el paso 10 se pone `SITE_PUBLIC=true` (para que se vea) y `APP_OPEN=true` (para que se pueda usar). La web de la lista de espera también está oculta: la completa está guardada en `web/anunciafacil/index.html`.
 
 ## 📋 Lista rápida
 1. ⏳ **Correo del negocio:** crear el Gmail `pregonia.contacto` (con un adulto).
@@ -14,7 +18,7 @@ Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gr
 7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
 8. ⏳ **Stripe** (con el adulto): planes de 15 €, 40 € y 55 €, más las claves en Vercel.
 9. ⏳ **Vercel Pro** y darse de alta para facturar.
-10. ⏳ **Abrir la app:** `APP_OPEN = true` y avisar a la lista de espera.
+10. ⏳ **Abrir la app:** `SITE_PUBLIC = true` y `APP_OPEN = true`, y avisar a la lista de espera.
 11. ⏳ **Al llegar a la meta secreta:** avisar con 30 días de antelación y empezar a cobrar.
 
 ## ✅ Hecho
@@ -100,7 +104,7 @@ Después, **Redeploy**. Conviene que una gestoría o un abogado lo revise antes 
 ---
 
 ## 10. 🚀 ABRIR al público
-1. En Vercel, añade `APP_OPEN` con el valor `true` y haz **Redeploy**. Desde ese momento la gente ya puede registrarse.
+1. En Vercel, añade `SITE_PUBLIC` y `APP_OPEN`, los dos con el valor `true`, y haz **Redeploy**. Desde ese momento la gente ya puede registrarse.
 2. Mientras `FREE_LAUNCH=true`, todos lo usan **gratis**, con 10 generaciones al mes.
 3. Envía el **correo de lanzamiento** a tu lista de espera. Está en `LANZAMIENTO.md`.
 4. Pídeme que cambie los botones de la web de la lista de espera para que lleven a la app.
