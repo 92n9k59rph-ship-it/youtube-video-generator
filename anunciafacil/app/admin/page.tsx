@@ -6,7 +6,7 @@ import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Administración · Pregonia", robots: { index: false } };
+export const metadata = { title: "Administración · Tendalia", robots: { index: false } };
 
 const VAT = 0.21;
 

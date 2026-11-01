@@ -1,4 +1,4 @@
--- Pregonia: tablas y permisos. Pégalo entero en Supabase → SQL Editor → Run.
+-- Tendalia: tablas y permisos. Pégalo entero en Supabase → SQL Editor → Run.
 
 -- Perfil de cada cliente: datos del negocio + estado de la suscripción.
 create table if not exists public.profiles (

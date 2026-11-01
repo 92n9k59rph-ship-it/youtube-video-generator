@@ -1,7 +1,7 @@
 import { LEGAL } from "@/lib/legal";
 import { PLANS, planLimit } from "@/lib/plans";
 
-export const metadata = { title: "Términos · Pregonia" };
+export const metadata = { title: "Términos · Tendalia" };
 
 // PLANTILLA: la tiene que revisar el titular y, mejor, una gestoría o un abogado antes de cobrar.
 export default function Terminos() {
@@ -13,14 +13,14 @@ export default function Terminos() {
 
         <h2>Partes</h2>
         <p>
-          Estas condiciones regulan el uso y la contratación de Pregonia, servicio prestado por {LEGAL.owner}, con NIF{" "}
+          Estas condiciones regulan el uso y la contratación de Tendalia, servicio prestado por {LEGAL.owner}, con NIF{" "}
           {LEGAL.nif} y domicilio en {LEGAL.address}, contacto {LEGAL.email} («el proveedor»), a la persona que se registra y
           contrata («el usuario»). Para contratar tienes que ser mayor de 18 años.
         </p>
 
         <h2>El servicio</h2>
         <p>
-          Pregonia escribe, con inteligencia artificial, propuestas de textos para negocios: publicaciones para redes
+          Tendalia escribe, con inteligencia artificial, propuestas de textos para negocios: publicaciones para redes
           sociales con ideas de vídeos cortos y calendario, correos para clientes, respuestas a reseñas, mensajes de WhatsApp,
           respuestas a mensajes de clientes y textos para carteles y menús.
         </p>
@@ -29,13 +29,13 @@ export default function Terminos() {
           como precios u horarios. Eres responsable de lo que publiques.
         </p>
         <p>
-          Pregonia solo escribe los textos; no envía correos ni mensajes. Si los envías tú, hazlo solo a clientes que
+          Tendalia solo escribe los textos; no envía correos ni mensajes. Si los envías tú, hazlo solo a clientes que
           hayan aceptado recibirlos y dales una forma sencilla de darse de baja, como exige la ley.
         </p>
 
         <h2>Lanzamiento gratis</h2>
         <p>
-          Durante el periodo de lanzamiento, de duración limitada, Pregonia es gratis, con el límite de generaciones
+          Durante el periodo de lanzamiento, de duración limitada, Tendalia es gratis, con el límite de generaciones
           mensuales que se indique en la web. Avisaremos por correo al menos 30 días antes de que pase a ser de pago. Nunca se
           cobra nada sin que te suscribas tú.
         </p>
@@ -99,7 +99,7 @@ export default function Terminos() {
         <p><strong>Modelo de formulario de desistimiento:</strong></p>
         <p>
           A la atención de {LEGAL.owner}, {LEGAL.address}, {LEGAL.email}: por la presente le comunico que desisto de mi
-          contrato de suscripción al servicio Pregonia. Contratado el: ______ · Nombre: ______ · Correo de la cuenta:
+          contrato de suscripción al servicio Tendalia. Contratado el: ______ · Nombre: ______ · Correo de la cuenta:
           ______ · Fecha: ______ · Firma (solo si se envía en papel).
         </p>
 

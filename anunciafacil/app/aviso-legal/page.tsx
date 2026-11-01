@@ -1,6 +1,6 @@
 import { LEGAL } from "@/lib/legal";
 
-export const metadata = { title: "Aviso legal · Pregonia" };
+export const metadata = { title: "Aviso legal · Tendalia" };
 
 // PLANTILLA: la tiene que revisar el titular y, mejor, una gestoría o un abogado.
 export default function AvisoLegal() {
@@ -13,7 +13,7 @@ export default function AvisoLegal() {
         <h2>Datos del titular</h2>
         <p>
           En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio
-          electrónico (LSSI-CE), se informa de que la aplicación Pregonia y esta web son titularidad de:
+          electrónico (LSSI-CE), se informa de que la aplicación Tendalia y esta web son titularidad de:
         </p>
         <ul>
           <li>Titular: {LEGAL.owner}</li>
@@ -24,7 +24,7 @@ export default function AvisoLegal() {
 
         <h2>Objeto</h2>
         <p>
-          Pregonia es un servicio en línea que escribe, con inteligencia artificial, textos de marketing para negocios:
+          Tendalia es un servicio en línea que escribe, con inteligencia artificial, textos de marketing para negocios:
           publicaciones para redes sociales, correos para clientes, respuestas a reseñas, mensajes de WhatsApp, respuestas a
           mensajes de clientes y textos para carteles y menús.
         </p>
@@ -38,7 +38,7 @@ export default function AvisoLegal() {
 
         <h2>Propiedad intelectual e industrial</h2>
         <p>
-          Los contenidos, el diseño, los logotipos, la marca y el código de Pregonia pertenecen a {LEGAL.owner} o a sus
+          Los contenidos, el diseño, los logotipos, la marca y el código de Tendalia pertenecen a {LEGAL.owner} o a sus
           licenciantes. Queda prohibida su reproducción, distribución o transformación sin autorización expresa. Los textos que
           generes con la herramienta son tuyos, en los términos de las condiciones de uso.
         </p>

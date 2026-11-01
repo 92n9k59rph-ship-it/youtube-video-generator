@@ -1,4 +1,4 @@
-# Guía para poner en marcha Pregonia
+# Guía para poner en marcha Tendalia
 
 Esta carpeta tiene la herramienta completa: registro de clientes, pago mensual con Stripe, panel de cada cliente y cinco generadores de textos con Claude:
 - publicaciones para redes, con idea de Reel y calendario;
@@ -73,12 +73,12 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 1. Entra en **stripe.com** → crea una cuenta.
 2. Arriba, activa **«Modo de prueba» / «Test mode»**. Así nadie paga dinero real mientras pruebas.
 3. **Catálogo de productos → Añadir producto**:
-   - Nombre: `Pregonia`
+   - Nombre: `Tendalia`
    - Precio: **15 EUR**, **Recurrente**, **Mensual**
    - En «Incluye impuestos», elige **Sí (impuestos incluidos)**.
    - Guarda y copia el **ID del precio** (empieza por `price_`) → irá en `STRIPE_PRICE_ID`.
-   - Repite para el **plan Pro**: producto `Pregonia Pro`, **40 EUR**, recurrente, mensual, con impuestos incluidos. Su ID de precio irá en `STRIPE_PRICE_ID_PRO`.
-   - Y para el **plan Premium**: producto `Pregonia Premium`, **55 EUR**, igual. Su ID de precio irá en `STRIPE_PRICE_ID_PREMIUM`.
+   - Repite para el **plan Pro**: producto `Tendalia Pro`, **40 EUR**, recurrente, mensual, con impuestos incluidos. Su ID de precio irá en `STRIPE_PRICE_ID_PRO`.
+   - Y para el **plan Premium**: producto `Tendalia Premium`, **55 EUR**, igual. Su ID de precio irá en `STRIPE_PRICE_ID_PREMIUM`.
 4. **Desarrolladores → Claves de API** → copia la **clave secreta** (empieza por `sk_test_`) → irá en `STRIPE_SECRET_KEY`.
 5. **Configuración → Facturación → Portal de clientes** → actívalo y permite que los clientes **cancelen** su suscripción y **actualicen la tarjeta**.
 6. **Configuración → Correos electrónicos de clientes** → activa **«Pagos correctos»** y **«Facturas»**, para que cada cliente reciba su recibo por correo después de pagar.
@@ -99,7 +99,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
    - `SHOW_PRICING`: opcional. Ponlo en `false` si alguna vez quieres ocultar los precios y lo de «gratis».
    - `FREE_LAUNCH`: con el valor `true` (lanzamiento gratis). `LAUNCH_MONTHLY_GENERATIONS`: con el valor `10` (generaciones gratis al mes por cliente). `LAUNCH_GOAL`: tu **meta secreta** de negocios (el número que acordamos). Solo está en Vercel, no la escribas en GitHub; tu panel `/admin` te avisa al llegar.
    - `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` y `STRIPE_WEBHOOK_SECRET`: **no hacen falta durante el lanzamiento gratis**; se añaden en el paso 7.
-   - `ADMIN_EMAILS`: el correo con el que entrarás tú en la app (por ejemplo `pregonia.contacto@gmail.com`). Te da acceso a tu panel de administración en `/admin`.
+   - `ADMIN_EMAILS`: el correo con el que entrarás tú en la app (por ejemplo `tendalia.contacto@gmail.com`). Te da acceso a tu panel de administración en `/admin`.
    - `FREE_GENERATIONS` (con el valor `3`: generaciones de prueba gratis antes de pagar; `0` quita la prueba) y `MONTHLY_GENERATIONS` (con el valor `100`)
 5. Pulsa **Deploy** y espera 1–2 minutos.
 6. Copia la dirección que te da Vercel (por ejemplo `https://anunciafacil-xxxx.vercel.app`) y:
@@ -160,4 +160,4 @@ Si algo falla, mándame una captura y lo arreglo.
 2. **Vercel:** cambia `STRIPE_SECRET_KEY`, `STRIPE_PRICE_ID` y `STRIPE_WEBHOOK_SECRET` por los valores reales y haz **Redeploy**.
 3. **Revisa los textos legales** (`/privacidad` y `/terminos`): son un borrador. Hay que completar lo marcado entre corchetes (NIF, dirección, fecha) y conviene que los revise alguien que sepa de temas legales.
 4. **Date de alta para facturar** (autónomo o lo que corresponda) antes de empezar a cobrar.
-5. **Avisa a tu lista de espera** con un correo desde `pregonia.contacto@gmail.com`. Te lo preparo cuando llegues aquí.
+5. **Avisa a tu lista de espera** con un correo desde `tendalia.contacto@gmail.com`. Te lo preparo cuando llegues aquí.

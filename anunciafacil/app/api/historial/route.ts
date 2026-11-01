@@ -40,7 +40,7 @@ export async function GET() {
   return new NextResponse(csv, {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": `attachment; filename="pregonia-historial.csv"`,
+      "Content-Disposition": `attachment; filename="tendalia-historial.csv"`,
       "Cache-Control": "no-store",
     },
   });

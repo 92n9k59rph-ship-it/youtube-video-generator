@@ -39,12 +39,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
 
   const allFaqs: Array<[string, string]> = [
     [
-      "¿Qué es Pregonia?",
+      "¿Qué es Tendalia?",
       "Una herramienta que escribe por ti los textos que atraen clientes a tu negocio: publicaciones para redes, correos, carteles y menús, tu perfil de Instagram, tu ficha de Google para que te encuentren en tu zona, respuestas a reseñas y mensajes, campañas completas, guiones de vídeo e ideas para que tus clientes vuelvan.",
     ],
     [
       "¿Necesito saber de marketing?",
-      "No. Solo cuentas con tus palabras qué negocio tienes y qué quieres anunciar. Pregonia se encarga de escribirlo bien.",
+      "No. Solo cuentas con tus palabras qué negocio tienes y qué quieres anunciar. Tendalia se encarga de escribirlo bien.",
     ],
     [
       "¿Publica por mí en Instagram o envía los mensajes?",
@@ -62,7 +62,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
     ],
     [
       "¿Qué es una «generación»?",
-      "Cada vez que pulsas «Generar» y Pregonia te escribe los textos cuenta como una, sea cual sea la herramienta.",
+      "Cada vez que pulsas «Generar» y Tendalia te escribe los textos cuenta como una, sea cual sea la herramienta.",
     ],
     [
       "¿Me ayuda a que me encuentren en Google?",
@@ -70,7 +70,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
     ],
     [
       "¿Tiene app para el móvil?",
-      "Sí. Pregonia se instala en tu móvil o tablet como una app, sin pasar por ninguna tienda: en el iPhone, abre la web en Safari, toca Compartir y «Añadir a pantalla de inicio»; en Android, abre el menú de Chrome y toca «Instalar app».",
+      "Sí. Tendalia se instala en tu móvil o tablet como una app, sin pasar por ninguna tienda: en el iPhone, abre la web en Safari, toca Compartir y «Añadir a pantalla de inicio»; en Android, abre el menú de Chrome y toca «Instalar app».",
     ],
     [
       "¿Puedo borrar mi cuenta?",
@@ -79,11 +79,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   ];
   const faqs = pricing ? allFaqs : allFaqs.filter(([q]) => q !== "¿Cuánto cuesta?");
 
-  // Datos estructurados para que Google entienda qué es Pregonia (y pueda mostrar sus precios).
+  // Datos estructurados para que Google entienda qué es Tendalia (y pueda mostrar sus precios).
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Pregonia",
+    name: "Tendalia",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web, iOS, Android",
     inLanguage: "es-ES",
@@ -102,7 +102,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       {cuenta === "borrada" && (
         <div className="wrap">
-          <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado Pregonia!</p>
+          <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado Tendalia!</p>
         </div>
       )}
 
@@ -115,7 +115,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               Las publicaciones de tu negocio, <span className="accent">escritas en un minuto.</span>
             </h1>
             <p className="lead">
-              Cuéntanos qué negocio tienes y qué necesitas. Pregonia te prepara publicaciones para Instagram, tu ficha de Google
+              Cuéntanos qué negocio tienes y qué necesitas. Tendalia te prepara publicaciones para Instagram, tu ficha de Google
               para que te encuentren en tu zona, respuestas a reseñas y mensajes, campañas, carteles y guiones de vídeo.
             </p>
             <div className="nav">
@@ -124,7 +124,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             </div>
             {!open && (
               <p className="notice" style={{ background: "var(--chip)" }}>
-                <strong>Muy pronto.</strong> Estamos ultimando Pregonia. Apúntate a la lista de espera y te avisamos el día que abra.
+                <strong>Muy pronto.</strong> Estamos ultimando Tendalia. Apúntate a la lista de espera y te avisamos el día que abra.
               </p>
             )}
             {pricing && (
@@ -138,7 +138,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             )}
           </div>
 
-          <div className="mock" aria-label="Ejemplo de publicación creada con Pregonia">
+          <div className="mock" aria-label="Ejemplo de publicación creada con Tendalia">
             <span className="sticker">Ejemplo</span>
             <article className="post">
               <div className="post-head">
@@ -240,7 +240,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         <div className="wrap soon">
           <div className="stack">
             <span className="tag">Tu propia app</span>
-            <h2>Pregonia, en la pantalla de tu móvil</h2>
+            <h2>Tendalia, en la pantalla de tu móvil</h2>
             <p className="muted">
               Instálala en tu móvil o tablet como cualquier otra app, sin pasar por ninguna tienda y sin ocupar espacio. Así
               tienes los textos de tu negocio a mano, detrás del mostrador.
@@ -249,11 +249,11 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
           <div className="stack" style={{ gap: 14 }}>
             <div className="card">
               <strong>📱 iPhone y iPad</strong>
-              <span className="muted small">Abre Pregonia en Safari, toca Compartir y elige «Añadir a pantalla de inicio».</span>
+              <span className="muted small">Abre Tendalia en Safari, toca Compartir y elige «Añadir a pantalla de inicio».</span>
             </div>
             <div className="card">
               <strong>🤖 Android</strong>
-              <span className="muted small">Abre Pregonia en Chrome, toca el menú ⋮ y elige «Instalar app».</span>
+              <span className="muted small">Abre Tendalia en Chrome, toca el menú ⋮ y elige «Instalar app».</span>
             </div>
             <div className="card">
               <strong>💻 Ordenador</strong>

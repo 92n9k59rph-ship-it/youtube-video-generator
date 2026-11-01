@@ -107,7 +107,7 @@ export default async function Panel({
                 Prueba la herramienta <strong>Redes sociales</strong> con algo de esta semana y copia lo que más te guste.
               </li>
               <li>
-                Instala Pregonia en tu móvil: en Safari, toca Compartir → «Añadir a pantalla de inicio»; en Android, menú ⋮ → «Instalar
+                Instala Tendalia en tu móvil: en Safari, toca Compartir → «Añadir a pantalla de inicio»; en Android, menú ⋮ → «Instalar
                 app».
               </li>
             </ol>
@@ -180,7 +180,7 @@ export default async function Panel({
               </>
             ) : launch ? (
               <p className="muted">
-                Pregonia es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
+                Tendalia es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
                 Después habrá tres planes: {PLAN_IDS.map((id) => `${PLANS[id].name} (${PLANS[id].priceLabel}/mes)`).join(", ")}. Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
                 salvo que tú decidas suscribirte.
               </p>
