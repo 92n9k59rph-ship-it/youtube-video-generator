@@ -25,7 +25,14 @@ function profile(status: string, plan = "basic"): Profile {
   };
 }
 
-const ENV_KEYS = ["FREE_LAUNCH", "FREE_GENERATIONS", "MONTHLY_GENERATIONS", "PRO_MONTHLY_GENERATIONS", "LAUNCH_MONTHLY_GENERATIONS"];
+const ENV_KEYS = [
+  "FREE_LAUNCH",
+  "FREE_GENERATIONS",
+  "MONTHLY_GENERATIONS",
+  "PRO_MONTHLY_GENERATIONS",
+  "PREMIUM_MONTHLY_GENERATIONS",
+  "LAUNCH_MONTHLY_GENERATIONS",
+];
 
 describe("límites de uso", () => {
   beforeEach(() => {
@@ -49,13 +56,14 @@ describe("límites de uso", () => {
 
   it("los suscriptores tienen su límite mensual aunque haya lanzamiento", () => {
     process.env.FREE_LAUNCH = "true";
-    expect(usagePlan(profile("active")).limit).toBe(50);
+    expect(usagePlan(profile("active")).limit).toBe(60);
     expect(usagePlan(profile("active")).period).toBe("mes");
   });
 
-  it("el plan Pro tiene 200 al mes", () => {
+  it("Pro tiene 200 al mes y Premium 400", () => {
     expect(usagePlan(profile("active", "pro")).limit).toBe(200);
-    expect(usagePlan(profile("active", "otro")).limit).toBe(50);
+    expect(usagePlan(profile("active", "premium")).limit).toBe(400);
+    expect(usagePlan(profile("active", "otro")).limit).toBe(60);
   });
 
   it("una suscripción cancelada o impagada no da el límite de pago", () => {

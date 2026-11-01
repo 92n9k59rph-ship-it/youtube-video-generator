@@ -82,6 +82,91 @@ export const ReplySchema = z.object({
   next_steps: z.array(z.string()).describe("Lo que el negocio tiene que comprobar o hacer antes de enviar"),
 });
 
+export const BioSchema = z.object({
+  profile_name: z.string().describe("Nombre para el perfil: nombre del negocio + lo que es o la zona, para que lo encuentren"),
+  bios: z.array(
+    z.object({
+      style: z.string().describe("Por ejemplo: cercana, directa o divertida"),
+      text: z.string().describe("Biografía de 150 caracteres como máximo"),
+    }),
+  ),
+  highlights: z.array(z.string()).describe("Nombres cortos para las historias destacadas"),
+  link_text: z.string().describe("Texto para el botón o el enlace del perfil"),
+  tips: z.array(z.string()),
+});
+
+export const GoogleSchema = z.object({
+  description: z.string().describe("Descripción para la ficha de Google, 750 caracteres como máximo"),
+  keywords: z.array(z.string()).describe("Búsquedas con las que los clientes de la zona encontrarían el negocio"),
+  posts: z.array(
+    z.object({
+      kind: z.string().describe("novedad, oferta o evento"),
+      title: z.string(),
+      text: z.string(),
+      button: z.string().describe("Texto del botón: Reservar, Llamar, Más información..."),
+    }),
+  ),
+  faqs: z.array(z.object({ question: z.string(), answer: z.string() })),
+  tips: z.array(z.string()),
+});
+
+export const PromoSchema = z.object({
+  name: z.string().describe("Nombre corto y pegadizo de la campaña"),
+  key_message: z.string().describe("El mensaje principal en una frase"),
+  offer: z.string().describe("La oferta o la propuesta, explicada con claridad"),
+  plan: z.array(
+    z.object({
+      day: z.string().describe("Por ejemplo: Día 1 · lunes"),
+      channel: z.string().describe("Instagram, correo, WhatsApp, local..."),
+      action: z.string(),
+    }),
+  ),
+  social_posts: z.array(z.object({ caption: z.string(), hashtags: z.array(z.string()) })),
+  email: z.object({ subject: z.string(), body: z.string() }),
+  whatsapp: z.string(),
+  poster: z.object({ headline: z.string(), subheadline: z.string(), call_to_action: z.string() }),
+  measure: z.array(z.string()).describe("Cómo saber si la campaña ha funcionado"),
+});
+
+export const ReelSchema = z.object({
+  title: z.string(),
+  hooks: z.array(z.string()).describe("Frases o imágenes para el primer segundo"),
+  duration_seconds: z.number(),
+  shots: z.array(
+    z.object({
+      seconds: z.string().describe("Por ejemplo: 0-3 s"),
+      visual: z.string().describe("Qué se ve"),
+      voice: z.string().describe("Qué se dice (o vacío si no hay voz)"),
+      on_screen_text: z.string(),
+    }),
+  ),
+  subtitles: z.string().describe("Subtítulos completos, una frase por línea"),
+  caption: z.string().describe("Texto para la publicación del vídeo"),
+  hashtags: z.array(z.string()),
+  cover_text: z.string().describe("Texto corto para la portada del vídeo"),
+  music_mood: z.string().describe("Tipo de música, sin nombrar canciones con derechos"),
+  tips: z.array(z.string()),
+});
+
+export const LoyaltySchema = z.object({
+  ideas: z.array(
+    z.object({
+      name: z.string(),
+      how: z.string().describe("Cómo funciona, en 2 o 3 frases"),
+      pros: z.string(),
+      cons: z.string(),
+    }),
+  ),
+  rules: z.array(z.string()).describe("Normas claras para la idea recomendada"),
+  announcements: z.array(
+    z.object({
+      channel: z.string().describe("Cartel del local, Instagram, WhatsApp..."),
+      text: z.string(),
+    }),
+  ),
+  legal_checks: z.array(z.string()).describe("Cosas a revisar para hacerlo bien según la ley"),
+});
+
 const SCHEMAS = {
   social: SocialSchema,
   email: EmailSchema,
@@ -89,6 +174,11 @@ const SCHEMAS = {
   whatsapp: WhatsappSchema,
   poster: PosterSchema,
   reply: ReplySchema,
+  bio: BioSchema,
+  google: GoogleSchema,
+  promo: PromoSchema,
+  reel: ReelSchema,
+  loyalty: LoyaltySchema,
 } as const;
 
 export type ToolResult =
@@ -97,7 +187,12 @@ export type ToolResult =
   | { tool: "review"; result: z.infer<typeof ReviewSchema> }
   | { tool: "whatsapp"; result: z.infer<typeof WhatsappSchema> }
   | { tool: "poster"; result: z.infer<typeof PosterSchema> }
-  | { tool: "reply"; result: z.infer<typeof ReplySchema> };
+  | { tool: "reply"; result: z.infer<typeof ReplySchema> }
+  | { tool: "bio"; result: z.infer<typeof BioSchema> }
+  | { tool: "google"; result: z.infer<typeof GoogleSchema> }
+  | { tool: "promo"; result: z.infer<typeof PromoSchema> }
+  | { tool: "reel"; result: z.infer<typeof ReelSchema> }
+  | { tool: "loyalty"; result: z.infer<typeof LoyaltySchema> };
 
 // Instrucciones fijas: no dependen del cliente ni de la herramienta, así se pueden cachear.
 const SYSTEM_PROMPT = `Eres el redactor de marketing de Pregonia, una herramienta para negocios pequeños de barrio (bares, peluquerías, tiendas, gimnasios, academias...).
@@ -136,6 +231,48 @@ reply
 - summary: en una frase, qué pide o pregunta el cliente.
 - replies: 3 respuestas (breve, cálida y profesional) listas para enviar por el mismo canal, de 1 a 5 frases. Contesta a lo que pregunta; si para responder hace falta un dato que no tienes (precio, disponibilidad, horario, política de cambios), deja un hueco entre corchetes en lugar de inventarlo. No prometas nada que el negocio no haya dicho.
 - next_steps: 1 a 3 cosas que el negocio debe comprobar o hacer antes de enviar (por ejemplo, mirar la agenda o confirmar alérgenos).
+
+bio
+- profile_name: nombre para el perfil que combine el nombre del negocio con lo que es o con la zona (máximo 30 caracteres).
+- bios: 3 biografías distintas (cercana, directa y divertida), de 150 caracteres como máximo cada una, con 1 o 2 emojis y una llamada a la acción.
+- highlights: de 4 a 6 nombres cortos para historias destacadas (por ejemplo: Carta, Horario, Opiniones).
+- link_text: texto corto para el botón o el enlace del perfil.
+- tips: 2 o 3 consejos para el perfil.
+
+google
+- description: descripción para la ficha de Google Business Profile, de 500 a 750 caracteres, natural, que diga qué es el negocio, qué ofrece, dónde está (si lo sabes) y por qué elegirlo. Sin palabras clave repetidas a la fuerza, sin enlaces, sin precios inventados y sin mayúsculas exageradas.
+- keywords: de 6 a 10 búsquedas reales que haría un cliente de la zona (por ejemplo «peluquería en [barrio]»).
+- posts: 3 publicaciones para la ficha (una novedad, una oferta y un evento o actividad), de 2 a 4 frases, cada una con su botón.
+- faqs: de 4 a 6 preguntas frecuentes con su respuesta corta. Si la respuesta depende de un dato que no tienes, deja un hueco entre corchetes.
+- tips: 3 o 4 consejos prácticos para salir mejor en Google Maps (fotos, horario al día, pedir reseñas a clientes contentos sin ofrecer nada a cambio, responder a todas).
+
+promo
+- name: nombre corto y pegadizo para la campaña.
+- key_message: el mensaje principal en una frase.
+- offer: la oferta explicada con claridad, con sus condiciones entre corchetes si faltan datos ([fechas], [precio]).
+- plan: de 8 a 14 acciones repartidas en 2 semanas, indicando el canal de cada una.
+- social_posts: 3 publicaciones con hashtags.
+- email: asunto y cuerpo de 80 a 150 palabras.
+- whatsapp: un mensaje de 1 a 3 frases.
+- poster: titular de 6 palabras como máximo, subtítulo y llamada a la acción.
+- measure: 2 o 3 formas sencillas de saber si ha funcionado (por ejemplo, contar cuántos clientes dicen la palabra de la campaña).
+- Recuerda en el correo y el WhatsApp que solo se envían a clientes que han dado su permiso.
+
+reel
+- title: título interno del vídeo.
+- hooks: 3 ganchos distintos para el primer segundo.
+- duration_seconds: entre 15 y 45.
+- shots: de 4 a 8 planos con los segundos, lo que se ve, lo que se dice y el texto en pantalla. Que se pueda grabar con el móvil en el propio negocio.
+- subtitles: los subtítulos completos, una frase por línea.
+- caption, hashtags (de 3 a 6) y cover_text (máximo 5 palabras).
+- music_mood: tipo de música, sin nombrar canciones.
+- tips: 2 o 3 consejos de grabación (luz, sonido, vertical).
+
+loyalty
+- ideas: 3 ideas distintas para que los clientes vuelvan (por ejemplo, tarjeta de sellos, ventaja por traer a un amigo, sorteo), con cómo funciona, una ventaja y un inconveniente de cada una. Que sean baratas y fáciles de llevar en un negocio pequeño.
+- rules: de 4 a 7 normas claras para la idea más recomendable (requisitos, duración, cómo se canjea, qué pasa si se acaba).
+- announcements: 3 textos para anunciarlo (cartel del local, Instagram y WhatsApp).
+- legal_checks: 2 o 4 cosas a revisar: si es un sorteo, preparar unas bases y cumplir las normas de la red social; pedir solo los datos necesarios e informar de para qué se usan; y consultar con una gestoría si hay dudas.
 
 Reglas para todas las herramientas:
 - No inventes datos del negocio que no te hayan dado (precios, horarios, direcciones, premios, opiniones de clientes, ingredientes). Si un texto los necesita, deja un hueco claro entre corchetes, por ejemplo [precio] o [horario].

@@ -56,7 +56,7 @@ El paso 4 tiene una parte más de Supabase, cuando ya sepas la dirección de la 
 | 0,03 $ | 3 $ |
 | 0,05 $ | 5 $ |
 
-Con 9,99 € al mes (IVA incluido, unos 8,26 € sin IVA), menos la comisión de Stripe, sigue quedando beneficio, pero el margen es ajustado si alguien usa las 100. Si quieres más margen, tienes dos opciones:
+Con el plan Básico de 15 € al mes (IVA incluido, unos 12,40 € sin IVA) y 60 generaciones, menos la comisión de Stripe, queda margen de sobra. Si quieres aún más margen, tienes dos opciones:
 - Cambiar `CLAUDE_MODEL` a `claude-sonnet-5-5`: cuesta la mitad, con algo menos de calidad.
 - Bajar `MONTHLY_GENERATIONS`, por ejemplo a 50.
 
@@ -74,10 +74,11 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 2. Arriba, activa **«Modo de prueba» / «Test mode»**. Así nadie paga dinero real mientras pruebas.
 3. **Catálogo de productos → Añadir producto**:
    - Nombre: `Pregonia`
-   - Precio: **9,99 EUR**, **Recurrente**, **Mensual**
+   - Precio: **15 EUR**, **Recurrente**, **Mensual**
    - En «Incluye impuestos», elige **Sí (impuestos incluidos)**.
    - Guarda y copia el **ID del precio** (empieza por `price_`) → irá en `STRIPE_PRICE_ID`.
-   - Repite para el **plan Pro**: producto `Pregonia Pro`, **35 EUR**, recurrente, mensual, con impuestos incluidos. Su ID de precio irá en `STRIPE_PRICE_ID_PRO`.
+   - Repite para el **plan Pro**: producto `Pregonia Pro`, **40 EUR**, recurrente, mensual, con impuestos incluidos. Su ID de precio irá en `STRIPE_PRICE_ID_PRO`.
+   - Y para el **plan Premium**: producto `Pregonia Premium`, **55 EUR**, igual. Su ID de precio irá en `STRIPE_PRICE_ID_PREMIUM`.
 4. **Desarrolladores → Claves de API** → copia la **clave secreta** (empieza por `sk_test_`) → irá en `STRIPE_SECRET_KEY`.
 5. **Configuración → Facturación → Portal de clientes** → actívalo y permite que los clientes **cancelen** su suscripción y **actualicen la tarjeta**.
 6. **Configuración → Correos electrónicos de clientes** → activa **«Pagos correctos»** y **«Facturas»**, para que cada cliente reciba su recibo por correo después de pagar.

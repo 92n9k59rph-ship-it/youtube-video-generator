@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type Stripe from "stripe";
 import { requireEnv } from "@/lib/env";
+import { planFromPriceId } from "@/lib/plans";
 import { getStripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabase";
 
@@ -42,7 +43,7 @@ async function syncSubscription(subscription: Stripe.Subscription) {
     typeof subscription.customer === "string" ? subscription.customer : subscription.customer.id;
   const item = subscription.items.data[0];
   const periodEnd = item?.current_period_end;
-  const plan = item?.price.id && item.price.id === process.env.STRIPE_PRICE_ID_PRO ? "pro" : "basic";
+  const plan = planFromPriceId(item?.price.id);
 
   const { error } = await supabaseAdmin()
     .from("profiles")

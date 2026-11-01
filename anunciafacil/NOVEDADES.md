@@ -1,5 +1,24 @@
 # Novedades de Pregonia
 
+## 1 de noviembre
+
+### Para tus clientes
+- **Nuevo nombre: Pregonia.** «Anuncio Fácil» ya lo usaba otra web.
+- **Tres planes:** Básico, 15 € al mes (60 generaciones); Pro, 40 € al mes (200); y Premium, 55 € al mes (400 y todo incluido).
+- **Cinco herramientas nuevas para conseguir clientes:**
+  - **Perfil de redes** (Básico): biografía de Instagram y TikTok.
+  - **Ficha de Google** (Pro): para salir en las búsquedas de tu zona.
+  - **Campaña completa** (Premium): una oferta en todos los canales a la vez.
+  - **Guion de vídeo** (Premium): para Reels, TikTok y Shorts.
+  - **Fidelizar clientes** (Premium): tarjetas de puntos, sorteos y ventajas.
+- **Buscador del historial** y **descarga del historial** en CSV (Premium).
+- **Su propia app:** se instala en el móvil, la tablet o el ordenador desde la web.
+- **Textos legales completos** y casilla de «empezar ya» antes de pagar.
+
+### Para ti
+- En Stripe hay que crear tres productos (15, 40 y 55 €) y poner `STRIPE_PRICE_ID`, `STRIPE_PRICE_ID_PRO` y `STRIPE_PRICE_ID_PREMIUM` en Vercel.
+- En `/admin` ves cuántos clientes tienes en cada plan.
+
 ## 30 de octubre
 
 ### Para tus clientes
