@@ -13,8 +13,7 @@ export default function AvisoLegal() {
         <h2>Datos del titular</h2>
         <p>
           En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio
-          electrónico (LSSI-CE), se informa de que el sitio web anunciofacil.es y la aplicación Anuncio Fácil son
-          titularidad de:
+          electrónico (LSSI-CE), se informa de que la aplicación Anuncio Fácil y esta web son titularidad de:
         </p>
         <ul>
           <li>Titular: {LEGAL.owner}</li>
