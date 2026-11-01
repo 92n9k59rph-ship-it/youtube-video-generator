@@ -84,6 +84,11 @@ export default async function Panel({
         {pago === "inicio" && <p className="notice notice-error">Para suscribirte, marca la casilla de empezar ya.</p>}
         {pago === "cancelado" && <p className="notice notice-error">No se ha completado el pago. Puedes intentarlo cuando quieras.</p>}
         {negocio === "ok" && <p className="notice notice-ok">Datos del negocio guardados.</p>}
+        {negocio === "sin-datos" && (
+          <p className="notice notice-error">
+            Datos guardados, salvo los «Datos útiles»: hay que ejecutar <code>supabase/actualizacion-3.sql</code> en Supabase.
+          </p>
+        )}
         {negocio === "error" && <p className="notice notice-error">No se han podido guardar los datos. Inténtalo de nuevo.</p>}
 
         <div className="grid-2">
@@ -113,6 +118,20 @@ export default async function Panel({
                 </select>
               </label>
             </div>
+            <label htmlFor="details">
+              Datos útiles <span className="muted small">(opcional)</span>
+              <textarea
+                id="details"
+                name="details"
+                defaultValue={profile.details ?? ""}
+                maxLength={600}
+                rows={4}
+                placeholder="Horario: de lunes a sábado de 9 a 20 h. Reservas por WhatsApp. Especialidad: color y mechas. Corte de caballero desde 12 €."
+              />
+              <span className="muted small">
+                Horario, cómo reservar, especialidades, precios… Lo que pongas aquí se usa en los textos en lugar de dejar huecos.
+              </span>
+            </label>
             <button className="btn btn-ghost" type="submit">Guardar</button>
           </form>
 

@@ -40,7 +40,7 @@ export const PLANS: Record<PlanId, PlanInfo> = {
     priceEur: 40,
     priceLabel: "40 €",
     limitEnv: "PRO_MONTHLY_GENERATIONS",
-    defaultLimit: 200,
+    defaultLimit: 150,
     stripePriceEnv: "STRIPE_PRICE_ID_PRO",
     forWho: "Para negocios que quieren más clientes: que los encuentren en Google y contestar rápido.",
     extras: [
@@ -56,7 +56,7 @@ export const PLANS: Record<PlanId, PlanInfo> = {
     priceEur: 55,
     priceLabel: "55 €",
     limitEnv: "PREMIUM_MONTHLY_GENERATIONS",
-    defaultLimit: 400,
+    defaultLimit: 350,
     stripePriceEnv: "STRIPE_PRICE_ID_PREMIUM",
     forWho: "Para negocios con mucho movimiento, varias tiendas o quien lleva las redes de otros negocios.",
     extras: [

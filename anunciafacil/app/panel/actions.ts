@@ -19,18 +19,27 @@ export async function saveBusiness(formData: FormData) {
   if (!user) redirect("/entrar");
 
   const tone = field(formData, "tone", 20);
-  const { error } = await supabase
+  const basics = {
+    business_name: field(formData, "business_name", 80),
+    business_type: field(formData, "business_type", 80),
+    city: field(formData, "city", 80),
+    tone: TONES.includes(tone) ? tone : "cercano",
+  };
+  let { error } = await supabase
     .from("profiles")
-    .update({
-      business_name: field(formData, "business_name", 80),
-      business_type: field(formData, "business_type", 80),
-      city: field(formData, "city", 80),
-      tone: TONES.includes(tone) ? tone : "cercano",
-    })
+    .update({ ...basics, details: field(formData, "details", 600) })
     .eq("id", user.id);
 
+  // Si todavía no se ha ejecutado supabase/actualizacion-3.sql, la columna «details» no existe:
+  // se guarda lo demás y se avisa.
+  let missingDetails = false;
+  if (error && /details/.test(error.message)) {
+    missingDetails = true;
+    ({ error } = await supabase.from("profiles").update(basics).eq("id", user.id));
+  }
+
   revalidatePath("/panel");
-  redirect(error ? "/panel?negocio=error" : "/panel?negocio=ok");
+  redirect(error ? "/panel?negocio=error" : missingDetails ? "/panel?negocio=sin-datos" : "/panel?negocio=ok");
 }
 
 export async function signOut() {

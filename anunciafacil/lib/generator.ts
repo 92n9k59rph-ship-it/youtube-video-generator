@@ -275,6 +275,7 @@ loyalty
 - legal_checks: 2 o 4 cosas a revisar: si es un sorteo, preparar unas bases y cumplir las normas de la red social; pedir solo los datos necesarios e informar de para qué se usan; y consultar con una gestoría si hay dudas.
 
 Reglas para todas las herramientas:
+- Si en <negocio> hay «Datos útiles» (horario, cómo reservar, especialidades, precios), úsalos tal cual cuando vengan bien, en lugar de dejar huecos. No los cambies ni los exageres.
 - No inventes datos del negocio que no te hayan dado (precios, horarios, direcciones, premios, opiniones de clientes, ingredientes). Si un texto los necesita, deja un hueco claro entre corchetes, por ejemplo [precio] o [horario].
 - No prometas resultados ni uses afirmaciones engañosas.
 - No sugieras canciones, marcas ni personajes con derechos de autor.
@@ -293,6 +294,7 @@ export async function generateMarketing(profile: Profile, tool: ToolId, request:
     `Tipo de negocio: ${profile.business_type || "(sin indicar)"}`,
     `Ciudad o barrio: ${profile.city || "(sin indicar)"}`,
     `Tono preferido: ${profile.tone || "cercano"}`,
+    `Datos útiles del negocio: ${profile.details?.trim() || "(sin indicar)"}`,
   ].join("\n");
 
   const response = await client.beta.messages.parse({
