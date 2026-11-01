@@ -1,6 +1,6 @@
 # Textos para el lanzamiento
 
-Úsalos cuando la app esté funcionando con cobros reales (paso 10 de `PASOS-FINALES.md`). La dirección de la app es `https://anuncio-facil.vercel.app` (o `app.anunciofacil.es` cuando conectes tu dominio).
+Úsalos cuando la app esté funcionando con cobros reales (paso 10 de `PASOS-FINALES.md`). La dirección de la app es `https://anuncio-facil.vercel.app`.
 
 ## Correo para la lista de espera
 

@@ -3,12 +3,12 @@
 Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gratis) pero **nadie puede usarla**: los botones llevan a la lista de espera y solo entra el correo de administrador.
 
 ## 📋 Lista rápida
-1. ⏳ **Correo del negocio:** `contacto@anunciofacil.es` (en IONOS) o crear el Gmail `anunciafacil.contacto`.
+1. ⏳ **Correo del negocio:** crear el Gmail `anunciafacil.contacto` (con un adulto).
 2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
 3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
-4. ⏳ **Turnstile** (tú solo): Cloudflare → Site Key en Vercel → Secret Key en Supabase.
-5. ⏳ **Dominio `app.anunciofacil.es`** (opcional; hace falta IONOS).
-6. ⏳ **Correo propio para los enlaces** con Resend (hace falta IONOS).
+4. ⏳ **Turnstile** (tú solo): widget creado ✅ → Site Key en Vercel y **Redeploy** → Secret Key en Supabase.
+5. ⏸️ **Dominio propio** (opcional, más adelante): `anunciofacil.es` **no es tuyo**; si queréis uno, hay que comprar otro.
+6. ⏸️ **Correo propio para los enlaces** con Resend: necesita un dominio propio (paso 5). Mientras, vale el correo de Supabase.
 7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
 8. ⏳ **Stripe** (con el adulto): planes de 9,99 € y 35 €, más las claves en Vercel.
 9. ⏳ **Vercel Pro** y darse de alta para facturar.
@@ -60,12 +60,8 @@ Sin esto, el botón «Generar» da error.
 3. Copia la **Secret Key** y pégala en Supabase, en **Authentication** → **Attack Protection**: activa el CAPTCHA y elige **Turnstile**.
 4. Haz **Redeploy** en Vercel.
 
-## 5. Tu dominio `app.anunciofacil.es` (opcional, 15 minutos)
-1. En Vercel, entra en **Settings** → **Domains** y añade `app.anunciofacil.es`.
-2. En la web donde compraste el dominio, añade el registro **CNAME** que te indique Vercel.
-3. En Vercel, cambia `NEXT_PUBLIC_SITE_URL` a `https://app.anunciofacil.es` y haz **Redeploy**.
-4. En Supabase, ve a **URL Configuration**: cambia la **Site URL** y añade `https://app.anunciofacil.es/auth/callback`.
-5. En tu web `anunciofacil.es`, haz que «Iniciar sesión» lleve a la app.
+## 5. Dominio propio (opcional, más adelante)
+`anunciofacil.es` **no es tuyo**: es de otra persona o empresa, así que no se puede usar ni para la app ni para el correo. La app funciona perfectamente en `https://anuncio-facil.vercel.app`. Si más adelante queréis una dirección propia, el adulto puede comprar un dominio libre (por ejemplo en Vercel → **Domains** → **Buy**) y yo te guío para conectarlo.
 
 ## 6. Correo propio para los enlaces de acceso (antes de tener muchos clientes)
 El correo que trae Supabase solo envía unos pocos mensajes por hora. Crea una cuenta gratis en **Resend** o **Brevo** y configúrala en Supabase, en **Authentication** → **SMTP Settings**. Te guío cuando llegues aquí.

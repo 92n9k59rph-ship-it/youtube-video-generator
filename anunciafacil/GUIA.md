@@ -116,15 +116,9 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 
 ---
 
-### Conectar tu dominio `anunciofacil.es`
+### Dominio propio (más adelante)
 
-Tu web de presentación ya está en `anunciofacil.es`. Lo más sencillo es poner la app en un **subdominio**: **`app.anunciofacil.es`**.
-1. En Vercel → tu proyecto → **Settings → Domains** → añade `app.anunciofacil.es`.
-2. Vercel te dirá que añadas un registro **CNAME**. Entra en la web donde compraste el dominio → **DNS** → añade ese registro tal cual. Puede tardar desde unos minutos hasta unas horas.
-3. Cuando Vercel lo marque como válido:
-   - Cambia `NEXT_PUBLIC_SITE_URL` a `https://app.anunciofacil.es` y haz **Redeploy**.
-   - En Supabase → Authentication → URL Configuration, cambia la **Site URL** y añade `https://app.anunciofacil.es/auth/callback` en **Redirect URLs**.
-4. En tu web `anunciofacil.es`, haz que los botones **«Iniciar sesión»** y **«Próximamente»** lleven a `https://app.anunciofacil.es/entrar`.
+`anunciofacil.es` es de otra persona y no se puede usar. La app funciona en `https://anuncio-facil.vercel.app`. Si más adelante compráis un dominio libre, se conecta en Vercel → **Settings** → **Domains**.
 
 ## Paso 5. Probar todo
 
