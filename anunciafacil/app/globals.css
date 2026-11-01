@@ -247,3 +247,11 @@ main.home { padding-block: 0; }
 /* Buscador del historial */
 .history-search { display: flex; gap: 8px; flex-wrap: wrap; }
 .history-search input { flex: 1 1 200px; }
+
+/* Copiar y compartir */
+.copy-actions { display: inline-flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+
+/* Primeros pasos del panel */
+.steps-list { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; }
+.steps-list li.done { color: var(--muted); text-decoration: line-through; }
+.steps-list li.done::marker { content: "✓  "; color: var(--mint); }

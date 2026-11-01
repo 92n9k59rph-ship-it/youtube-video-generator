@@ -1,20 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { isAdminEmail, sitePublic } from "@/lib/env";
+import { PREVIEW_COOKIE, canSeeSite, isAlwaysOpen } from "@/lib/privacy";
 
-// Páginas que siempre se pueden abrir, aunque la web esté en privado:
-// la de «Muy pronto», la de entrar (para los administradores), el acceso y los archivos de la app.
-const ALWAYS_OPEN = [
-  "/muy-pronto",
-  "/entrar",
-  "/auth/",
-  "/api/",
-  "/manifest.webmanifest",
-  "/robots.txt",
-  "/icon",
-  "/apple-icon",
-];
-const PREVIEW_COOKIE = "pregonia_vista";
 
 // Renueva la sesión de Supabase en cada visita, protege /panel y, mientras la web está en privado,
 // enseña «Muy pronto» a todo el que no sea administrador.
@@ -45,7 +33,7 @@ export async function middleware(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const path = request.nextUrl.pathname;
-  if (!sitePublic() && !ALWAYS_OPEN.some((prefix) => path.startsWith(prefix))) {
+  if (!sitePublic() && !isAlwaysOpen(path)) {
     const previewCode = process.env.PREVIEW_CODE;
     // Enlace de vista previa: /?vista=CÓDIGO guarda una cookie para poder ver la web durante 30 días.
     if (previewCode && request.nextUrl.searchParams.get("vista") === previewCode) {
@@ -61,8 +49,14 @@ export async function middleware(request: NextRequest) {
       });
       return redirect;
     }
-    const hasPreview = Boolean(previewCode) && request.cookies.get(PREVIEW_COOKIE)?.value === previewCode;
-    if (!hasPreview && !isAdminEmail(user?.email)) {
+    const allowed = canSeeSite({
+      sitePublic: false,
+      path,
+      isAdmin: isAdminEmail(user?.email),
+      previewCode,
+      previewCookie: request.cookies.get(PREVIEW_COOKIE)?.value,
+    });
+    if (!allowed) {
       const url = request.nextUrl.clone();
       url.pathname = "/muy-pronto";
       url.search = "";
