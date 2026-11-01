@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
 export const metadata = { title: "Términos · Anuncio Fácil" };
 
 // BORRADOR: revisar con alguien que sepa de temas legales antes de cobrar a clientes reales.
@@ -9,7 +10,7 @@ export default function Terminos() {
         <p>Última actualización: [fecha]</p>
 
         <h2>El servicio</h2>
-        <p>Anuncio Fácil genera, con inteligencia artificial, propuestas de textos para negocios: publicaciones para redes sociales, ideas de vídeos cortos, calendarios de publicación, correos para clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles y menús. Lo presta David Lázaro (anunciafacil.contacto@gmail.com · [NIF y dirección postal]).</p>
+        <p>Anuncio Fácil genera, con inteligencia artificial, propuestas de textos para negocios: publicaciones para redes sociales, ideas de vídeos cortos, calendarios de publicación, correos para clientes, respuestas a reseñas, mensajes de WhatsApp y textos para carteles y menús. Lo presta David Lázaro ({CONTACT_EMAIL} · [NIF y dirección postal]).</p>
 
         <h2>Revisa siempre los textos</h2>
         <p>Los textos los genera una inteligencia artificial y pueden contener errores. Antes de publicarlos, revísalos y completa los datos marcados entre corchetes, como precios u horarios. Eres responsable de lo que publiques en tus redes.</p>

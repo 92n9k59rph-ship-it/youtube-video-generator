@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
 export const metadata = { title: "Privacidad · Anuncio Fácil" };
 
 // BORRADOR: revisar con alguien que sepa de protección de datos antes de cobrar a clientes reales.
@@ -9,7 +10,7 @@ export default function Privacidad() {
         <p>Última actualización: [fecha]</p>
 
         <h2>Quién es el responsable</h2>
-        <p>David Lázaro · anunciafacil.contacto@gmail.com · [NIF y dirección postal]</p>
+        <p>David Lázaro · {CONTACT_EMAIL} · [NIF y dirección postal]</p>
 
         <h2>Qué datos tratamos</h2>
         <ul>
@@ -37,7 +38,7 @@ export default function Privacidad() {
         <p>Mientras tengas la cuenta. Puedes borrarla tú mismo en cualquier momento desde tu panel («Borrar mi cuenta»): eliminamos tus datos salvo los que debamos conservar por ley (por ejemplo, facturas).</p>
 
         <h2>Tus derechos</h2>
-        <p>Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad de tus datos escribiendo a anunciafacil.contacto@gmail.com. Si no estás conforme con la respuesta, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
+        <p>Puedes pedir acceso, rectificación, supresión, oposición, limitación o portabilidad de tus datos escribiendo a {CONTACT_EMAIL}. Si no estás conforme con la respuesta, puedes reclamar ante la Agencia Española de Protección de Datos (aepd.es).</p>
 
         <h2>Cookies</h2>
         <p>Solo usamos las cookies técnicas necesarias para mantener tu sesión iniciada. No usamos cookies de publicidad ni de análisis.</p>

@@ -1,3 +1,4 @@
+import { CONTACT_EMAIL } from "@/lib/contact";
 import { redirect } from "next/navigation";
 import { currentUserAndProfile, isSubscribed } from "@/lib/supabase";
 import { freeLaunch, showPricing, siteUrl } from "@/lib/env";
@@ -247,7 +248,7 @@ export default async function Panel({
             Esto no se puede deshacer. Las facturas se conservan en Stripe porque la ley obliga a guardarlas.
           </p>
           {borrar === "confirmar" && <p className="notice notice-error">Marca la casilla para confirmar que quieres borrar tu cuenta.</p>}
-          {borrar === "error" && <p className="notice notice-error">No se ha podido borrar la cuenta. Escríbenos a anunciafacil.contacto@gmail.com y lo hacemos nosotros.</p>}
+          {borrar === "error" && <p className="notice notice-error">No se ha podido borrar la cuenta. Escríbenos a {CONTACT_EMAIL} y lo hacemos nosotros.</p>}
           <form action={deleteAccount} className="stack" style={{ gap: 12 }}>
             <label htmlFor="confirmar" style={{ flexDirection: "row", alignItems: "flex-start", fontWeight: 400 }}>
               <input id="confirmar" name="confirmar" type="checkbox" value="si" style={{ width: "auto", marginTop: 4 }} />
