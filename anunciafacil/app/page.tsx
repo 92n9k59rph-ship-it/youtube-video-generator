@@ -1,10 +1,22 @@
 import Link from "next/link";
 import { appOpen, freeLaunch, intEnv, showPricing, waitlistUrl } from "@/lib/env";
 import { PLANS, PLAN_IDS, planLimit } from "@/lib/plans";
-import { TOOLS, TOOL_IDS } from "@/lib/tools";
+import { TOOLS, TOOL_IDS, type ToolId } from "@/lib/tools";
 import { HomeExamples } from "./HomeExamples";
 
-const TOOL_ICONS: Record<string, string> = { social: "📱", email: "✉️", review: "⭐", whatsapp: "💬", poster: "🪧", reply: "🗨️" };
+const TOOL_ICONS: Record<ToolId, string> = {
+  social: "📱",
+  email: "✉️",
+  poster: "🪧",
+  bio: "👤",
+  google: "📍",
+  review: "⭐",
+  reply: "🗨️",
+  whatsapp: "💬",
+  promo: "🎯",
+  reel: "🎬",
+  loyalty: "🎁",
+};
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ cuenta?: string }> }) {
   const { cuenta } = await searchParams;
@@ -23,10 +35,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
       <a className={className} href={ctaHref} target="_blank" rel="noopener noreferrer" style={style}>{cta}</a>
     );
 
+  const planSummary = PLAN_IDS.map((id) => `${PLANS[id].name}, ${PLANS[id].priceLabel} al mes con ${planLimit(id)} generaciones`).join("; ");
+
   const allFaqs: Array<[string, string]> = [
     [
       "¿Qué es Pregonia?",
-      "Una herramienta que escribe por ti los textos de tu negocio: publicaciones para redes, correos para tus clientes, textos para carteles o menús y, en el plan Pro, respuestas a reseñas de Google, mensajes de WhatsApp y respuestas a los mensajes que te escriben tus clientes.",
+      "Una herramienta que escribe por ti los textos que atraen clientes a tu negocio: publicaciones para redes, correos, carteles y menús, tu perfil de Instagram, tu ficha de Google para que te encuentren en tu zona, respuestas a reseñas y mensajes, campañas completas, guiones de vídeo e ideas para que tus clientes vuelvan.",
     ],
     [
       "¿Necesito saber de marketing?",
@@ -43,12 +57,20 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
     [
       "¿Cuánto cuesta?",
       launch
-        ? `Ahora es gratis por tiempo limitado, con hasta ${launchMonthly} generaciones al mes y sin tarjeta. Más adelante habrá dos planes: Básico, ${PLANS.basic.priceLabel} al mes, y Pro, ${PLANS.pro.priceLabel} al mes (IVA incluido). Te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
-        : `Hay dos planes, IVA incluido y sin permanencia: Básico, ${PLANS.basic.priceLabel} al mes con ${planLimit("basic")} generaciones, y Pro, ${PLANS.pro.priceLabel} al mes con ${planLimit("pro")}.${freeGenerations > 0 ? ` Puedes probarlo gratis ${freeGenerations} veces sin tarjeta.` : ""}`,
+        ? `Ahora es gratis por tiempo limitado, con hasta ${launchMonthly} generaciones al mes y sin tarjeta. Más adelante habrá tres planes (IVA incluido): ${planSummary}. Te avisaremos por correo con 30 días de antelación y solo pagarás si decides suscribirte.`
+        : `Hay tres planes, IVA incluido y sin permanencia: ${planSummary}.${freeGenerations > 0 ? ` Puedes probarlo gratis ${freeGenerations} veces sin tarjeta.` : ""}`,
     ],
     [
       "¿Qué es una «generación»?",
       "Cada vez que pulsas «Generar» y Pregonia te escribe los textos cuenta como una, sea cual sea la herramienta.",
+    ],
+    [
+      "¿Me ayuda a que me encuentren en Google?",
+      "Sí. La herramienta «Ficha de Google» te prepara la descripción, las publicaciones y las preguntas frecuentes de tu ficha de Google, con las palabras que usan tus clientes para buscar negocios como el tuyo en tu zona.",
+    ],
+    [
+      "¿Tiene app para el móvil?",
+      "Sí. Pregonia se instala en tu móvil o tablet como una app, sin pasar por ninguna tienda: en el iPhone, abre la web en Safari, toca Compartir y «Añadir a pantalla de inicio»; en Android, abre el menú de Chrome y toca «Instalar app».",
     ],
     [
       "¿Puedo borrar mi cuenta?",
@@ -57,8 +79,27 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
   ];
   const faqs = pricing ? allFaqs : allFaqs.filter(([q]) => q !== "¿Cuánto cuesta?");
 
+  // Datos estructurados para que Google entienda qué es Pregonia (y pueda mostrar sus precios).
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Pregonia",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web, iOS, Android",
+    inLanguage: "es-ES",
+    description:
+      "Escribe en un minuto los textos que atraen clientes a tu negocio: publicaciones para redes, ficha de Google, respuestas a reseñas, WhatsApp, campañas y carteles.",
+    offers: PLAN_IDS.map((id) => ({
+      "@type": "Offer",
+      name: PLANS[id].name,
+      price: PLANS[id].priceEur.toFixed(2),
+      priceCurrency: "EUR",
+    })),
+  };
+
   return (
     <main className="home">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       {cuenta === "borrada" && (
         <div className="wrap">
           <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado Pregonia!</p>
@@ -74,8 +115,8 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               Las publicaciones de tu negocio, <span className="accent">escritas en un minuto.</span>
             </h1>
             <p className="lead">
-              Cuéntanos qué negocio tienes y qué necesitas. Pregonia te prepara publicaciones para Instagram, correos para tus
-              clientes, carteles y, además, respuestas a reseñas y a los mensajes que te escriben tus clientes.
+              Cuéntanos qué negocio tienes y qué necesitas. Pregonia te prepara publicaciones para Instagram, tu ficha de Google
+              para que te encuentren en tu zona, respuestas a reseñas y mensajes, campañas, carteles y guiones de vídeo.
             </p>
             <div className="nav">
               <CtaLink className="btn btn-primary btn-big" />
@@ -158,7 +199,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
         <div className="wrap stack">
           <div className="section-head">
             <span className="eyebrow">Qué incluye</span>
-            <h2>Seis herramientas en una</h2>
+            <h2>{TOOL_IDS.length} herramientas para conseguir más clientes</h2>
             <p className="muted">Eliges la que necesitas, escribes con tus palabras y en unos segundos tienes los textos listos para copiar.</p>
           </div>
           <div className="grid-3">
@@ -167,7 +208,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                 <span className="tool-icon" aria-hidden="true">{TOOL_ICONS[id]}</span>
                 <strong>
                   {TOOLS[id].label}
-                  {TOOLS[id].proOnly && <span className="pro-badge">Pro</span>}
+                  {TOOLS[id].minPlan !== "basic" && (
+                    <span className={`pro-badge ${TOOLS[id].minPlan === "premium" ? "premium-badge" : ""}`}>{PLANS[TOOLS[id].minPlan].name}</span>
+                  )}
                 </strong>
                 <span className="muted small">{TOOLS[id].short}</span>
                 <ul className="small checks">
@@ -182,34 +225,41 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               <strong>Y además</strong>
               <ul className="small checks">
                 <li>Recuerda los datos y el tono de tu negocio</li>
-                <li>Historial para volver a ver tus textos</li>
+                <li>Historial con buscador para volver a ver tus textos</li>
                 <li>Botón de copiar en cada texto</li>
                 <li>No se inventa precios ni horarios</li>
-                <li>Funciona en el móvil, la tablet y el ordenador</li>
+                <li>Se instala en el móvil como una app</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Próximamente */}
-      <section className="band band-surface">
+      {/* App */}
+      <section className="band band-surface" id="app">
         <div className="wrap soon">
           <div className="stack">
-            <span className="tag">Próximamente</span>
-            <h2>Los contactos de tus anuncios, ordenados y a mano</h2>
+            <span className="tag">Tu propia app</span>
+            <h2>Pregonia, en la pantalla de tu móvil</h2>
             <p className="muted">
-              Cuando alguien rellene el formulario de tu anuncio en Facebook o Instagram, Pregonia lo traerá, lo guardará y te
-              avisará. Tú solo tendrás que contestar.
+              Instálala en tu móvil o tablet como cualquier otra app, sin pasar por ninguna tienda y sin ocupar espacio. Así
+              tienes los textos de tu negocio a mano, detrás del mostrador.
             </p>
           </div>
-          <ul className="small checks">
-            <li>Contactos de todas tus campañas en un solo sitio, sin duplicados</li>
-            <li>Aviso por correo cuando lleguen contactos nuevos</li>
-            <li>Llama, escribe o abre WhatsApp desde la ficha del contacto</li>
-            <li>Seguimiento: nuevo, contactado, ganado o perdido, con notas</li>
-            <li>Descarga en CSV, para no perderlos nunca</li>
-          </ul>
+          <div className="stack" style={{ gap: 14 }}>
+            <div className="card">
+              <strong>📱 iPhone y iPad</strong>
+              <span className="muted small">Abre Pregonia en Safari, toca Compartir y elige «Añadir a pantalla de inicio».</span>
+            </div>
+            <div className="card">
+              <strong>🤖 Android</strong>
+              <span className="muted small">Abre Pregonia en Chrome, toca el menú ⋮ y elige «Instalar app».</span>
+            </div>
+            <div className="card">
+              <strong>💻 Ordenador</strong>
+              <span className="muted small">En Chrome o Edge, toca el icono de instalar que sale en la barra de direcciones.</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -235,14 +285,15 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                 <p className="muted small">Por tiempo limitado, sin tarjeta.</p>
                 <ul className="small checks">
                   <li>{launchMonthly} generaciones al mes</li>
-                  <li>Pruébalo todo, también lo del plan Pro</li>
+                  <li>Pruébalo todo, también lo de Pro y Premium</li>
                   <li>Historial y botón de copiar</li>
                 </ul>
               </div>
             )}
             {PLAN_IDS.map((id) => (
               <div className={`plan ${id === "pro" ? "plan-featured" : ""}`} key={id}>
-                {id === "pro" && <span className="tag">Para quien publica mucho</span>}
+                {id === "pro" && <span className="tag">El más elegido</span>}
+                {id === "premium" && <span className="tag tag-premium">Todo incluido</span>}
                 <h3>{PLANS[id].name}</h3>
                 <div className="plan-price">
                   {PLANS[id].priceLabel}
@@ -250,18 +301,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
                 </div>
                 <p className="muted small">{PLANS[id].forWho}</p>
                 <ul className="small checks">
-                  <li>{planLimit(id)} generaciones al mes</li>
-                  {id === "pro" ? (
-                    <>
-                      <li>Las 6 herramientas</li>
-                      <li><span><strong>Responder mensajes</strong> de tus clientes</span></li>
-                      <li>Respuestas a reseñas de Google</li>
-                      <li>Mensajes de WhatsApp</li>
-                    </>
-                  ) : (
-                    <li>Redes sociales, correos y carteles</li>
-                  )}
-                  <li>Historial y botón de copiar</li>
+                  <li><strong>{planLimit(id)} generaciones al mes</strong></li>
+                  {PLANS[id].extras.map((extra) => (
+                    <li key={extra}>{extra}</li>
+                  ))}
                   <li>Sin permanencia</li>
                 </ul>
               </div>

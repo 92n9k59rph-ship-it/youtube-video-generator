@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { freeLaunch, intEnv, isAdminEmail } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
-import { PLANS, isPlanId, planLimit } from "@/lib/plans";
+import { PLANS, PLAN_IDS, isPlanId, planLimit } from "@/lib/plans";
 import { costUsd } from "@/lib/pricing";
 import { TOOLS, isToolId } from "@/lib/tools";
 
@@ -42,7 +42,8 @@ export default async function Admin() {
 
   const activeProfiles = allProfiles.filter((p) => p.subscription_status === "active" || p.subscription_status === "trialing");
   const subscribers = activeProfiles.length;
-  const proSubscribers = activeProfiles.filter((p) => p.plan === "pro").length;
+  const planOf = (plan: string | null | undefined) => (isPlanId(plan) ? plan : "basic");
+  const subscribersByPlan = PLAN_IDS.map((id) => `${activeProfiles.filter((p) => planOf(p.plan) === id).length} ${PLANS[id].name}`).join(" · ");
   const pastDue = allProfiles.filter((p) => p.subscription_status === "past_due" || p.subscription_status === "unpaid").length;
   const revenueGross = activeProfiles.reduce((sum, p) => sum + PLANS[isPlanId(p.plan) ? p.plan : "basic"].priceEur, 0);
   const revenueNet = revenueGross / (1 + VAT);
@@ -95,7 +96,7 @@ export default async function Admin() {
           <div className="card">
             <span className="card-label">Suscriptores activos</span>
             <strong className="stat">{subscribers}</strong>
-            {subscribers > 0 && <span className="muted small">{subscribers - proSubscribers} Básico · {proSubscribers} Pro</span>}
+            {subscribers > 0 && <span className="muted small">{subscribersByPlan}</span>}
             {pastDue > 0 && <span className="small" style={{ color: "var(--danger-ink)" }}>{pastDue} con el pago pendiente</span>}
           </div>
           <div className="card">
@@ -121,7 +122,9 @@ export default async function Admin() {
               </>
             ) : (
               <>
-                <span>{freeLimit} gratis · Básico {planLimit("basic")} al mes · Pro {planLimit("pro")} al mes</span>
+                <span>
+                  {freeLimit} gratis · {PLAN_IDS.map((id) => `${PLANS[id].name} ${planLimit(id)} al mes`).join(" · ")}
+                </span>
                 <span className="muted small">Se cambian en Vercel (FREE_GENERATIONS y MONTHLY_GENERATIONS)</span>
               </>
             )}
@@ -188,7 +191,7 @@ export default async function Admin() {
                       <td className="num">{new Date(p.created_at).toLocaleDateString("es-ES")}</td>
                       <td>{p.email}</td>
                       <td>{[p.business_name, p.business_type].filter(Boolean).join(" · ") || "—"}</td>
-                      <td>{p.subscription_status === "none" ? "Sin plan" : `${p.subscription_status}${p.plan === "pro" ? " · Pro" : " · Básico"}`}</td>
+                      <td>{p.subscription_status === "none" ? "Sin plan" : `${p.subscription_status} · ${PLANS[planOf(p.plan)].name}`}</td>
                     </tr>
                   ))}
                 </tbody>

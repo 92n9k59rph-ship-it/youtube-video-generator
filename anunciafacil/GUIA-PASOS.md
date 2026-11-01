@@ -63,11 +63,12 @@ Estos pasos implican **dinero, contratos o datos personales**. Hazlos **con tu p
   - Mejor que lo revise una gestoría.
 - **Paso 8, Stripe (cobrar):**
   - El titular tiene que ser **mayor de edad**.
-  - El adulto crea los dos productos (9,99 €/mes y 35 €/mes) y pone en Vercel:
+  - El adulto crea los tres productos (15 €, 40 € y 55 € al mes) y pone en Vercel:
     - `STRIPE_SECRET_KEY`
     - `STRIPE_WEBHOOK_SECRET`
     - `STRIPE_PRICE_ID` (el del Básico)
     - `STRIPE_PRICE_ID_PRO` (el del Pro)
+    - `STRIPE_PRICE_ID_PREMIUM` (el del Premium)
   - La app no necesita la clave publicable.
   - Si cobráis, en España hay que **darse de alta en Hacienda**; que lo consulte con una gestoría.
 - **Paso 9, Vercel Pro:** el plan gratis es solo para uso no comercial; para cobrar hace falta **Pro**.

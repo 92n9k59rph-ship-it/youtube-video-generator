@@ -24,24 +24,29 @@ const STATUS_LABEL: Record<string, string> = {
 export default async function Panel({
   searchParams,
 }: {
-  searchParams: Promise<{ pago?: string; negocio?: string; ver?: string; borrar?: string; opinion?: string }>;
+  searchParams: Promise<{ pago?: string; negocio?: string; ver?: string; borrar?: string; opinion?: string; buscar?: string }>;
 }) {
   const { supabase, user, profile } = await currentUserAndProfile();
   if (!user || !profile) redirect("/entrar");
 
-  const { pago, negocio, ver, borrar, opinion } = await searchParams;
+  const { pago, negocio, ver, borrar, opinion, buscar } = await searchParams;
+  const search = (buscar ?? "").trim().slice(0, 80);
   const subscribed = isSubscribed(profile);
   const usage = await getUsage(profile);
   const hasBusiness = Boolean(profile.business_type);
   const launch = freeLaunch();
   const pricing = showPricing();
 
-  const { data: history } = await supabase
+  let historyQuery = supabase
     .from("generations")
     .select("id, tool, request, created_at")
     .eq("status", "done")
     .order("created_at", { ascending: false })
-    .limit(10);
+    .limit(search ? 30 : 10);
+  // Buscador del historial: busca en lo que el cliente pidió (los comodines se escapan).
+  if (search) historyQuery = historyQuery.ilike("request", `%${search.replace(/[\\%_]/g, (c) => `\\${c}`)}%`);
+  const { data: history } = await historyQuery;
+  const canExport = canUseTool("premium", { subscribed, plan: profile.plan });
 
   // Una generación antigua que el cliente quiere volver a ver (la seguridad de Supabase solo deja ver las suyas).
   let previous: { output: ToolResult; request: string; created_at: string } | null = null;
@@ -134,7 +139,7 @@ export default async function Panel({
             ) : launch ? (
               <p className="muted">
                 Pregonia es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
-                Después habrá dos planes: Básico ({PLANS.basic.priceLabel}/mes) y Pro ({PLANS.pro.priceLabel}/mes). Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
+                Después habrá tres planes: {PLAN_IDS.map((id) => `${PLANS[id].name} (${PLANS[id].priceLabel}/mes)`).join(", ")}. Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
                 salvo que tú decidas suscribirte.
               </p>
             ) : (
@@ -188,31 +193,58 @@ export default async function Panel({
             initialUsage={usage}
             canGenerate={hasBusiness}
             showPricing={pricing}
-            lockedTools={TOOL_IDS.filter((id) => !canUseTool(TOOLS[id].proOnly, { subscribed, plan: profile.plan }))}
+            lockedTools={TOOL_IDS.filter((id) => !canUseTool(TOOLS[id].minPlan, { subscribed, plan: profile.plan }))}
           />
         ) : (
           <p className="notice notice-error">Guarda primero los datos de tu negocio para empezar a generar.</p>
         )}
 
-        {history && history.length > 0 && (
-          <section className="panel">
-            <h2>Últimas peticiones</h2>
-            <p className="muted small">Toca una para volver a ver sus textos.</p>
-            <ul className="history">
-              {history.map((item) => (
-                <li key={item.id}>
-                  <a href={`/panel?ver=${item.id}#anterior`} style={{ textDecoration: "none" }}>
-                    <span className="pill">{isToolId(item.tool) ? TOOLS[item.tool].label : item.tool}</span>{" "}
-                    <span style={{ textDecoration: "underline" }}>
-                      {item.request.length > 120 ? `${item.request.slice(0, 117)}…` : item.request}
-                    </span>
-                  </a>
-                  <span className="muted small" style={{ whiteSpace: "nowrap" }}>
-                    {new Date(item.created_at).toLocaleDateString("es-ES")}
-                  </span>
-                </li>
-              ))}
-            </ul>
+        {((history && history.length > 0) || search) && (
+          <section className="panel" id="historial">
+            <div className="card-head" style={{ flexWrap: "wrap" }}>
+              <h2>{search ? "Resultados de la búsqueda" : "Últimas peticiones"}</h2>
+              {canExport ? (
+                <a className="btn btn-ghost small" href="/api/historial" download>
+                  Descargar todo el historial
+                </a>
+              ) : (
+                <span className="muted small">Descarga del historial: plan Premium</span>
+              )}
+            </div>
+            <form className="history-search" action="/panel#historial" method="get" role="search">
+              <input
+                type="search"
+                name="buscar"
+                defaultValue={search}
+                maxLength={80}
+                placeholder="Buscar en tu historial: rebajas, Navidad, menú…"
+                aria-label="Buscar en tu historial"
+              />
+              <button className="btn btn-ghost" type="submit">Buscar</button>
+              {search && <a className="btn btn-ghost" href="/panel#historial">Ver todo</a>}
+            </form>
+            {history && history.length > 0 ? (
+              <>
+                <p className="muted small">Toca una para volver a ver sus textos.</p>
+                <ul className="history">
+                  {history.map((item) => (
+                    <li key={item.id}>
+                      <a href={`/panel?ver=${item.id}#anterior`} style={{ textDecoration: "none" }}>
+                        <span className="pill">{isToolId(item.tool) ? TOOLS[item.tool].label : item.tool}</span>{" "}
+                        <span style={{ textDecoration: "underline" }}>
+                          {item.request.length > 120 ? `${item.request.slice(0, 117)}…` : item.request}
+                        </span>
+                      </a>
+                      <span className="muted small" style={{ whiteSpace: "nowrap" }}>
+                        {new Date(item.created_at).toLocaleDateString("es-ES")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            ) : (
+              <p className="muted">No hay nada en tu historial con «{search}».</p>
+            )}
           </section>
         )}
 

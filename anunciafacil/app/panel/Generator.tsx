@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { ToolResult } from "@/lib/generator";
+import { PLANS, planLimit } from "@/lib/plans";
 import { TOOLS, TOOL_IDS, type ToolId } from "@/lib/tools";
 import type { Usage } from "@/lib/usage";
 
@@ -14,7 +15,7 @@ export function Generator({
   initialUsage: Usage;
   canGenerate: boolean;
   showPricing: boolean;
-  // Herramientas del plan Pro que este cliente (plan Básico) no puede usar.
+  // Herramientas de planes superiores que este cliente no puede usar con su plan.
   lockedTools?: ToolId[];
 }) {
   const [tool, setTool] = useState<ToolId>("social");
@@ -73,7 +74,12 @@ export function Generator({
             >
               <strong>
                 {TOOLS[id].label}
-                {TOOLS[id].proOnly && <span className="pro-badge">{lockedTools.includes(id) ? "🔒 Pro" : "Pro"}</span>}
+                {TOOLS[id].minPlan !== "basic" && (
+                  <span className={`pro-badge ${TOOLS[id].minPlan === "premium" ? "premium-badge" : ""}`}>
+                    {lockedTools.includes(id) ? "🔒 " : ""}
+                    {PLANS[TOOLS[id].minPlan].name}
+                  </span>
+                )}
               </strong>
               <span>{TOOLS[id].short}</span>
             </button>
@@ -82,7 +88,8 @@ export function Generator({
 
         {lockedTools.includes(tool) && (
           <p className="notice notice-error">
-            «{info.label}» está incluida en el plan Pro (200 generaciones al mes). Puedes cambiar de plan desde «Gestionar suscripción».
+            «{info.label}» está incluida en el plan {PLANS[info.minPlan].name} ({PLANS[info.minPlan].priceLabel} al mes,{" "}
+            {planLimit(info.minPlan)} generaciones). Puedes cambiar de plan desde «Gestionar suscripción».
           </p>
         )}
         <label htmlFor="request">
@@ -146,6 +153,16 @@ export function Results({ output }: { output: ToolResult }) {
       return <PosterResult result={output.result} />;
     case "reply":
       return <ReplyResult result={output.result} />;
+    case "bio":
+      return <BioResult result={output.result} />;
+    case "google":
+      return <GoogleResult result={output.result} />;
+    case "promo":
+      return <PromoResult result={output.result} />;
+    case "reel":
+      return <ReelResult result={output.result} />;
+    case "loyalty":
+      return <LoyaltyResult result={output.result} />;
   }
 }
 
@@ -337,6 +354,278 @@ function PosterResult({ result }: { result: ResultOf<"poster"> }) {
         </div>
       </section>
       <Tips title="Consejos de diseño" items={result.design_tips} />
+    </div>
+  );
+}
+
+function BioResult({ result }: { result: ResultOf<"bio"> }) {
+  return (
+    <div className="stack">
+      <section className="panel">
+        <div className="card-head">
+          <h2>Nombre del perfil</h2>
+          <CopyButton text={result.profile_name} />
+        </div>
+        <p><strong>{result.profile_name}</strong></p>
+      </section>
+      <section className="panel">
+        <h2>Biografías</h2>
+        <div className="grid-3">
+          {result.bios.map((bio, i) => (
+            <article className="card" key={i}>
+              <div className="card-head">
+                <span className="card-label">{bio.style}</span>
+                <CopyButton text={bio.text} />
+              </div>
+              <p style={{ whiteSpace: "pre-wrap" }}>{bio.text}</p>
+              <p className="muted small">{bio.text.length} caracteres</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="grid-2">
+        <div className="panel">
+          <h2>Historias destacadas</h2>
+          <div className="nav">
+            {result.highlights.map((h, i) => (
+              <span className="pill" key={i}>{h}</span>
+            ))}
+          </div>
+        </div>
+        <div className="panel">
+          <div className="card-head">
+            <h2>Botón o enlace</h2>
+            <CopyButton text={result.link_text} />
+          </div>
+          <p>{result.link_text}</p>
+        </div>
+      </section>
+      <Tips title="Consejos" items={result.tips} />
+    </div>
+  );
+}
+
+function GoogleResult({ result }: { result: ResultOf<"google"> }) {
+  return (
+    <div className="stack">
+      <section className="panel">
+        <div className="card-head">
+          <h2>Descripción de tu ficha</h2>
+          <CopyButton text={result.description} />
+        </div>
+        <p style={{ whiteSpace: "pre-wrap" }}>{result.description}</p>
+        <p className="muted small">
+          {result.description.length} de 750 caracteres · Pégala en Google Business Profile → Editar perfil → Descripción.
+        </p>
+      </section>
+      <section className="panel">
+        <h2>Así te buscan tus clientes</h2>
+        <p className="muted small">Usa estas palabras, sin repetirlas a la fuerza, en tu descripción, tus publicaciones y tus respuestas.</p>
+        <div className="nav">
+          {result.keywords.map((k, i) => (
+            <span className="pill" key={i}>🔎 {k}</span>
+          ))}
+        </div>
+      </section>
+      <section className="panel">
+        <h2>Publicaciones para tu ficha</h2>
+        <div className="grid-3">
+          {result.posts.map((post, i) => (
+            <article className="card" key={i}>
+              <div className="card-head">
+                <span className="card-label">{post.kind}</span>
+                <CopyButton text={`${post.title}\n\n${post.text}`} />
+              </div>
+              <strong>{post.title}</strong>
+              <p style={{ whiteSpace: "pre-wrap" }}>{post.text}</p>
+              <p className="muted small">Botón: {post.button}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="panel">
+        <div className="card-head">
+          <h2>Preguntas frecuentes</h2>
+          <CopyButton text={result.faqs.map((f) => `${f.question}\n${f.answer}`).join("\n\n")} idle="Copiar todas" />
+        </div>
+        <div className="faq">
+          {result.faqs.map((f, i) => (
+            <details key={i}>
+              <summary>{f.question}</summary>
+              <p className="muted">{f.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+      <Tips title="Para salir más arriba en Google Maps" items={result.tips} />
+    </div>
+  );
+}
+
+function PromoResult({ result }: { result: ResultOf<"promo"> }) {
+  const posterText = [result.poster.headline, result.poster.subheadline, result.poster.call_to_action].join("\n");
+  return (
+    <div className="stack">
+      <section className="panel">
+        <span className="tag">Campaña</span>
+        <h2 style={{ marginTop: 10 }}>{result.name}</h2>
+        <p><strong>{result.key_message}</strong></p>
+        <p className="muted" style={{ whiteSpace: "pre-wrap" }}>{result.offer}</p>
+      </section>
+      <section className="panel">
+        <h2>Plan de 2 semanas</h2>
+        <ul className="history">
+          {result.plan.map((step, i) => (
+            <li key={i}>
+              <strong style={{ whiteSpace: "nowrap" }}>{step.day}</strong>
+              <span style={{ textAlign: "right" }}>
+                <span className="pill">{step.channel}</span> {step.action}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+      <section className="panel">
+        <h2>Publicaciones</h2>
+        <div className="grid-3">
+          {result.social_posts.map((post, i) => (
+            <article className="card" key={i}>
+              <div className="card-head">
+                <span className="card-label">Publicación {i + 1}</span>
+                <CopyButton text={`${post.caption}\n\n${post.hashtags.join(" ")}`} />
+              </div>
+              <p style={{ whiteSpace: "pre-wrap" }}>{post.caption}</p>
+              <p className="hashtags">{post.hashtags.join(" ")}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="grid-2">
+        <div className="panel">
+          <div className="card-head">
+            <h2>Correo</h2>
+            <CopyButton text={`${result.email.subject}\n\n${result.email.body}`} />
+          </div>
+          <p><strong>{result.email.subject}</strong></p>
+          <p style={{ whiteSpace: "pre-wrap" }}>{result.email.body}</p>
+        </div>
+        <div className="stack">
+          <div className="panel">
+            <div className="card-head">
+              <h2>WhatsApp</h2>
+              <CopyButton text={result.whatsapp} />
+            </div>
+            <p style={{ whiteSpace: "pre-wrap" }}>{result.whatsapp}</p>
+          </div>
+          <div className="panel poster">
+            <div className="card-head">
+              <h2>Cartel</h2>
+              <CopyButton text={posterText} />
+            </div>
+            <h3 className="poster-headline">{result.poster.headline}</h3>
+            <p className="muted">{result.poster.subheadline}</p>
+            <p><strong>{result.poster.call_to_action}</strong></p>
+          </div>
+        </div>
+      </section>
+      <Tips title="Cómo saber si ha funcionado" items={result.measure} />
+    </div>
+  );
+}
+
+function ReelResult({ result }: { result: ResultOf<"reel"> }) {
+  return (
+    <div className="stack">
+      <section className="panel">
+        <div className="card-head">
+          <h2>{result.title}</h2>
+          <span className="pill">{result.duration_seconds} s</span>
+        </div>
+        <h3 style={{ fontSize: "1.05rem" }}>Ganchos para el primer segundo</h3>
+        <ol>
+          {result.hooks.map((hook, i) => (
+            <li key={i}>{hook}</li>
+          ))}
+        </ol>
+      </section>
+      <section className="panel">
+        <h2>Guion plano a plano</h2>
+        <div className="stack" style={{ gap: 10 }}>
+          {result.shots.map((shot, i) => (
+            <article className="card" key={i}>
+              <span className="card-label">{shot.seconds}</span>
+              <p>🎥 {shot.visual}</p>
+              {shot.voice && <p>🗣️ {shot.voice}</p>}
+              {shot.on_screen_text && <p className="muted small">Texto en pantalla: {shot.on_screen_text}</p>}
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="grid-2">
+        <div className="panel">
+          <div className="card-head">
+            <h2>Subtítulos</h2>
+            <CopyButton text={result.subtitles} />
+          </div>
+          <p style={{ whiteSpace: "pre-wrap" }}>{result.subtitles}</p>
+        </div>
+        <div className="panel">
+          <div className="card-head">
+            <h2>Publicación</h2>
+            <CopyButton text={`${result.caption}\n\n${result.hashtags.join(" ")}`} />
+          </div>
+          <p style={{ whiteSpace: "pre-wrap" }}>{result.caption}</p>
+          <p className="hashtags">{result.hashtags.join(" ")}</p>
+          <p className="muted small">🖼️ Portada: «{result.cover_text}» · 🎵 {result.music_mood}</p>
+        </div>
+      </section>
+      <Tips title="Consejos de grabación" items={result.tips} />
+    </div>
+  );
+}
+
+function LoyaltyResult({ result }: { result: ResultOf<"loyalty"> }) {
+  return (
+    <div className="stack">
+      <section className="panel">
+        <h2>Ideas para que vuelvan</h2>
+        <div className="grid-3">
+          {result.ideas.map((idea, i) => (
+            <article className="card" key={i}>
+              <span className="card-label">{idea.name}</span>
+              <p>{idea.how}</p>
+              <p className="small">👍 {idea.pros}</p>
+              <p className="small">👎 {idea.cons}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <section className="panel">
+        <div className="card-head">
+          <h2>Normas</h2>
+          <CopyButton text={result.rules.map((r, i) => `${i + 1}. ${r}`).join("\n")} />
+        </div>
+        <ol>
+          {result.rules.map((rule, i) => (
+            <li key={i}>{rule}</li>
+          ))}
+        </ol>
+      </section>
+      <section className="panel">
+        <h2>Para anunciarlo</h2>
+        <div className="grid-3">
+          {result.announcements.map((a, i) => (
+            <article className="card" key={i}>
+              <div className="card-head">
+                <span className="card-label">{a.channel}</span>
+                <CopyButton text={a.text} />
+              </div>
+              <p style={{ whiteSpace: "pre-wrap" }}>{a.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+      <Tips title="Antes de empezar" items={result.legal_checks} />
     </div>
   );
 }

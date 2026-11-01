@@ -12,7 +12,7 @@ Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gr
 5. ⏸️ **Dominio propio** (opcional, más adelante): comprar `pregonia.es` o el que esté libre.
 6. ⏸️ **Correo propio para los enlaces** con Resend: necesita un dominio propio (paso 5). Mientras, vale el correo de Supabase.
 7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
-8. ⏳ **Stripe** (con el adulto): planes de 9,99 € y 35 €, más las claves en Vercel.
+8. ⏳ **Stripe** (con el adulto): planes de 15 €, 40 € y 55 €, más las claves en Vercel.
 9. ⏳ **Vercel Pro** y darse de alta para facturar.
 10. ⏳ **Abrir la app:** `APP_OPEN = true` y avisar a la lista de espera.
 11. ⏳ **Al llegar a la meta secreta:** avisar con 30 días de antelación y empezar a cobrar.
@@ -21,7 +21,8 @@ Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gr
 - La app, en internet: https://anuncio-facil.vercel.app (se ve entera, pero está cerrada).
 - Supabase: la base de datos (actualizada) y las direcciones de acceso.
 - Vercel: el proyecto `anuncio-facil` con sus ajustes.
-- Los planes: Básico, 9,99 € al mes con 50 generaciones; Pro, 35 € al mes con 200 generaciones y todas las herramientas.
+- Los planes: Básico, 15 € al mes con 60 generaciones; Pro, 40 € al mes con 200; Premium, 55 € al mes con 400 y todo incluido.
+- 11 herramientas, buscador del historial y app para instalar en el móvil.
 - La web de la lista de espera, con el botón «Ver planes y precios».
 - Los textos legales: Aviso legal, Privacidad, Cookies y Términos.
 - La guía con todo el detalle: `GUIA-PASOS.md`.
@@ -82,9 +83,10 @@ Después, **Redeploy**. Conviene que una gestoría o un abogado lo revise antes 
 
 ## 8. Cobros con Stripe (con un adulto: DNI y cuenta bancaria)
 1. Crea la cuenta en **stripe.com** y empieza en **modo prueba**.
-2. Crea dos productos, los dos **recurrentes, mensuales y con impuestos incluidos**:
-   - **Pregonia**, 9,99 EUR. Su ID de precio va en `STRIPE_PRICE_ID`.
-   - **Pregonia Pro**, 35 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PRO`.
+2. Crea tres productos, todos **recurrentes, mensuales y con impuestos incluidos**:
+   - **Pregonia Básico**, 15 EUR. Su ID de precio va en `STRIPE_PRICE_ID`.
+   - **Pregonia Pro**, 40 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PRO`.
+   - **Pregonia Premium**, 55 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PREMIUM`.
 3. En **Claves de API**, copia la clave secreta y ponla en `STRIPE_SECRET_KEY`.
 4. Crea el **webhook** apuntando a `https://anuncio-facil.vercel.app/api/stripe/webhook`, con los eventos `checkout.session.completed` y `customer.subscription.*`. Su clave va en `STRIPE_WEBHOOK_SECRET`.
 5. Activa el **portal de clientes** (que puedan cancelar y cambiar de plan) y los **recibos por correo**.

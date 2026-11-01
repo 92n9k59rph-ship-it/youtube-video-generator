@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 import { GenerationError, generateMarketing } from "@/lib/generator";
 import { appOpen, isAdminEmail } from "@/lib/env";
-import { canUseTool } from "@/lib/plans";
+import { PLANS, canUseTool } from "@/lib/plans";
 import { currentUserAndProfile, isSubscribed, supabaseAdmin } from "@/lib/supabase";
 import { TOOLS, isToolId } from "@/lib/tools";
 import { getUsage, reserveGeneration } from "@/lib/usage";
@@ -24,9 +24,11 @@ export async function POST(req: Request) {
   if (request.length < 5) {
     return NextResponse.json({ error: "Escribe un poco más para que podamos ayudarte (al menos unas palabras)." }, { status: 400 });
   }
-  if (!canUseTool(TOOLS[tool].proOnly, { subscribed: isSubscribed(profile), plan: profile.plan })) {
+  if (!canUseTool(TOOLS[tool].minPlan, { subscribed: isSubscribed(profile), plan: profile.plan })) {
     return NextResponse.json(
-      { error: `«${TOOLS[tool].label}» está incluida en el plan Pro. Puedes cambiar de plan desde «Gestionar suscripción».` },
+      {
+        error: `«${TOOLS[tool].label}» está incluida en el plan ${PLANS[TOOLS[tool].minPlan].name}. Puedes cambiar de plan desde «Gestionar suscripción».`,
+      },
       { status: 403 },
     );
   }

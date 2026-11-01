@@ -137,5 +137,5 @@ create table if not exists public.feedback (
 alter table public.feedback enable row level security;
 revoke all on public.feedback from anon, authenticated;
 
--- Plan contratado (basic = 9,99 €, pro = 35 €). Lo actualiza el webhook de Stripe.
+-- Plan contratado: basic, pro o premium. Lo actualiza el webhook de Stripe.
 alter table public.profiles add column if not exists plan text not null default 'basic';

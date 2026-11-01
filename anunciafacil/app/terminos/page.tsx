@@ -44,12 +44,17 @@ export default function Terminos() {
         <ul>
           <li>
             <strong>{PLANS.basic.name}:</strong> {PLANS.basic.priceLabel} al mes, hasta {planLimit("basic")} generaciones al mes
-            de publicaciones para redes, correos y carteles.
+            de publicaciones para redes, correos, carteles y menús y perfil de redes sociales.
           </li>
           <li>
-            <strong>{PLANS.pro.name}:</strong> {PLANS.pro.priceLabel} al mes, hasta {planLimit("pro")} generaciones al mes y
-            todas las herramientas, incluidas las respuestas a reseñas, los mensajes de WhatsApp y las respuestas a mensajes de
-            clientes.
+            <strong>{PLANS.pro.name}:</strong> {PLANS.pro.priceLabel} al mes, hasta {planLimit("pro")} generaciones al mes, todo lo
+            del plan {PLANS.basic.name} y además la ficha de Google, las respuestas a reseñas, las respuestas a mensajes de clientes y
+            los mensajes de WhatsApp.
+          </li>
+          <li>
+            <strong>{PLANS.premium.name}:</strong> {PLANS.premium.priceLabel} al mes, hasta {planLimit("premium")} generaciones al mes,
+            todo lo del plan {PLANS.pro.name} y además campañas completas, guiones de vídeo, ideas para fidelizar clientes y descarga del
+            historial.
           </li>
           <li>Los precios incluyen IVA.</li>
           <li>El pago se hace por adelantado cada mes con tarjeta, a través de Stripe.</li>

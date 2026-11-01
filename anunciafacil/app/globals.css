@@ -240,3 +240,10 @@ main.home { padding-block: 0; }
   font: 700 .65rem/1 var(--body); text-transform: uppercase; letter-spacing: .06em;
   padding: 4px 6px; border-radius: 6px; background: var(--accent); color: var(--accent-ink);
 }
+
+/* Plan Premium */
+.premium-badge, .tag-premium { background: var(--ink); color: var(--paper); }
+
+/* Buscador del historial */
+.history-search { display: flex; gap: 8px; flex-wrap: wrap; }
+.history-search input { flex: 1 1 200px; }

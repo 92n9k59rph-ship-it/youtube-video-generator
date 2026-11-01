@@ -4,12 +4,25 @@ import Link from "next/link";
 import "./globals.css";
 
 const description =
-  "Publicaciones para Instagram, correos, respuestas a reseñas, mensajes de WhatsApp y carteles para tu negocio, escritos en un minuto.";
+  "Publicaciones para Instagram, tu ficha de Google, respuestas a reseñas, mensajes de WhatsApp, campañas y carteles para tu negocio, escritos en un minuto.";
 
 export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
-  title: "Pregonia",
+  title: "Pregonia · Textos que atraen clientes a tu negocio",
   description,
+  applicationName: "Pregonia",
+  keywords: [
+    "publicaciones para Instagram",
+    "marketing para negocios",
+    "ficha de Google",
+    "responder reseñas de Google",
+    "textos para redes sociales",
+    "marketing para bares",
+    "marketing para peluquerías",
+    "marketing para tiendas",
+  ],
+  appleWebApp: { capable: true, title: "Pregonia", statusBarStyle: "default" },
+  formatDetection: { telephone: false },
   openGraph: {
     title: "Pregonia · El marketing de tu negocio, en un minuto",
     description,
@@ -23,6 +36,10 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f6f7fb" },
+    { media: "(prefers-color-scheme: dark)", color: "#12151d" },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
