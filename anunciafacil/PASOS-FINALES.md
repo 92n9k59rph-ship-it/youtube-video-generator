@@ -9,7 +9,7 @@ Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gr
 2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
 3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
 4. ⏳ **Turnstile** (tú solo): widget creado ✅ → Site Key en Vercel y **Redeploy** → Secret Key en Supabase.
-5. ⏸️ **Dominio propio** (opcional, más adelante): `anunciofacil.es` **no es tuyo**; si queréis uno, hay que comprar otro.
+5. ⏸️ **Dominio propio** (opcional, más adelante): comprar `pregonia.es` o el que esté libre.
 6. ⏸️ **Correo propio para los enlaces** con Resend: necesita un dominio propio (paso 5). Mientras, vale el correo de Supabase.
 7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
 8. ⏳ **Stripe** (con el adulto): planes de 9,99 € y 35 €, más las claves en Vercel.
@@ -63,7 +63,7 @@ Sin esto, el botón «Generar» da error.
 4. Haz **Redeploy** en Vercel.
 
 ## 5. Dominio propio (opcional, más adelante)
-`anunciofacil.es` **no es tuyo**: es de otra persona o empresa, así que no se puede usar ni para la app ni para el correo. La app funciona perfectamente en `https://anuncio-facil.vercel.app`. Si más adelante queréis una dirección propia, el adulto puede comprar un dominio libre (por ejemplo en Vercel → **Domains** → **Buy**) y yo te guío para conectarlo.
+La app funciona perfectamente en `https://anuncio-facil.vercel.app`. Si más adelante queréis una dirección propia, el adulto puede comprar un dominio libre (por ejemplo en Vercel → **Domains** → **Buy**) y yo te guío para conectarlo.
 
 ## 6. Correo propio para los enlaces de acceso (antes de tener muchos clientes)
 El correo que trae Supabase solo envía unos pocos mensajes por hora. Crea una cuenta gratis en **Resend** o **Brevo** y configúrala en Supabase, en **Authentication** → **SMTP Settings**. Te guío cuando llegues aquí.

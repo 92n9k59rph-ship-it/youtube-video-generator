@@ -62,7 +62,7 @@ Escribir a una asociación (es decir, a una organización y a su dirección de c
 
 ## 3. Instagram de Pregonia: 10 publicaciones
 
-Crea la cuenta **@anunciofacil** (o la que esté libre) con el Gmail del negocio. Publica 2 o 3 veces por semana. Las imágenes pueden ser capturas de la app o diseños sencillos en Canva.
+Crea la cuenta **@pregonia** (o la que esté libre) con el Gmail del negocio. Publica 2 o 3 veces por semana. Las imágenes pueden ser capturas de la app o diseños sencillos en Canva.
 
 1. **Presentación:** «¿Tienes un negocio y nunca sabes qué publicar? Pregonia te lo escribe en un minuto. Gratis por tiempo limitado. Enlace en la bio.»
 2. **Antes y después:** una reseña negativa real (sin el nombre del cliente) frente a la respuesta que propone la app.

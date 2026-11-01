@@ -41,7 +41,7 @@ No hace falta `TURNSTILE_SECRET_KEY` en Vercel: la lista de espera es de Google 
 
 ## Pasos 5 y 6: dominio y correo propios (más adelante) ⏸️
 
-`anunciofacil.es` **no es tuyo**, así que no se puede usar ni para la app ni para enviar correos. Por ahora:
+Todavía no tenéis dominio propio. Por ahora:
 - La app sigue en `https://anuncio-facil.vercel.app`, y funciona perfectamente.
 - Los enlaces de acceso los envía el correo de Supabase, que vale mientras haya poca gente.
 
