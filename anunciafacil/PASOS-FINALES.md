@@ -1,9 +1,11 @@
-# Pasos para terminar Anuncio Fácil
+# Pasos para terminar Pregonia
+
+> El nombre de la app ahora es **Pregonia** (antes «Anuncio Fácil», que ya usa otra web). El correo del negocio será `pregonia.contacto@gmail.com`: cuando lo creéis, cambiad en Vercel `ADMIN_EMAILS` a ese correo y haced **Redeploy**.
 
 Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gratis) pero **nadie puede usarla**: los botones llevan a la lista de espera y solo entra el correo de administrador.
 
 ## 📋 Lista rápida
-1. ⏳ **Correo del negocio:** crear el Gmail `anunciafacil.contacto` (con un adulto).
+1. ⏳ **Correo del negocio:** crear el Gmail `pregonia.contacto` (con un adulto).
 2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
 3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
 4. ⏳ **Turnstile** (tú solo): widget creado ✅ → Site Key en Vercel y **Redeploy** → Secret Key en Supabase.
@@ -29,9 +31,9 @@ Abajo tienes cada paso explicado.
 ---
 
 ## 0. Crear el Gmail del negocio (con un adulto, 5 minutos) ⚠️ PENDIENTE
-El correo `anunciafacil.contacto@gmail.com` **todavía no existe**: hay que crearlo. Lo usa la app para que entres como administrador, y además es el correo de contacto que se ve en la web.
+El correo `pregonia.contacto@gmail.com` **todavía no existe**: hay que crearlo. Lo usa la app para que entres como administrador, y además es el correo de contacto que se ve en la web.
 1. Lo más fácil es hacerlo en el móvil del adulto: en la app **Gmail**, toca la foto → **Añadir otra cuenta** → **Google** → **Crear cuenta** → **Para mi uso personal**.
-2. Nombre: `Anuncio`. Apellidos: `Fácil`. Elige **Crear tu propia dirección de Gmail** y escribe `anunciafacil.contacto`.
+2. Nombre: `Pregonia` (sin apellidos, o pon `App`). Elige **Crear tu propia dirección de Gmail** y escribe `pregonia.contacto`.
 3. Si ese nombre no está libre o prefieres usar otro correo que ya tengas, cambia en Vercel `ADMIN_EMAILS` y `NEXT_PUBLIC_CONTACT_EMAIL` por ese correo y haz **Redeploy**.
 
 ## 1. Actualizar la base de datos ✅ Hecho
@@ -41,7 +43,7 @@ El correo `anunciafacil.contacto@gmail.com` **todavía no existe**: hay que crea
 
 ## 2. Probar que entrar funciona (tú, 5 minutos)
 1. Abre la app y ve a **Entrar**, después a **«Acceso para el equipo»**.
-2. Escribe `anunciafacil.contacto@gmail.com`, acepta los términos y pulsa **Enviarme el enlace**.
+2. Escribe `pregonia.contacto@gmail.com`, acepta los términos y pulsa **Enviarme el enlace**.
 3. Abre el enlace que llega a ese Gmail (mira también en spam).
 4. Rellena **Tu negocio** y pulsa **Guardar**. Abre también tu panel `/admin`.
 
@@ -81,8 +83,8 @@ Después, **Redeploy**. Conviene que una gestoría o un abogado lo revise antes 
 ## 8. Cobros con Stripe (con un adulto: DNI y cuenta bancaria)
 1. Crea la cuenta en **stripe.com** y empieza en **modo prueba**.
 2. Crea dos productos, los dos **recurrentes, mensuales y con impuestos incluidos**:
-   - **Anuncio Fácil**, 9,99 EUR. Su ID de precio va en `STRIPE_PRICE_ID`.
-   - **Anuncio Fácil Pro**, 35 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PRO`.
+   - **Pregonia**, 9,99 EUR. Su ID de precio va en `STRIPE_PRICE_ID`.
+   - **Pregonia Pro**, 35 EUR. Su ID de precio va en `STRIPE_PRICE_ID_PRO`.
 3. En **Claves de API**, copia la clave secreta y ponla en `STRIPE_SECRET_KEY`.
 4. Crea el **webhook** apuntando a `https://anuncio-facil.vercel.app/api/stripe/webhook`, con los eventos `checkout.session.completed` y `customer.subscription.*`. Su clave va en `STRIPE_WEBHOOK_SECRET`.
 5. Activa el **portal de clientes** (que puedan cancelar y cambiar de plan) y los **recibos por correo**.

@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Tienes que entrar en tu cuenta." }, { status: 401 });
   }
   if (!appOpen() && !isAdminEmail(user.email)) {
-    return NextResponse.json({ error: "Anuncio Fácil todavía no está abierto. Te avisaremos por correo." }, { status: 403 });
+    return NextResponse.json({ error: "Pregonia todavía no está abierto. Te avisaremos por correo." }, { status: 403 });
   }
 
   const body = (await req.json().catch(() => null)) as { request?: unknown; tool?: unknown } | null;
@@ -47,8 +47,8 @@ export async function POST(req: Request) {
     const error =
       usage.period === "gratis"
         ? usage.limit === 0
-          ? "Suscríbete para empezar a usar Anuncio Fácil."
-          : "Has usado tus generaciones gratis. Suscríbete para seguir usando Anuncio Fácil."
+          ? "Suscríbete para empezar a usar Pregonia."
+          : "Has usado tus generaciones gratis. Suscríbete para seguir usando Pregonia."
         : usage.period === "lanzamiento"
           ? "Has usado todas las generaciones gratis de este mes. Se renuevan el día 1."
           : "Has llegado al límite de este mes. Se renueva el día 1.";
@@ -81,7 +81,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: err.message }, { status: 422 });
     }
     if (err instanceof Anthropic.RateLimitError) {
-      return NextResponse.json({ error: "Hay mucha gente usando Anuncio Fácil ahora mismo. Prueba en un minuto." }, { status: 429 });
+      return NextResponse.json({ error: "Hay mucha gente usando Pregonia ahora mismo. Prueba en un minuto." }, { status: 429 });
     }
     if (err instanceof Anthropic.APIError) {
       console.error("Error de la API de Claude", err.status, err.message);

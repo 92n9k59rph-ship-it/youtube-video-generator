@@ -1,4 +1,4 @@
-# Novedades de Anuncio Fácil
+# Novedades de Pregonia
 
 ## 30 de octubre
 

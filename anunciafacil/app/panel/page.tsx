@@ -133,7 +133,7 @@ export default async function Panel({
               </>
             ) : launch ? (
               <p className="muted">
-                Anuncio Fácil es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
+                Pregonia es <strong>gratis por tiempo limitado</strong> durante el lanzamiento: hasta {usage.limit} generaciones al mes.
                 Después habrá dos planes: Básico ({PLANS.basic.priceLabel}/mes) y Pro ({PLANS.pro.priceLabel}/mes). Te avisaremos por correo con 30 días de antelación y no se te cobrará nada
                 salvo que tú decidas suscribirte.
               </p>

@@ -28,7 +28,7 @@ const ERRORS: Record<string, string> = {
   envio: "No hemos podido enviar el enlace. Espera un minuto y vuelve a intentarlo.",
   enlace: "El enlace no es válido o ha caducado. Pide uno nuevo.",
   captcha: "Completa la comprobación de seguridad antes de enviar.",
-  cerrado: "Anuncio Fácil todavía no está abierto. Apúntate a la lista de espera y te avisamos.",
+  cerrado: "Pregonia todavía no está abierto. Apúntate a la lista de espera y te avisamos.",
 };
 
 export default async function Entrar({
@@ -48,7 +48,7 @@ export default async function Entrar({
             <span className="pill" style={{ alignSelf: "flex-start" }}>Próximamente</span>
             <h1 style={{ fontSize: "2rem" }}>Muy pronto podrás entrar</h1>
             <p className="muted">
-              Estamos ultimando Anuncio Fácil. Apúntate a la lista de espera y te avisaremos por correo el día que abra.
+              Estamos ultimando Pregonia. Apúntate a la lista de espera y te avisaremos por correo el día que abra.
             </p>
             <a className="btn btn-primary" href={waitlistUrl()} target="_blank" rel="noopener noreferrer">
               Apuntarme a la lista de espera
