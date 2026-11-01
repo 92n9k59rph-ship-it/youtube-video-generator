@@ -27,6 +27,12 @@ export function showPricing(): boolean {
   return process.env.SHOW_PRICING !== "false";
 }
 
+// ¿Se puede ver la web en público? Hasta que SITE_PUBLIC=true, solo la ven los administradores
+// (y quien tenga el código de vista previa PREVIEW_CODE). Los demás ven una página de «Muy pronto».
+export function sitePublic(): boolean {
+  return process.env.SITE_PUBLIC === "true";
+}
+
 // ¿Puede la gente registrarse y usar la app? Hasta que APP_OPEN=true, solo los administradores.
 export function appOpen(): boolean {
   return process.env.APP_OPEN === "true";
