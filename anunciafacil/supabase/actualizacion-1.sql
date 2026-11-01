@@ -1,4 +1,4 @@
--- Actualización 1 de Anuncio Fácil (reserva de usos y opiniones).
+-- Actualización 1 de Pregonia (reserva de usos y opiniones).
 -- Si ya ejecutaste schema.sql antes del 30 de octubre, pega esto en Supabase → SQL Editor → Run.
 -- Si ejecutas schema.sql completo por primera vez, no hace falta: ya lo incluye.
 -- Reserva de usos: impide saltarse el límite pulsando «Generar» muchas veces a la vez.

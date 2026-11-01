@@ -25,12 +25,12 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
 
   const allFaqs: Array<[string, string]> = [
     [
-      "¿Qué es Anuncio Fácil?",
+      "¿Qué es Pregonia?",
       "Una herramienta que escribe por ti los textos de tu negocio: publicaciones para redes, correos para tus clientes, textos para carteles o menús y, en el plan Pro, respuestas a reseñas de Google, mensajes de WhatsApp y respuestas a los mensajes que te escriben tus clientes.",
     ],
     [
       "¿Necesito saber de marketing?",
-      "No. Solo cuentas con tus palabras qué negocio tienes y qué quieres anunciar. Anuncio Fácil se encarga de escribirlo bien.",
+      "No. Solo cuentas con tus palabras qué negocio tienes y qué quieres anunciar. Pregonia se encarga de escribirlo bien.",
     ],
     [
       "¿Publica por mí en Instagram o envía los mensajes?",
@@ -48,7 +48,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
     ],
     [
       "¿Qué es una «generación»?",
-      "Cada vez que pulsas «Generar» y Anuncio Fácil te escribe los textos cuenta como una, sea cual sea la herramienta.",
+      "Cada vez que pulsas «Generar» y Pregonia te escribe los textos cuenta como una, sea cual sea la herramienta.",
     ],
     [
       "¿Puedo borrar mi cuenta?",
@@ -61,7 +61,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
     <main className="home">
       {cuenta === "borrada" && (
         <div className="wrap">
-          <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado Anuncio Fácil!</p>
+          <p className="notice notice-ok">Tu cuenta y tus datos se han borrado. ¡Gracias por haber usado Pregonia!</p>
         </div>
       )}
 
@@ -74,7 +74,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
               Las publicaciones de tu negocio, <span className="accent">escritas en un minuto.</span>
             </h1>
             <p className="lead">
-              Cuéntanos qué negocio tienes y qué necesitas. Anuncio Fácil te prepara publicaciones para Instagram, correos para tus
+              Cuéntanos qué negocio tienes y qué necesitas. Pregonia te prepara publicaciones para Instagram, correos para tus
               clientes, carteles y, además, respuestas a reseñas y a los mensajes que te escriben tus clientes.
             </p>
             <div className="nav">
@@ -83,7 +83,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             </div>
             {!open && (
               <p className="notice" style={{ background: "var(--chip)" }}>
-                <strong>Muy pronto.</strong> Estamos ultimando Anuncio Fácil. Apúntate a la lista de espera y te avisamos el día que abra.
+                <strong>Muy pronto.</strong> Estamos ultimando Pregonia. Apúntate a la lista de espera y te avisamos el día que abra.
               </p>
             )}
             {pricing && (
@@ -97,7 +97,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             )}
           </div>
 
-          <div className="mock" aria-label="Ejemplo de publicación creada con Anuncio Fácil">
+          <div className="mock" aria-label="Ejemplo de publicación creada con Pregonia">
             <span className="sticker">Ejemplo</span>
             <article className="post">
               <div className="post-head">
@@ -199,7 +199,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ c
             <span className="tag">Próximamente</span>
             <h2>Los contactos de tus anuncios, ordenados y a mano</h2>
             <p className="muted">
-              Cuando alguien rellene el formulario de tu anuncio en Facebook o Instagram, Anuncio Fácil lo traerá, lo guardará y te
+              Cuando alguien rellene el formulario de tu anuncio en Facebook o Instagram, Pregonia lo traerá, lo guardará y te
               avisará. Tú solo tendrás que contestar.
             </p>
           </div>

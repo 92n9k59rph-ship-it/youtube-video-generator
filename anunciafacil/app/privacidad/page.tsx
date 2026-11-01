@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { LEGAL } from "@/lib/legal";
 
-export const metadata = { title: "Privacidad · Anuncio Fácil" };
+export const metadata = { title: "Privacidad · Pregonia" };
 
 // PLANTILLA: la tiene que revisar el titular y, mejor, alguien que sepa de protección de datos.
 export default function Privacidad() {

@@ -6,8 +6,8 @@ Este repositorio tiene tres partes:
 | Carpeta | Qué es |
 |---|---|
 | `.claude/`, `plantillas/`, `proyectos/` | El **agente productor de vídeos para YouTube** y los vídeos ya preparados |
-| `anunciafacil/` | **Anuncio Fácil**, la app de marketing para negocios (con suscripción) |
-| `docs/` y `web/anunciafacil/` | La **web de la lista de espera** de Anuncio Fácil (publicada con GitHub Pages) |
+| `anunciafacil/` | **Pregonia**, la app de marketing para negocios (con suscripción) |
+| `docs/` y `web/anunciafacil/` | La **web de la lista de espera** de Pregonia (publicada con GitHub Pages) |
 
 ## Agente productor de vídeos (Claude Code)
 
@@ -35,7 +35,7 @@ Si falta el tema, la duración o el estilo visual, el agente te los preguntará 
 
 El agente entrega textos, guiones y prompts: **no genera ni exporta vídeo por sí mismo**. Los datos que no pueda verificar aparecen marcados con `⚠️ VERIFICAR:`.
 
-## Anuncio Fácil
+## Pregonia
 
 Aplicación web (Next.js + Supabase + Stripe + API de Claude) que escribe textos de marketing para negocios pequeños:
 - publicaciones para redes con idea de Reel y calendario;
