@@ -9,12 +9,12 @@
 Cuando esté todo al 100 %, en el paso 10 se pone `SITE_PUBLIC=true` (para que se vea) y `APP_OPEN=true` (para que se pueda usar). La web de la lista de espera también está oculta: la completa está guardada en `web/anunciafacil/index.html`.
 
 ## 📋 Lista rápida
-0. ⏳ **Base de datos (tú, 2 minutos):** ejecutar `supabase/actualizacion-3.sql` en Supabase (SQL Editor → Run). Es una sola línea:
+0. ✅ **Base de datos (hecho):** ejecutar `supabase/actualizacion-3.sql` en Supabase (SQL Editor → Run). Es una sola línea:
    `alter table public.profiles add column if not exists details text not null default '';`
 1. ⏳ **Correo del negocio:** crear el Gmail `pregonia.contacto` (con un adulto).
 2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
 3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
-4. ⏳ **Turnstile** (tú solo): widget creado ✅ → Site Key en Vercel y **Redeploy** → Secret Key en Supabase.
+4. ⏳ **Turnstile:** widget «Pregonia» creado ✅ → Site Key y `PREVIEW_CODE` en Vercel ✅ → falta la Secret Key en Supabase (Authentication → Attack Protection).
 5. ⏸️ **Dominio propio** (opcional, más adelante): comprar `pregonia.es` o el que esté libre.
 6. ⏸️ **Correo propio para los enlaces** con Resend: necesita un dominio propio (paso 5). Mientras, vale el correo de Supabase.
 7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
