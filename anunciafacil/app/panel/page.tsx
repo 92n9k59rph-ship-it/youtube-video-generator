@@ -34,6 +34,7 @@ export default async function Panel({
   const subscribed = isSubscribed(profile);
   const usage = await getUsage(profile);
   const hasBusiness = Boolean(profile.business_type);
+  const hasDetails = Boolean(profile.details?.trim());
   const launch = freeLaunch();
   const pricing = showPricing();
 
@@ -47,6 +48,7 @@ export default async function Panel({
   if (search) historyQuery = historyQuery.ilike("request", `%${search.replace(/[\\%_]/g, (c) => `\\${c}`)}%`);
   const { data: history } = await historyQuery;
   const canExport = canUseTool("premium", { subscribed, plan: profile.plan });
+  const hasGenerated = usage.used > 0 || (!search && (history?.length ?? 0) > 0);
 
   // Una generación antigua que el cliente quiere volver a ver (la seguridad de Supabase solo deja ver las suyas).
   let previous: { output: ToolResult; request: string; created_at: string } | null = null;
@@ -91,8 +93,29 @@ export default async function Panel({
         )}
         {negocio === "error" && <p className="notice notice-error">No se han podido guardar los datos. Inténtalo de nuevo.</p>}
 
+        {!(hasBusiness && hasDetails && hasGenerated) && (
+          <section className="panel">
+            <h2>Primeros pasos</h2>
+            <ol className="steps-list">
+              <li className={hasBusiness ? "done" : ""}>
+                <a href="#negocio">Rellena «Tu negocio»</a>: tipo de negocio, ciudad y tono. Solo una vez.
+              </li>
+              <li className={hasDetails ? "done" : ""}>
+                <a href="#negocio">Añade tus «Datos útiles»</a>: horario, cómo reservar, especialidades… Así los textos salen completos.
+              </li>
+              <li className={hasGenerated ? "done" : ""}>
+                Prueba la herramienta <strong>Redes sociales</strong> con algo de esta semana y copia lo que más te guste.
+              </li>
+              <li>
+                Instala Pregonia en tu móvil: en Safari, toca Compartir → «Añadir a pantalla de inicio»; en Android, menú ⋮ → «Instalar
+                app».
+              </li>
+            </ol>
+          </section>
+        )}
+
         <div className="grid-2">
-          <form action={saveBusiness} className="panel">
+          <form action={saveBusiness} className="panel" id="negocio" style={{ scrollMarginTop: 16 }}>
             <h2>Tu negocio</h2>
             {!hasBusiness && <p className="muted">Rellena esto una vez para que los textos suenen a ti.</p>}
             <div className="fields">

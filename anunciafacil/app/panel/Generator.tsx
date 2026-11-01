@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ToolResult } from "@/lib/generator";
 import { PLANS, planLimit } from "@/lib/plans";
 import { TOOLS, TOOL_IDS, type ToolId } from "@/lib/tools";
@@ -25,17 +25,29 @@ export function Generator({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const resultsRef = useRef<HTMLDivElement>(null);
+
   const info = TOOLS[tool];
   const remaining = Math.max(0, usage.limit - usage.used);
+  const blocked = loading || !canGenerate || remaining === 0 || lockedTools.includes(tool);
+
+  // Borrador: lo que se está escribiendo se guarda en este dispositivo, por herramienta,
+  // para no perderlo si se cierra la página. Si el navegador no deja guardar, no pasa nada.
+  useEffect(() => {
+    setRequest(readDraft(tool));
+  }, [tool]);
+  useEffect(() => {
+    writeDraft(tool, request);
+  }, [tool, request]);
 
   function chooseTool(next: ToolId) {
     setTool(next);
-    setRequest("");
     setError("");
   }
 
-  async function generate(e: React.FormEvent) {
-    e.preventDefault();
+  async function generate(e?: React.FormEvent) {
+    e?.preventDefault();
+    if (blocked || request.trim().length < 5) return;
     setLoading(true);
     setError("");
     try {
@@ -51,6 +63,9 @@ export function Generator({
         return;
       }
       setOutput(data.output);
+      writeDraft(tool, "");
+      // Lleva a los resultados, sobre todo en el móvil, donde quedan por debajo.
+      setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
     } catch {
       setError("No hay conexión. Comprueba internet e inténtalo de nuevo.");
     } finally {
@@ -129,12 +144,31 @@ export function Generator({
           </p>
         </div>
         {error && <p className="notice notice-error">{error}</p>}
-        <button className="btn btn-primary" type="submit" disabled={loading || !canGenerate || remaining === 0 || lockedTools.includes(tool)}>
+        <button className="btn btn-primary" type="submit" disabled={blocked}>
           {loading ? "Escribiendo… (unos segundos)" : "Generar"}
         </button>
       </form>
 
-      {output && <Results output={output} />}
+      {output && (
+        <div className="stack" ref={resultsRef} style={{ scrollMarginTop: 16 }}>
+          <Results output={output} />
+          <div className="panel card-row" style={{ flexWrap: "wrap" }}>
+            <span className="muted small">¿No te convence? Pide otra versión (cuenta como una generación) o cambia lo que has escrito.</span>
+            <span className="nav">
+              <button className="btn btn-ghost" type="button" onClick={() => generate()} disabled={blocked}>
+                {loading ? "Escribiendo…" : "Otra versión"}
+              </button>
+              <button
+                className="btn btn-ghost"
+                type="button"
+                onClick={() => document.getElementById("request")?.focus({ preventScroll: false })}
+              >
+                Cambiar la petición
+              </button>
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -644,8 +678,39 @@ function Tips({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+const DRAFT_PREFIX = "pregonia-borrador-";
+
+function readDraft(tool: ToolId): string {
+  try {
+    return window.localStorage.getItem(DRAFT_PREFIX + tool) ?? "";
+  } catch {
+    return "";
+  }
+}
+
+function writeDraft(tool: ToolId, text: string) {
+  try {
+    if (text.trim()) window.localStorage.setItem(DRAFT_PREFIX + tool, text);
+    else window.localStorage.removeItem(DRAFT_PREFIX + tool);
+  } catch {
+    // Navegación privada o almacenamiento bloqueado: el borrador simplemente no se guarda.
+  }
+}
+
 function CopyButton({ text, idle = "Copiar" }: { text: string; idle?: string }) {
   const [label, setLabel] = useState(idle);
+  // En el móvil se puede enviar el texto directamente a WhatsApp, Instagram, Notas...
+  const [canShare, setCanShare] = useState(false);
+  useEffect(() => {
+    setCanShare(typeof navigator !== "undefined" && typeof navigator.share === "function");
+  }, []);
+  async function share() {
+    try {
+      await navigator.share({ text });
+    } catch {
+      // El usuario ha cerrado el menú de compartir: no hay nada que hacer.
+    }
+  }
   async function copy() {
     try {
       await navigator.clipboard.writeText(text);
@@ -656,8 +721,15 @@ function CopyButton({ text, idle = "Copiar" }: { text: string; idle?: string }) 
     setTimeout(() => setLabel(idle), 2000);
   }
   return (
-    <button type="button" className="copy" onClick={copy}>
-      {label}
-    </button>
+    <span className="copy-actions">
+      <button type="button" className="copy" onClick={copy}>
+        {label}
+      </button>
+      {canShare && (
+        <button type="button" className="copy" onClick={share}>
+          Compartir
+        </button>
+      )}
+    </span>
   );
 }

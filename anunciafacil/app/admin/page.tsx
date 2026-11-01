@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { freeLaunch, intEnv, isAdminEmail } from "@/lib/env";
+import { appOpen, freeLaunch, intEnv, isAdminEmail, sitePublic } from "@/lib/env";
 import { currentUserAndProfile, supabaseAdmin } from "@/lib/supabase";
 import { PLANS, PLAN_IDS, isPlanId, planLimit } from "@/lib/plans";
 import { costUsd } from "@/lib/pricing";
@@ -112,6 +112,13 @@ export default async function Admin() {
             <span className="card-label">Coste de la IA este mes</span>
             <strong className="stat">{money(aiCostUsd, "USD")}</strong>
             <span className="muted small">{money(avgCostUsd, "USD")} de media por generación</span>
+          </div>
+          <div className="card">
+            <span className="card-label">Estado de la web</span>
+            <span>
+              {sitePublic() ? "🌍 Pública" : "🔒 Privada («Muy pronto»)"} · {appOpen() ? "✅ Abierta para usar" : "⏳ Solo administradores"}
+            </span>
+            <span className="muted small">Para abrir: SITE_PUBLIC=true y APP_OPEN=true en Vercel, y Redeploy</span>
           </div>
           <div className="card">
             <span className="card-label">Modo</span>
