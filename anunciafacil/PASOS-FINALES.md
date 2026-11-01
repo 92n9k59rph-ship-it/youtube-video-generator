@@ -2,11 +2,29 @@
 
 Mientras no hagas el paso 10, la web **se ve entera** (precios, herramientas, gratis) pero **nadie puede usarla**: los botones llevan a la lista de espera y solo entra el correo de administrador.
 
+## 📋 Lista rápida
+1. ⏳ **Correo del negocio:** `contacto@anunciofacil.es` (en IONOS) o crear el Gmail `anunciafacil.contacto`.
+2. ⏳ **Entrar en la app** con ese correo, en «Acceso para el equipo».
+3. ⏳ **Clave de la IA** (con el adulto): platform.claude.com → `ANTHROPIC_API_KEY` en Vercel.
+4. ⏳ **Turnstile** (tú solo): Cloudflare → Site Key en Vercel → Secret Key en Supabase.
+5. ⏳ **Dominio `app.anunciofacil.es`** (opcional; hace falta IONOS).
+6. ⏳ **Correo propio para los enlaces** con Resend (hace falta IONOS).
+7. ⏳ **Datos legales en Vercel** (con el adulto): nombre, NIF, dirección, fecha y región de Supabase.
+8. ⏳ **Stripe** (con el adulto): planes de 9,99 € y 35 €, más las claves en Vercel.
+9. ⏳ **Vercel Pro** y darse de alta para facturar.
+10. ⏳ **Abrir la app:** `APP_OPEN = true` y avisar a la lista de espera.
+11. ⏳ **Al llegar a la meta secreta:** avisar con 30 días de antelación y empezar a cobrar.
+
 ## ✅ Hecho
-- La app, en internet: https://anuncio-facil.vercel.app
-- Supabase: la base de datos y las direcciones de acceso.
+- La app, en internet: https://anuncio-facil.vercel.app (se ve entera, pero está cerrada).
+- Supabase: la base de datos (actualizada) y las direcciones de acceso.
 - Vercel: el proyecto `anuncio-facil` con sus ajustes.
 - Los planes: Básico, 9,99 € al mes con 50 generaciones; Pro, 35 € al mes con 200 generaciones y todas las herramientas.
+- La web de la lista de espera, con el botón «Ver planes y precios».
+- Los textos legales: Aviso legal, Privacidad, Cookies y Términos.
+- La guía con todo el detalle: `GUIA-PASOS.md`.
+
+Abajo tienes cada paso explicado.
 
 ---
 
