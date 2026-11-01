@@ -118,7 +118,7 @@ La cuenta tiene que estar **a nombre de un adulto**, con sus datos y su cuenta b
 
 ### Dominio propio (más adelante)
 
-`anunciofacil.es` es de otra persona y no se puede usar. La app funciona en `https://anuncio-facil.vercel.app`. Si más adelante compráis un dominio libre, se conecta en Vercel → **Settings** → **Domains**.
+Por ahora la app funciona en `https://anuncio-facil.vercel.app`. Si más adelante compráis un dominio libre, se conecta en Vercel → **Settings** → **Domains**.
 
 ## Paso 5. Probar todo
 
