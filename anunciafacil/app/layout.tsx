@@ -1,4 +1,4 @@
-import { CONTACT_EMAIL } from "@/lib/contact";
+import { LEGAL } from "@/lib/legal";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import "./globals.css";
@@ -50,9 +50,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <footer>
           <div className="wrap">
-            <span>© Anuncio Fácil · Responsable: David Lázaro · {CONTACT_EMAIL}</span>
+            <span>© Anuncio Fácil · Responsable: {LEGAL.owner} · {LEGAL.email}</span>
             <span>
-              <Link href="/privacidad">Privacidad</Link> · <Link href="/terminos">Términos</Link>
+              <Link href="/aviso-legal">Aviso legal</Link> · <Link href="/privacidad">Privacidad</Link> ·{" "}
+              <Link href="/cookies">Cookies</Link> · <Link href="/terminos">Términos</Link>
             </span>
           </div>
         </footer>

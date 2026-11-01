@@ -76,6 +76,7 @@ export default async function Panel({
             ¡Gracias por suscribirte! Si tu plan aún no aparece como activo, recarga la página en unos segundos.
           </p>
         )}
+        {pago === "inicio" && <p className="notice notice-error">Para suscribirte, marca la casilla de empezar ya.</p>}
         {pago === "cancelado" && <p className="notice notice-error">No se ha completado el pago. Puedes intentarlo cuando quieras.</p>}
         {negocio === "ok" && <p className="notice notice-ok">Datos del negocio guardados.</p>}
         {negocio === "error" && <p className="notice notice-error">No se han podido guardar los datos. Inténtalo de nuevo.</p>}
@@ -145,8 +146,13 @@ export default async function Panel({
                 {PLAN_IDS.map((id) => (
                   <form action="/api/pago" method="post" key={id} className="card card-row">
                     <input type="hidden" name="plan" value={id} />
-                    <span>
-                      <strong>{PLANS[id].name}</strong> · {planLimit(id)} generaciones al mes
+                    <span className="stack" style={{ gap: 6 }}>
+                      <span>
+                        <strong>{PLANS[id].name}</strong> · {planLimit(id)} generaciones al mes
+                      </span>
+                      <label className="small" style={{ flexDirection: "row", alignItems: "flex-start", fontWeight: 400 }}>
+                        <input type="checkbox" name="inicio" value="si" required style={{ width: "auto", marginTop: 4 }} /> Quiero empezar ya. Sé que, si desisto en 14 días, pagaré la parte usada.
+                      </label>
                     </span>
                     <button className={`btn ${id === "pro" ? "btn-primary" : "btn-ghost"}`} type="submit">
                       {PLANS[id].priceLabel}/mes
